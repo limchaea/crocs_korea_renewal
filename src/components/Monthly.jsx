@@ -1,5 +1,5 @@
 import React from 'react';
-import MonthlyLEft from './MonthlyLEft';
+import MonthlyLeft from './MonthlyLeft';
 import MonthlyRight from './MonthlyRight';
 import './scss/monthly.scss';
 
@@ -7,7 +7,7 @@ const Monthly = () => {
     return (
         <section className="monthly_wrap">
             <div className="inner">
-                <MonthlyLEft />
+                <MonthlyLeft />
                 <MonthlyRight />
             </div>
         </section>

@@ -15,15 +15,18 @@
             position: relative;
 
             .title_wrap {
-                @include g.flex($fd: column, $jc: center, $ai: left);
+                @include g.flex($fd: column, $jc: center, $ai: flex-start);
                 // height: 100vh;
                 padding-top: 20rem;
+
+                .section_title,
+                .section_sub_title {
+                    text-align: start;
+                }
             }
 
             .jibbitz {
                 position: absolute;
-                // top: 0;
-                // left: 0;
             }
 
             .jibbitz_img1 {

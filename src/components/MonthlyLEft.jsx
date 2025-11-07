@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './Title';
 
-const MonthlyLEft = () => {
+const MonthlyLeft = () => {
     return (
         <div className="monthly_left">
             <Title
@@ -21,4 +21,4 @@ const MonthlyLEft = () => {
     );
 };
 
-export default MonthlyLEft;
+export default MonthlyLeft;
