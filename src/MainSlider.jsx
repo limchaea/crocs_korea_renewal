@@ -1,34 +1,35 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// 메인 슬라이드
-const slides = [
-    { id: 1, src: './video/main_slide_01.mp4', tag: 'video', title: "Rei's Bay Clog" },
-    {
-        id: 2,
-        src: './images/main_slide_02.jpg',
-        alt: 'slide2',
-        tag: 'img',
-        title: 'Crocs x Vogue',
-    },
-    {
-        id: 3,
-        src: './video/main_slide_03.mp4',
-        tag: 'video',
-        title: 'Cassic Platform Clog x Rei',
-    },
-    {
-        id: 4,
-        src: './images/main_slide_04.jpg',
-        alt: 'slide4',
-        tag: 'img',
-        title: 'Crocs x ABC MART with SEULGI',
-    },
-    { id: 5, src: './video/main_slide_05.mp4', tag: 'video', title: 'Echo Wave x TAEMIN' },
-];
-
 const MainSlider = () => {
+    const swiperRef = useRef(null);
+    // 메인 슬라이드
+    const slides = [
+        { id: 1, src: './video/main_slide_01.mp4', tag: 'video', title: "Rei's Bay Clog" },
+        {
+            id: 2,
+            src: './images/main_slide_02.jpg',
+            alt: 'slide2',
+            tag: 'img',
+            title: 'Crocs x Vogue',
+        },
+        {
+            id: 3,
+            src: './video/main_slide_03.mp4',
+            tag: 'video',
+            title: 'Cassic Platform Clog x Rei',
+        },
+        {
+            id: 4,
+            src: './images/main_slide_04.jpg',
+            alt: 'slide4',
+            tag: 'img',
+            title: 'Crocs x ABC MART with SEULGI',
+        },
+        { id: 5, src: './video/main_slide_05.mp4', tag: 'video', title: 'Echo Wave x TAEMIN' },
+    ];
+
     const pagination = {
         clickable: true,
         renderBullet: (index, className) =>
