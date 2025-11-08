@@ -8,7 +8,7 @@ const LoginForm = () => {
             <input type="password" placeholder="PW" required />
             <div className="checkbox_wrap">
                 <div className="checkbox_left">
-                    <label>
+                    <label className="save_id">
                         <input type="checkbox" />
                         아이디 저장
                     </label>
@@ -27,16 +27,13 @@ const LoginForm = () => {
             <button className="join_btn">Join</button>
             <div className="sns_login_wrap">
                 <button className="sns_login google">
-                    <img src="" alt="" />
-                    구글
+                    <img src="./images/google_icon.svg" alt="google_login" />
                 </button>
                 <button className="sns_login kakao">
-                    <img src="" alt="" />
-                    카카오
+                    <img src="./images/kakao_icon.svg" alt="kakao_login" />
                 </button>
                 <button className="sns_login naver">
-                    <img src="" alt="" />
-                    네이버
+                    <img src="./images/naver_icon.svg" alt="naver_login" />
                 </button>
             </div>
         </form>

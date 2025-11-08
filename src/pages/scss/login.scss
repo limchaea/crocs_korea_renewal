@@ -32,7 +32,8 @@
             height: 5rem;
             @include g.flex();
             .checkbox_left {
-                label {
+                .save_id {
+                    @include g.flex();
                     cursor: pointer;
                     input {
                         width: 2rem;
@@ -68,8 +69,11 @@
             button {
                 width: 4rem;
                 height: 4rem;
-                border-radius: 50px;
-                border: none;
+                padding: 0;
+                img {
+                    width: 4rem;
+                    height: 4rem;
+                }
             }
         }
     }

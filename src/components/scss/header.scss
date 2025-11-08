@@ -104,17 +104,6 @@ header {
                         }
                     }
                 }
-
-                .search_wrap {
-                    display: block;
-                    // @include g.flex();
-                    position: absolute;
-                    width: 100%;
-                    height: 60rem;
-                    top: 0;
-                    left: 0;
-                    background: #ddd;
-                }
             }
         }
     }
