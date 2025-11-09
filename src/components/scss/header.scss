@@ -99,8 +99,14 @@ header {
                 .gnb_right {
                     @include g.flex($gap: 1rem);
                     li {
-                        a {
-                            height: 8rem;
+                        // a,
+                        // button {
+                        //     height: 8rem;
+                        // }
+                        button {
+                            @include g.flex($jc: center);
+                            padding: 0;
+                            line-height: 8rem;
                         }
                     }
                 }

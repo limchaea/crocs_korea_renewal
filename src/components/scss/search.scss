@@ -45,4 +45,30 @@
             }
         }
     }
+
+    .search_bottom {
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        @include g.flex($ai: null);
+        padding: 4rem 3rem 0;
+
+        .search_left {
+            // width: 50%;
+            @include g.flex($gap: 18rem);
+        }
+
+        .search_right {
+            position: absolute;
+            top: 6rem;
+            right: 3rem;
+
+            a {
+                img {
+                    // width: 80rem;
+                    height: 20rem;
+                }
+            }
+        }
+    }
 }
