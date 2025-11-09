@@ -15,6 +15,21 @@ const Login = () => {
                         <Link>비회원 주문조회</Link>
                     </p>
                 </div>
+                <div className="crocsclub_wrap">
+                    <Title subTitle="CrocsClub Benefit" />
+                    <ul className="benefit_list">
+                        <li>
+                            <img src="./images/benefit_img_01.svg" alt="benefit" />
+                        </li>
+                        <li>
+                            <img src="./images/benefit_img_02.svg" alt="benefit" />
+                        </li>
+                        <li>
+                            <img src="./images/benefit_img_03.svg" alt="benefit" />
+                        </li>
+                    </ul>
+                    <button>CrocsClub Join</button>
+                </div>
             </div>
         </div>
     );
