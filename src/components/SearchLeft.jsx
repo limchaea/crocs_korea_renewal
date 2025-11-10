@@ -1,5 +1,18 @@
 import React from 'react';
 import { useSearchStore } from '../store/useSearchStore';
+import { Link } from 'react-router-dom';
+
+const hashtags = [
+    { tag: '신상' },
+    { tag: '라인드 클로그' },
+    { tag: '주토피아' },
+    { tag: '지비츠' },
+    { tag: '베이 크록스' },
+    { tag: '아이브' },
+    { tag: '르세라핌' },
+    { tag: '장 폴 고티에' },
+    { tag: '샤몬 로샤' },
+];
 
 const SearchLeft = () => {
     const { recentSearches } = useSearchStore();
@@ -10,14 +23,22 @@ const SearchLeft = () => {
                 <h4 className="recent_search">Recent Searches</h4>
                 <div className="recent_search_list">
                     {recentSearches.map((search) => (
-                        <li key={search.id}>{search.inputText}</li>
+                        <li key={search.id}>
+                            <Link to="*">{search.inputText}</Link>
+                        </li>
                     ))}
                 </div>
             </div>
 
             <div className="hashtag_wrap">
                 <h4 className="hashtag"># HASHTAG</h4>
-                <div className="hahtag_list"></div>
+                <div className="hashtag_list">
+                    {hashtags.map((hashtag) => (
+                        <span className="tag">
+                            <Link to="*">{`# ${hashtag.tag}`}</Link>
+                        </span>
+                    ))}
+                </div>
             </div>
         </>
     );

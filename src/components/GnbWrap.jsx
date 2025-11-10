@@ -2,11 +2,11 @@ import React from 'react';
 import GnbLeft from './GnbLeft';
 import GnbRight from './GnbRight';
 
-const GnbWrap = () => {
+const GnbWrap = ({ onSearchClick }) => {
     return (
         <div className="gnb_wrap">
             <GnbLeft />
-            <GnbRight />
+            <GnbRight onSearchClick={onSearchClick} />
         </div>
     );
 };

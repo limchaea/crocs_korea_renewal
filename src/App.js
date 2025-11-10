@@ -13,7 +13,6 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import Cart from './pages/Cart';
 import Header from './components/Header';
-import Search from './components/Search';
 
 function App() {
     return (
@@ -29,7 +28,6 @@ function App() {
                 <Route path="/collabs" element={<Collabs />} />
                 <Route path="/promotion" element={<Promotion />} />
                 <Route path="/Brand" element={<Brand />} />
-                <Route path="/search" element={<Search />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />
                 <Route path="/cart" element={<Cart />} />

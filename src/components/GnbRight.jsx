@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const GnbRight = () => {
+const GnbRight = ({ onSearchClick }) => {
     return (
         <ul className="gnb_right">
             <li>
-                <button>
+                <button onClick={onSearchClick}>
                     <img src="./images/search_icon.svg" alt="search_icon" />
                 </button>
-            </li>
-            <li>
-                <Link to="/search">
-                    <img src="./images/search_icon.svg" alt="search_icon" />
-                </Link>
             </li>
             <li>
                 <Link to="/login">

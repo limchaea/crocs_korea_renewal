@@ -4,14 +4,20 @@
     position: fixed;
     width: 100%;
     height: 50rem;
-    // background: #ddd;
-    background: rgba($color: #eee, $alpha: 0.4);
+    background: #ddd;
+    // background: rgba($color: #eee, $alpha: 0.4);
     padding-top: 8rem;
     top: 0;
     left: 0;
     margin: 0 auto;
     border-radius: 0 0 1rem 1rem;
-    // z-index: 2000;
+    z-index: 2000;
+
+    .close_btn {
+        position: absolute;
+        top: 2rem;
+        right: 4rem;
+    }
 
     .search_top {
         @include g.flex();
@@ -61,8 +67,42 @@
             // width: 50%;
             @include g.flex($gap: 18rem);
 
-            .recent_search_list {
+            .recent_searches_wrap {
                 text-align: start;
+                h4 {
+                    padding-bottom: 2rem;
+                }
+
+                .recent_search_list {
+                    text-align: start;
+                    height: 10rem;
+                }
+            }
+
+            .hashtag_wrap {
+                text-align: start;
+                h4 {
+                    padding-bottom: 2rem;
+                }
+                .hashtag_list {
+                    display: grid;
+                    grid-template-columns: repeat(2, auto);
+                    height: 10rem;
+
+                    span {
+                        a {
+                            display: block;
+                            width: fit-content;
+                            margin: 0.5rem;
+                            padding: 0.5rem 2rem;
+                            background: #eee;
+                            border-radius: 5rem;
+                            font-size: 1.2rem;
+                            font-weight: 600;
+                            white-space: nowrap;
+                        }
+                    }
+                }
             }
         }
 

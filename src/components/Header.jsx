@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MainmenuList from './MainmenuList';
 import './scss/header.scss';
 import GnbWrap from './GnbWrap';
 import Depth1 from './Depth1';
-// import Search from './Search';
+import Search from './Search';
 
 const Header = () => {
+    const [searchOpen, setSearchOpen] = useState(false);
+
     return (
         <>
             <header>
@@ -23,10 +25,12 @@ const Header = () => {
                         </nav>
                     </div>
                     <div className="header_right">
-                        <GnbWrap />
+                        <GnbWrap onSearchClick={() => setSearchOpen(true)} />
                     </div>
                 </div>
             </header>
+
+            {searchOpen && <Search onClose={() => setSearchOpen(false)} />}
         </>
     );
 };
