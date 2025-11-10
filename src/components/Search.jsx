@@ -17,11 +17,9 @@ const Search = () => {
         <div className="search_wrap">
             <div className="search_top">
                 <SearchInput
-                    onSearch={handleSearch}
                     inputText={inputText}
-                    onInputText={(e) => {
-                        onInputText(e.target.value);
-                    }}
+                    onChange={(e) => onInputText(e.target.value)} // 반드시 onChange로 전달
+                    onSearch={handleSearch}
                 />
             </div>
             <div className="search_bottom">
