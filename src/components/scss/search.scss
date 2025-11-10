@@ -60,6 +60,10 @@
         .search_left {
             // width: 50%;
             @include g.flex($gap: 18rem);
+
+            .recent_search_list {
+                text-align: start;
+            }
         }
 
         .search_right {
