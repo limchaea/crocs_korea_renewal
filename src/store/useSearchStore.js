@@ -32,4 +32,15 @@ export const useSearchStore = create((set, get) => ({
         const newRecentSearch = { id: Date.now(), inputText };
         set({ recentSearches: [...recentSearches, newRecentSearch], inputText: '' });
     },
+
+    onRemoveSearch: (id) => {
+        const { recentSearches } = get();
+        const newRecentSearch = recentSearches.filter((search) => search.id !== id);
+
+        set({
+            recentSearches: newRecentSearch,
+        });
+    },
+
+    onClearAll: () => set({ recentSearches: [] }),
 }));

@@ -15,23 +15,29 @@ const hashtags = [
 ];
 
 const SearchLeft = () => {
-    const { recentSearches } = useSearchStore();
+    const { recentSearches, onRemoveSearch, onClearAll } = useSearchStore();
 
     return (
         <>
             <div className="recent_searches_wrap">
                 <h4 className="recent_search">Recent Searches</h4>
-                <div className="recent_search_list">
-                    {recentSearches.map((search) => (
-                        <li key={search.id}>
-                            <Link to="*">{search.inputText}</Link>
-                            <button>x</button>
-                        </li>
-                    ))}
-                    <button>
+                <ul className="recent_search_list">
+                    {recentSearches.length > 0 ? (
+                        recentSearches.map((search) => (
+                            <li key={search.id}>
+                                <Link to="*">{search.inputText}</Link>
+                                <button onClick={() => onRemoveSearch(search.id)}>x</button>
+                            </li>
+                        ))
+                    ) : (
+                        <li className="none_searche">최근 검색어가 없습니다.</li>
+                    )}
+                </ul>
+                {recentSearches.length > 0 && (
+                    <button className="all_clear_btn" onClick={onClearAll}>
                         전제 삭제 <span>x</span>
                     </button>
-                </div>
+                )}
             </div>
 
             <div className="hashtag_wrap">
