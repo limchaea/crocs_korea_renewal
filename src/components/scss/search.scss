@@ -15,8 +15,11 @@
 
     .close_btn {
         position: absolute;
-        top: 2rem;
-        right: 4rem;
+        top: 8%;
+        right: 4%;
+        img {
+            width: 3.2rem;
+        }
     }
 
     .search_top {
@@ -30,7 +33,7 @@
             margin: 0 auto;
 
             > input {
-                // position: absolute;
+                position: relative;
                 width: 140rem;
                 height: 5rem;
                 background: g.$mainColor;
@@ -50,8 +53,9 @@
 
             .search_btn {
                 position: absolute;
-                right: 5rem;
-                text-align: 5rem;
+                right: 8%;
+                // text-align: 5rem;
+                transform: translateX(-50%);
             }
         }
     }
@@ -76,6 +80,8 @@
                 .recent_search_list {
                     text-align: start;
                     height: 10rem;
+                    font-weight: 700;
+                    font-size: 1.2rem;
                 }
             }
 
