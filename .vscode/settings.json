@@ -1,8 +1,10 @@
 {
-    "gitlens.outputLevel": "error",
+    "gitlens.outputLevel": "debug",
     "gitlens.advanced.fileHistoryFollowsRenames": true,
     "gitlens.advanced.repositorySearchDepth": 2,
     "gitlens.defaultDateLocale": "ko-KR",
+    "gitlens.advanced.caching.enabled": true,
+    "gitlens.advanced.useSymmetricDifferenceNotation": false,
     "gitlens.advanced.maxSearchLines": 10000,
     "gitlens.advanced.similarityThreshold": 50,
     "gitlens.blame.ignoreWhitespace": true,
