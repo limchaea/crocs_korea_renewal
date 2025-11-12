@@ -1,5 +1,5 @@
 {
-    "gitlens.outputLevel": "debug",
+    "gitlens.outputLevel": "error",
     "gitlens.advanced.fileHistoryFollowsRenames": true,
     "gitlens.advanced.repositorySearchDepth": 2,
     "gitlens.defaultDateLocale": "ko-KR",
