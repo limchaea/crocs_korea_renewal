@@ -3,8 +3,20 @@
     "gitlens.advanced.fileHistoryFollowsRenames": true,
     "gitlens.advanced.repositorySearchDepth": 2,
     "gitlens.defaultDateLocale": "ko-KR",
+    "gitlens.advanced.maxSearchLines": 5000,
+    "gitlens.advanced.similarityThreshold": 50,
+    "gitlens.blame.ignoreWhitespace": true,
     "git.autofetch": true,
     "git.confirmSync": false,
+    "git.largeFileThreshold": 2048,
+    "git.useForcePushWithLease": true,
     "files.encoding": "utf8",
-    "files.eol": "\r\n"
+    "files.eol": "\r\n",
+    "files.associations": {
+        "*.png": "image",
+        "*.jpg": "image",
+        "*.jpeg": "image",
+        "*.gif": "image",
+        "*.mp4": "video"
+    }
 }
