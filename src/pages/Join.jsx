@@ -7,7 +7,7 @@ import './scss/join.scss';
 const Join = () => {
     return (
         <div className="sub_page">
-            <div className="content_inner">
+            <div className="inner">
                 <Title title="Join" />
                 <LoginSns />
                 <JoinForm />
