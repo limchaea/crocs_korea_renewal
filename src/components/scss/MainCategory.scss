@@ -6,7 +6,12 @@
     margin-top: 12rem;
     .inner {
         padding: 0 0;
-        @include g.flex($fd: column, $gap: 5rem);
+        @include g.flex($fd: column);
+
+        .title_wrap {
+            text-align: center;
+            @include g.flex($fd: column);
+        }
     }
 
     // 카테고리 리스트

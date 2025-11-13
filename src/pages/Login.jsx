@@ -32,8 +32,9 @@ const Login = () => {
     return (
         <div className="sub_page">
             <div className="inner">
+                <Title title="Login" />
                 <div className="login_wrap">
-                    <Title title="Login" />
+                    {/* <Title title="Login" /> */}
                     <LoginForm
                         onLoginSubmit={handleSubmit}
                         email={email}

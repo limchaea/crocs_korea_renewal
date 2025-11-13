@@ -1,6 +1,6 @@
 import React from 'react';
 import './scss/MainCategory.scss';
-import '../index.css';
+// import '../index.css';
 import Title from './Title';
 import CategoryList from './CategoryList';
 import PromotionList from './PromotionList';
@@ -25,13 +25,12 @@ const MainCategory = () => {
     return (
         <main>
             <section className="category category_wrap">
-                <Title
-                    title="Shop by Category"
-                    subTitle="당신의 스타일에 맞는 완벽한 크록스를 찾아보세요"
-                />
                 <div className="inner">
+                    <Title
+                        title="Shop by Category"
+                        subTitle="당신의 스타일에 맞는 완벽한 크록스를 찾아보세요"
+                    />
                     <CategoryList categories={categoryData} onCategoryClick={handleCategoryClick} />
-
                     <PromotionList
                         promotions={promotionData}
                         onPromotionClick={handlePromotionClick}
