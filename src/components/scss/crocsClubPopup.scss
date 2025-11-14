@@ -2,10 +2,11 @@
 
 .crocs_club_popup_wrap {
     max-width: 1000px;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
     padding: 5rem 10rem;
     border: 1px solid #ddd;
+    @include g.flex($fd: column, $jc: center, $gap: none);
 
     .title_wrap {
         padding-bottom: 5rem;
@@ -15,7 +16,13 @@
         }
     }
     .popup_wrap {
-        @include g.flex();
+        width: 100%;
+        // margin: 0 auto;
+        @include g.flex($gap: 20rem);
+
+        > div {
+            flex: 1;
+        }
 
         .crocs_club_popup_left {
             text-align: start;
@@ -30,15 +37,29 @@
                 }
             }
         }
-    }
 
-    button {
-        width: 40rem;
-        height: 4rem;
-        border-radius: 50px;
-        border: none;
-        font-weight: bold;
-        font-size: 1.6rem;
-        background: g.$mainColor;
+        .crocs_club_popup_right {
+            @include g.flex($fd: column, $jc: center, $gap: none);
+
+            .crocs_club_option {
+                text-align: center;
+
+                select {
+                    width: 6rem;
+                    gap: 2rem;
+                    text-align: center;
+                }
+            }
+        }
+
+        a {
+            width: 40rem;
+            height: 4rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.6rem;
+            background: g.$mainColor;
+        }
     }
 }
