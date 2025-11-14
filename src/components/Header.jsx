@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MainmenuList from './MainmenuList';
 import './scss/header.scss';
@@ -13,6 +13,8 @@ const Header = () => {
     const onOpenSearch = useSearchStore((state) => state.onOpenSearch);
     const onCloseSearch = useSearchStore((state) => state.onCloseSearch);
 
+    const [depthOpen, setDepthOpen] = useState(false);
+
     return (
         <>
             <header className={`header ${searchOpen ? 'hide' : ''}`}>
@@ -23,9 +25,12 @@ const Header = () => {
                                 <img src="./images/crocs_logo.svg" alt="crocs logo" />
                             </Link>
                         </h1>
-                        <nav>
+                        <nav
+                            onMouseEnter={() => setDepthOpen(true)}
+                            onMouseLeave={() => setDepthOpen(false)}
+                        >
                             <MainmenuList />
-                            <Depth1 />
+                            {depthOpen && <Depth1 />}
                         </nav>
                     </div>
                     <div className="header_right">
