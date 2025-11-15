@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import './scss/login.scss';
 import { loginAuthStore } from '../store/loginStore';
+import CrocsClubJion from '../components/CrocsClubJion';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ const Login = () => {
                         <Link>비회원 주문조회</Link>
                     </p>
                 </div>
-                <div className="crocsclub_wrap">
+                {/* <div className="crocsclub_wrap">
                     <Title subTitle="CrocsClub Benefit" />
                     <ul className="benefit_list">
                         <li>
@@ -71,9 +72,9 @@ const Login = () => {
                             프라이빗 이벤트
                         </li>
                     </ul>
-                    {/* <button>CrocsClub Join</button> */}
                     <Link to="/crocsclub">CrocsClub Join</Link>
-                </div>
+                </div> */}
+                <CrocsClubJion />
             </div>
         </div>
     );
