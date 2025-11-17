@@ -1,0 +1,27 @@
+@use '../../App.scss' as g;
+
+.come_as_btn {
+    button {
+        height: 5rem;
+        background: g.$mainColor;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        width: 24rem;
+        margin-bottom: 20px;
+    }
+
+    a {
+        display: block;
+        height: 5rem;
+        background: g.$mainColor;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        width: 24rem;
+        text-align: center;
+        line-height: 5rem;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+}
