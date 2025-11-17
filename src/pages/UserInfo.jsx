@@ -28,7 +28,6 @@ const UserInfo = () => {
                     </div>
                     <hr />
                     <div className="user_menu_bottom">주문 처리 현황 영역</div>
-                    <hr />
                 </div>
                 <div className="userinfo_order_wrap">
                     <div className="user_menu_top">
@@ -38,7 +37,6 @@ const UserInfo = () => {
                     </div>
                     <hr />
                     <div className="user_menu_bottom">최근 주문 내역 영역</div>
-                    <hr />
                 </div>
                 <div className="userinfo_wishlist_wrap">
                     <div className="user_menu_top">
@@ -48,7 +46,6 @@ const UserInfo = () => {
                     </div>
                     <hr />
                     <div className="user_menu_bottom">wishlist 영역</div>
-                    <hr />
                 </div>
             </div>
         </div>
