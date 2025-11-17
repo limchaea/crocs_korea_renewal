@@ -20,34 +20,35 @@ const UserInfo = () => {
                     <button>혜택 정보</button>
                     <button>1 : 1 문의</button>
                 </div>
-                <div className="user_info_order_wrap">
-                    <div className="order_top">
+                <div className="userinfo_order_wrap">
+                    <div className="user_menu_top">
                         {/* 주문 처리 현황 */}
                         <h4>주문 처리 현황</h4>
                         <Link>더보기</Link>
                     </div>
                     <hr />
-                    <div>주문 처리 현황 영역</div>
+                    <div className="user_menu_bottom">주문 처리 현황 영역</div>
                     <hr />
-                    <br />
                 </div>
-                <div className="user_info_order_wrap">
-                    {/* 최근 주문 내역 */}
-                    <h4>최근 주문 내역</h4>
-                    <Link>더보기</Link>
+                <div className="userinfo_order_wrap">
+                    <div className="user_menu_top">
+                        {/* 최근 주문 내역 */}
+                        <h4>최근 주문 내역</h4>
+                        <Link>더보기</Link>
+                    </div>
                     <hr />
-                    <div>최근 주문 내역 영역</div>
+                    <div className="user_menu_bottom">최근 주문 내역 영역</div>
                     <hr />
-                    <br />
                 </div>
-                <div>
-                    {/* 위시리스트 */}
-                    <h4>WishList</h4>
-                    <Link>더보기</Link>
+                <div className="userinfo_wishlist_wrap">
+                    <div className="user_menu_top">
+                        {/* 위시리스트 */}
+                        <h4>WishList</h4>
+                        <Link>더보기</Link>
+                    </div>
                     <hr />
-                    <div>wishlist 영역</div>
+                    <div className="user_menu_bottom">wishlist 영역</div>
                     <hr />
-                    <br />
                 </div>
             </div>
         </div>
