@@ -44,7 +44,7 @@ const Login = () => {
                         onGoogleLogin={handleGoogleLogin}
                     />
                     <p>
-                        <Link>비회원 주문조회</Link>
+                        <Link to="/nonmember">비회원 주문조회</Link>
                     </p>
                 </div>
                 {/* <div className="crocsclub_wrap">
