@@ -49,7 +49,7 @@
             }
         }
 
-        .user_but_wrap {
+        .user_btn_wrap {
             @include g.flex($gap: 5rem);
             margin-bottom: 5rem;
             button {

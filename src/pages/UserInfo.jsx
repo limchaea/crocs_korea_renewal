@@ -2,6 +2,7 @@ import React from 'react';
 import Title from '../components/Title';
 import UserInfoTop from '../components/UserInfoTop';
 import './scss/userinfo.scss';
+import { Link } from 'react-router-dom';
 
 const UserInfo = () => {
     return (
@@ -11,7 +12,7 @@ const UserInfo = () => {
                 {/* 마이 페이지 회원정보
                 이름 / 크록스 클럽 가입 여부 / 쿠폰 정보 */}
                 <UserInfoTop />
-                <div className="user_but_wrap">
+                <div className="user_btn_wrap">
                     {/* 마이 페이지 탭 버튼
                 나의 정보 / 주문 정보 / 1:1 문의 /  */}
                     <button>나의 정보</button>
@@ -19,17 +20,34 @@ const UserInfo = () => {
                     <button>혜택 정보</button>
                     <button>1 : 1 문의</button>
                 </div>
-                <div>
-                    {/* 주문 처리 현황 */}
-                    <h4>주문 처리 현황</h4>
+                <div className="user_info_order_wrap">
+                    <div className="order_top">
+                        {/* 주문 처리 현황 */}
+                        <h4>주문 처리 현황</h4>
+                        <Link>더보기</Link>
+                    </div>
+                    <hr />
+                    <div>주문 처리 현황 영역</div>
+                    <hr />
+                    <br />
                 </div>
-                <div>
+                <div className="user_info_order_wrap">
                     {/* 최근 주문 내역 */}
                     <h4>최근 주문 내역</h4>
+                    <Link>더보기</Link>
+                    <hr />
+                    <div>최근 주문 내역 영역</div>
+                    <hr />
+                    <br />
                 </div>
                 <div>
                     {/* 위시리스트 */}
                     <h4>WishList</h4>
+                    <Link>더보기</Link>
+                    <hr />
+                    <div>wishlist 영역</div>
+                    <hr />
+                    <br />
                 </div>
             </div>
         </div>
