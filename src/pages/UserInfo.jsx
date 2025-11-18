@@ -1,8 +1,8 @@
 import React from 'react';
 import Title from '../components/Title';
 import UserInfoTop from '../components/UserInfoTop';
-import './scss/userinfo.scss';
 import { Link } from 'react-router-dom';
+import './scss/userinfo.scss';
 import WishListCard from '../components/WishListCard';
 
 const UserInfo = () => {
