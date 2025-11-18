@@ -9,6 +9,15 @@ const ComeAsPopup = ({ onClose }) => {
                 <button className="close_btn" onClick={onClose}>
                     <img src="./images/close_btn.svg" alt="close_btn" />
                 </button>
+                <p className="jibbitz jibbitz_img1">
+                    <img src="./images/monthly_zibbitz_01.svg" alt="zibbitz_img1" />
+                </p>
+                <p className="jibbitz jibbitz_img2">
+                    <img src="./images/monthly_zibbitz_02.svg" alt="zibbitz_img2" />
+                </p>
+                <p className="jibbitz jibbitz_img3">
+                    <img src="./images/monthly_zibbitz_03.svg" alt="zibbitz_img3" />
+                </p>
                 <div className="img_box">
                     <img src="./images/14_베이_라인드_클로그_2.jpg" alt="크록스 꾸미기" />
                 </div>
