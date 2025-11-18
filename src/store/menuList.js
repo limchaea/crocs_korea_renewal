@@ -34,7 +34,6 @@ export const menuList = [
         key: 'men',
         label: 'MEN',
         submenu_list: [
-            { key: 'new', label: 'NEW', imgUrl: './images/item_01.png' },
             { key: 'clog', label: '클로그', imgUrl: './images/item_01.png' },
             { key: 'sandal', label: '샌들', imgUrl: './images/item_01.png' },
             { key: 'sneakers', label: '스니커즈', imgUrl: './images/item_01.png' },
@@ -55,7 +54,6 @@ export const menuList = [
         label: 'JIBBITZ',
         submenu_list: [
             { key: 'all', label: 'ALL', imgUrl: './images/item_01.png' },
-            { key: 'new', label: 'NEW', imgUrl: './images/item_01.png' },
             { key: 'pack', label: 'PACK', imgUrl: './images/item_01.png' },
             { key: 'single', label: 'SINGLE', imgUrl: './images/item_01.png' },
         ],

@@ -9,7 +9,6 @@ const SubmenuList = ({ mainmenu, submenus }) => {
             <ul className="submenu">
                 {submenus.map((submenu) => (
                     <li key={submenu.key}>
-                        {/* <Link to={`/${menuList.key}/${submenu.key}`}></Link> */}
                         <Link to={`/${submenu.key}`}>
                             <img src={submenu.imgUrl} alt={submenu.key} />
                             <span>{submenu.label}</span>
