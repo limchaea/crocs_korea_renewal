@@ -1,19 +1,9 @@
 import React from 'react';
-import { collaboAuthStore } from '../store/collaboAuthStore';
-import { useNavigate } from 'react-router-dom';
+import { collaboAuthStore } from '../store/authStore';
 
 const JibbitzProductCard = ({ sendItem }) => {
-    const navigate = useNavigate();
-    console.log('확인2', sendItem);
-
-    const onOpenProductDetail = () => {
-        console.log('확인1', sendItem.id);
-        navigate(`/product/${sendItem.id}`);
-        // e.preventDefault();
-    };
-
     return (
-        <div className="product_card" onClick={() => onOpenProductDetail()}>
+        <div className="product_card">
             <div className="img-box">
                 <img src={sendItem.imageUrl} alt={sendItem.title} className="imgSize" />
             </div>
