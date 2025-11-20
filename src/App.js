@@ -24,6 +24,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth, db } from './firebase/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { loginAuthStore } from './store/loginStore';
+import JibbitzCollaboProductDetail from './pages/JibbitzCollaboProductDetail';
 // import Order from './components/Order/Order';
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
                 <Route path="/userinfo" element={<UserInfo />} />
                 <Route path="/nonmember" element={<Nonmember />} />
                 <Route path="/comaspopup" element={<ComeAsPopup />} />
+                <Route path="/product/:id" element={<JibbitzCollaboProductDetail />} />
             </Routes>
         </div>
     );
