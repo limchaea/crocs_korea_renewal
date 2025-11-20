@@ -3,14 +3,6 @@ import { useNewProductStore } from "../store/useNewProductStore";
 import Title from "./Title";
 import "./scss/SlideCircle.scss";
 
-const SlideCircle = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-  const intervalRef = useRef(null);
-  const { items } = useNewProductStore();
-
 const SlideCircle = ({ showDot }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPlaying, setIsPlaying] = useState(true);
@@ -82,12 +74,6 @@ const SlideCircle = ({ showDot }) => {
             }, 5000);
         }
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isPlaying, items.length]);
         return () => {
             if (intervalRef.current) {
                 clearInterval(intervalRef.current);
@@ -159,101 +145,11 @@ const SlideCircle = ({ showDot }) => {
                                     //     "#444444";
                                     const selectedColor = getSelectedColor(slide, index);
 
-                  // 컬러 순서 바꾸기
-                  const sortedColors = Array.isArray(slide.color)
-                    ? slide.color
-                    : [];
                                     // 컬러 순서 바꾸기
                                     const sortedColors = Array.isArray(slide.color)
                                         ? [...slide.color].sort(() => Math.random() - 0.5) // 간단 버전
                                         : [];
 
-                  return (
-                    <div
-                      key={index}
-                      className={`circle_item ${
-                        Math.abs(position) <= 1 ? "active" : ""
-                      } ${isCenter ? "center" : ""}`}
-                      style={{
-                        opacity: opacity,
-                        pointerEvents: opacity === 0 ? "none" : "auto",
-                        position: "absolute",
-                        left: `${55 + position * 45}%`,
-                        transform: "translateX(-50%)",
-                      }}
-                    >
-                      <div className="item">
-                        <div
-                          className="goods_wrap"
-                          style={{ color: slide.color }}
-                        >
-                          <div className="goods_pic crocs">
-                            <a href={slide.link}>
-                              <img
-                                src={slide.product_img[0].replace(
-                                  "images/",
-                                  "../images/"
-                                )}
-                                alt={slide.product}
-                              />
-                            </a>
-                          </div>
-                          <div className="goods_txt">
-                            <span>{slide.cate}</span>
-                            <strong>
-                              {slide.product}
-                              <br />
-                            </strong>
-                            {/* 컬러설정 */}
-                            <div className="s_color">
-                              {/* {selectedColor} */}
-                              <div className="swatches">
-                                <ul className="swatches_list">
-                                  {Array.isArray(slide.color) &&
-                                    slide.color.map((color, i) => (
-                                      <li
-                                        key={i}
-                                        className={`swatch_color ${
-                                          selectedColor === color
-                                            ? "active"
-                                            : ""
-                                        }`}
-                                        style={{ background: color }}
-                                        onClick={() =>
-                                          changeColor(index, color)
-                                        }
-                                      ></li>
-                                    ))}
-                                </ul>
-                              </div>
-                            </div>
-                            <a
-                              href={slide.link}
-                              className="btn middle arrow"
-                              style={{
-                                "--selectedColor": selectedColor || "#444444",
-                              }}
-                            >
-                              <span className="btn-read">READ MORE</span>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      {/* Navigation */}
-                      {isCenter && (
-                        <div className="slide_btns">
-                          <button onClick={prevSlide} className="prev_btn">
-                            <p>Prev</p>
-                          </button>
-                          <button onClick={nextSlide} className="next_btn">
-                            <p>Next</p>
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
                                     return (
                                         <div
                                             key={index}
@@ -359,47 +255,6 @@ const SlideCircle = ({ showDot }) => {
                                 })}
                             </div>
 
-              {/* Dots */}
-              <div className="circle_dots">
-                {items.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`circle_dot ${
-                      currentSlide === index ? "active" : ""
-                    }`}
-                  >
-                    <span></span>
-                    {currentSlide === index && (
-                      <div
-                        className={`circular ${
-                          currentSlide === index ? "active" : ""
-                        }`}
-                      >
-                        <div className="inner"></div>
-                        <div className="circle">
-                          <div className="bar left">
-                            <div className="progress"></div>
-                          </div>
-                          <div className="bar right">
-                            <div className="progress"></div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </button>
-                ))}
-              </div>
-
-              {/* Play/Pause Button */}
-              <button
-                onClick={togglePlay}
-                className={`goods_btn start ${isPlaying ? "" : "stop"}`}
-                style={{ transform: `translateY(${items.length * 25}px)` }}
-              >
-                <span className="bnt_bg"></span>
-                <span className="blind">정지 시작 버튼</span>
-              </button>
                             {/* Dots */}
                             {showDot && (
                                 <div className='circle_dots'>
@@ -449,18 +304,6 @@ const SlideCircle = ({ showDot }) => {
                                 <span className='blind'>정지 시작 버튼</span>
                             </button>
 
-              {/* Scroll Indicator */}
-              <div className="goods_scroll">
-                <a href="#page">
-                  <span className="blind">이동</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
                             {/* Scroll Indicator */}
                             <div className='goods_scroll'>
                                 <a href='#page'>
