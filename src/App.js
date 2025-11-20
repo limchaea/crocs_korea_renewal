@@ -11,7 +11,7 @@ import Brand from './pages/Brand';
 import Promotion from './pages/Promotion';
 import Login from './pages/Login';
 import Join from './pages/Join';
-import Cart from './pages/Cart3';
+// import Cart from './pages/Cart3';
 // import Footer from './components/Footer';
 import Header from './components/Header';
 import CrocsClubPopup from './components/CrocsClubPopup';
@@ -19,7 +19,6 @@ import UserInfo from './pages/UserInfo';
 import JibbitzCollaboProductDetail from './pages/JibbitzCollaboProductDetail';
 import WishList from './pages/WishList';
 import OrderHistory from './pages/OrderHistory';
-import UserInfo from './UserInfo';
 import Order from './pages/Order';
 
 function App() {
