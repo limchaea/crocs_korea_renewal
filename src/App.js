@@ -11,8 +11,8 @@ import Brand from './pages/Brand';
 import Promotion from './pages/Promotion';
 import Login from './pages/Login';
 import Join from './pages/Join';
-import Cart from './pages/Cart';
-import Footer from './components/Footer';
+// import Cart from './pages/Cart3';
+// import Footer from './components/Footer';
 import Header from './components/Header';
 import CrocsClubPopup from './components/CrocsClubPopup';
 import UserInfo from './pages/UserInfo';
@@ -24,6 +24,8 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth, db } from './firebase/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { loginAuthStore } from './store/loginStore';
+import JibbitzCollaboProductDetail from './pages/JibbitzCollaboProductDetail';
+// import Order from './components/Order/Order';
 
 function App() {
     useEffect(() => {
@@ -67,13 +69,13 @@ function App() {
                 <Route path="/Brand" element={<Brand />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />
-                <Route path="/cart" element={<Cart />} />
+                {/* <Route path="/order" element={<Order />} /> */}
                 <Route path="/crocsclub" element={<CrocsClubPopup />} />
                 <Route path="/userinfo" element={<UserInfo />} />
                 <Route path="/nonmember" element={<Nonmember />} />
                 <Route path="/comaspopup" element={<ComeAsPopup />} />
+                <Route path="/product/:id" element={<JibbitzCollaboProductDetail />} />
             </Routes>
-            <Footer />
         </div>
     );
 }
