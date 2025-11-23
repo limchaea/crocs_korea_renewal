@@ -110,7 +110,7 @@
 
 // export default ProductListPage;
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCrocsProductStore } from '../store/useCrocsProductStore';
 import LeftNavigation from '../components/LeftNavigation';
 import ProductCard from '../components/ProductCard';
@@ -135,35 +135,22 @@ const ProductListPage = () => {
         setCurrentPage(1);
     }, [cate, subcategory, searchWord]);
 
-    // 🔥 필터링(useMemo로 안정적)
-    const filteredItems = useMemo(() => {
-        let items = filterByMenu(cate, subcategory) || [];
-
-        if (searchWord && searchWord.trim() !== '') {
-            const lower = searchWord.toLowerCase();
-            items = items.filter((item) => item.product.toLowerCase().includes(lower));
-        }
-
-        if (selectedSize) {
-            items = items.filter((item) =>
-                item.sizes?.some((s) => Number(s) === Number(selectedSize))
-            );
-        }
-
-        console.log(
-            'filteredItems:',
-            items.map((i) => i.product)
-        );
-        return items;
-    }, [cate, subcategory, searchWord, selectedSize, filterByMenu]);
+    // --- 카테 + 서브카테 필터링 ---
+    let filteredItems = filterByMenu(cate, subcategory);
+    console.log(
+        '🔹 cate/subcategory 필터 후:',
+        filteredItems.map((item) => item.product)
+    );
+    // --- 검색어 필터 ---
+    if (searchWord) {
+        const lower = searchWord.toLowerCase();
+        filteredItems = filteredItems.filter((item) => item.product.toLowerCase().includes(lower));
+    }
 
     // --- 사이즈 필터링 ---
     if (selectedSize) {
-        filteredItems = filteredItems.filter((item) =>
-            item.sizes?.some((s) => Number(s) === Number(selectedSize))
-        );
+        filteredItems = filteredItems.filter((item) => item.sizes?.includes(selectedSize));
     }
-
     console.log(
         '🔹 selectedSize 필터 후:',
         filteredItems.map((item) => item.product),
@@ -179,10 +166,8 @@ const ProductListPage = () => {
     // 전체 페이지 수 계산하기
     const totalPage = Math.ceil(filteredItems.length / itemsPerPage) || 1;
     const start = (currentPage - 1) * itemsPerPage;
-    const currentItems = filteredItems.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
+    const currentItems = filteredItems.slice(start, start + itemsPerPage);
+
     // 페이징 버튼 그룹 단위
     const pageGroupSize = 5;
     const currentGroup = Math.floor((currentPage - 1) / pageGroupSize);

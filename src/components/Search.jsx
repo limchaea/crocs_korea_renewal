@@ -5,19 +5,15 @@ import SearchLeft from './SearchLeft';
 import { useSearchStore } from '../store/useSearchStore';
 import SearchRight from './SearchRight';
 import { useLocation } from 'react-router-dom';
-import { useCrocsProductStore } from '../store/useCrocsProductStore';
 
 const Search = ({ scrolled }) => {
-    const { setSearchWord } = useCrocsProductStore();
     const { inputText, onInputText, onAddRecentSearches, searchOpen, onCloseSearch } =
         useSearchStore();
 
-    const handleSearch = () => {
-        if (!inputText.trim()) return; // 빈값 방지
-        setSearchWord(inputText); // ProductListPage 필터용 상태 업데이트
-        onAddRecentSearches(inputText); // 최근 검색어 저장
-        onInputText(''); // 입력창 초기화
-        onCloseSearch(); // 검색창 닫기
+    const handleSearch = (e) => {
+        e.preventDefault();
+        onAddRecentSearches();
+        onInputText('');
     };
 
     const location = useLocation();
