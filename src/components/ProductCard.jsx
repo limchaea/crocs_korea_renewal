@@ -23,7 +23,8 @@ const ProductCardSwiper = ({ images }) => {
 
         const swiper = new Swiper(swiperRef.current, {
             modules: [Navigation, Pagination],
-            loop: true,
+            // loop: true,
+            loop: imgList.length > 1, // 슬라이드가 1개 이상일 때만 loop
             pagination: { el: '.swiper-pagination', type: 'progressbar' },
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         });
@@ -44,8 +45,14 @@ const ProductCardSwiper = ({ images }) => {
                     </div>
                 ))}
             </div>
-            <div className="swiper-button-prev product-card__arrow_left" />
-            <div className="swiper-button-next product-card__arrow_right" />
+            <div
+                className="swiper-button-prev product-card__arrow_left"
+                onClick={(e) => e.stopPropagation()}
+            />
+            <div
+                className="swiper-button-next product-card__arrow_right"
+                onClick={(e) => e.stopPropagation()}
+            />
             <div className="swiper-pagination product-card__pagination" />
         </div>
     );
@@ -94,47 +101,6 @@ const ProductPrice = ({ prices }) => {
         </div>
     );
 };
-
-// 색상 선택
-// const ProductColorBadges = ({ colors = [], onColorClick }) => (
-//     <div className="product-card__color">
-//         <div className="product-card__color__title--wrap">
-//             <p>색상</p>
-//         </div>
-//         <div className="color-badge__wrap">
-//             {colors.map((color, i) => (
-//                 <button
-//                     key={i}
-//                     className={`color-badge color-badge--${color}`}
-//                     onClick={() => onColorClick?.(color)}
-//                     type="button"
-//                 />
-//             ))}
-//         </div>
-//     </div>
-// );
-// const ProductColorBadges = ({ colors, onColorClick }) => {
-//     // 배열이 아닌 경우 빈 배열 또는 단일 값 배열로 변환
-//     const colorList = Array.isArray(colors) ? colors : colors ? [colors] : [];
-
-//     return (
-//         <div className="product-card__color">
-//             <div className="product-card__color__title--wrap">
-//                 <p>색상</p>
-//             </div>
-//             <div className="color-badge__wrap">
-//                 {colorList.map((color, i) => (
-//                     <button
-//                         key={i}
-//                         className={`color-badge color-badge--${color}`}
-//                         onClick={() => onColorClick?.(color)}
-//                         type="button"
-//                     />
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// };
 
 const normalizeColor = (c) => {
     if (!c) return null;
@@ -233,10 +199,6 @@ const ProductSizeButtons = ({ category, soldOutSizes = [], onSizeSelect }) => {
     const [active, setActive] = useState(null);
     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
 
-    // useEffect(() => {
-    //     onFetchSize(); // 초기 렌더링 시 한 번만 호출
-    // }, [onFetchSize]);
-
     useEffect(() => {
         if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
             onFetchSize(); // store 초기화
@@ -285,7 +247,10 @@ const ProductSizeButtons = ({ category, soldOutSizes = [], onSizeSelect }) => {
 // 상품 카드
 const ProductCard = ({ product, onClick }) => (
     <li className="product-card" onClick={onClick}>
-        <ProductCardSwiper images={product.product_img || []} />
+        <ProductCardSwiper
+            images={product.product_img || []}
+            onClick={(e) => e.stopPropagation()}
+        />
         <ProductName name={product.product} />
         <ProductPrice prices={product.prices} />
         <ProductColorBadges

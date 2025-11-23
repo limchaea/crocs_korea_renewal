@@ -5,7 +5,6 @@ import { wishListStore } from '../store/wishListStore';
 import Title from '../components/Title';
 import WishAddPopup from '../components/WishAddPopup';
 
-// const CrocsProductDetail = () => {
 //     const { id } = useParams();
 //     const { crocsItems, onFetchItems } = useCrocsProductStore();
 //     const { onAddWishList } = wishListStore();
