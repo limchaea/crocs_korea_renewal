@@ -8,7 +8,14 @@ import './scss/leftNavigation.scss';
 import { useCrocsSizeStore } from '../store/useCrocsSizeStore';
 import { useParams } from 'react-router-dom';
 
-export default function LeftNavigation({ category, subcategory, filters = [], priceRanges = [] }) {
+export default function LeftNavigation({
+    category,
+    subcategory,
+    selectedSize,
+    onSizeSelect,
+    filters = [],
+    priceRanges = [],
+}) {
     const { crocsSizes, onFetchSize } = useCrocsSizeStore();
     const params = useParams();
 
@@ -24,7 +31,11 @@ export default function LeftNavigation({ category, subcategory, filters = [], pr
         <div className="left_nav__section_wrap">
             <Breadcrumbs category={finalCategory} subcategory={finalSubcategory} />
             <div className="left_nav">
-                <SizeMenu sizes={crocsSizes} />
+                <SizeMenu
+                    sizes={crocsSizes}
+                    selectedSize={selectedSize}
+                    onSizeSelect={onSizeSelect}
+                />
                 <div className="breadcrumbs__line" />
                 <FilterMenu filters={filters} />
                 <div className="breadcrumbs__line" />

@@ -225,9 +225,27 @@ export const useCrocsProductStore = create(
                 return items.filter((item) => item.tags?.includes(cate));
             },
 
+            // filterByMenu: (mainKey, subKey = null) => {
+            //     const items = get().crocsItems;
+            //     const hasTag = (item, key) => item?.tags?.includes(key);
+
+            //     if (mainKey === 'all') {
+            //         if (!subKey || subKey === 'all') return items;
+            //         return items.filter((i) => hasTag(i, subKey));
+            //     }
+
+            //     if (!subKey || subKey === 'all') {
+            //         return items.filter((i) => hasTag(i, mainKey));
+            //     }
+
+            //     return items.filter((i) => hasTag(i, mainKey) && hasTag(i, subKey));
+            // },
+
             filterByMenu: (mainKey, subKey = null) => {
                 const items = get().crocsItems;
-                const hasTag = (item, key) => item?.tags?.includes(key);
+
+                const hasTag = (item, key) =>
+                    item?.tags?.includes(key) || item?.tags_ko?.includes(key);
 
                 if (mainKey === 'all') {
                     if (!subKey || subKey === 'all') return items;
@@ -241,41 +259,6 @@ export const useCrocsProductStore = create(
                 return items.filter((i) => hasTag(i, mainKey) && hasTag(i, subKey));
             },
 
-            // ---------------------------
-            // 🔥 최종 출력 리스트 (색상 필터 적용)
-            // ---------------------------
-            // filteredItems: () => {
-            //     const { crocsItems, colorFilter } = get();
-            //     if (!colorFilter) return crocsItems;
-
-            //     return crocsItems.filter((item) => {
-            //         const itemColors = Array.isArray(item.color) ? item.color : [item.color];
-
-            //         return itemColors.some((c) => isSimilarColor(colorFilter, c));
-            //     });
-            // },
-
-            // filteredItems: () => {
-            //     const { crocsItems, colorFilter } = get();
-            //     if (!colorFilter) return crocsItems;
-
-            //     return crocsItems.filter((item) => {
-            //         const rawColors = item.color;
-
-            //         let itemColors = [];
-
-            //         if (typeof rawColors === 'string') {
-            //             itemColors = rawColors
-            //                 .split(',')
-            //                 .map((c) => c.trim())
-            //                 .filter(Boolean);
-            //         } else if (Array.isArray(rawColors)) {
-            //             itemColors = rawColors;
-            //         }
-
-            //         return itemColors.some((c) => isSimilarColor(colorFilter, c));
-            //     });
-            // },
             filteredItems: () => {
                 const { crocsItems, colorFilter } = get();
                 if (!colorFilter) return crocsItems;

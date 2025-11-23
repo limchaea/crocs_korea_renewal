@@ -110,7 +110,7 @@
 
 // export default ProductListPage;
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useCrocsProductStore } from '../store/useCrocsProductStore';
 import LeftNavigation from '../components/LeftNavigation';
 import ProductCard from '../components/ProductCard';
@@ -123,6 +123,7 @@ const ProductListPage = () => {
     const { onFetchItems, filterByMenu, searchWord } = useCrocsProductStore();
     const navigate = useNavigate();
     const { cate, subcategory } = useParams(); // URL에서 cate, subcategory 가져오기
+    const [selectedSize, setSelectedSize] = useState(null); // 🔥 선택된 사이즈
 
     // 최초 로딩
     useEffect(() => {
@@ -134,13 +135,41 @@ const ProductListPage = () => {
         setCurrentPage(1);
     }, [cate, subcategory, searchWord]);
 
-    // --- 카테 + 서브카테 필터링 ---
-    let filteredItems = filterByMenu(cate, subcategory);
-    // --- 검색어 필터 ---
-    if (searchWord) {
-        const lower = searchWord.toLowerCase();
-        filteredItems = filteredItems.filter((item) => item.product.toLowerCase().includes(lower));
+    // 🔥 필터링(useMemo로 안정적)
+    const filteredItems = useMemo(() => {
+        let items = filterByMenu(cate, subcategory) || [];
+
+        if (searchWord && searchWord.trim() !== '') {
+            const lower = searchWord.toLowerCase();
+            items = items.filter((item) => item.product.toLowerCase().includes(lower));
+        }
+
+        if (selectedSize) {
+            items = items.filter((item) =>
+                item.sizes?.some((s) => Number(s) === Number(selectedSize))
+            );
+        }
+
+        console.log(
+            'filteredItems:',
+            items.map((i) => i.product)
+        );
+        return items;
+    }, [cate, subcategory, searchWord, selectedSize, filterByMenu]);
+
+    // --- 사이즈 필터링 ---
+    if (selectedSize) {
+        filteredItems = filteredItems.filter((item) =>
+            item.sizes?.some((s) => Number(s) === Number(selectedSize))
+        );
     }
+
+    console.log(
+        '🔹 selectedSize 필터 후:',
+        filteredItems.map((item) => item.product),
+        '선택된 사이즈:',
+        selectedSize
+    );
 
     // 페이징 처리
     // 한 페이지에 보여질 개수
@@ -150,8 +179,10 @@ const ProductListPage = () => {
     // 전체 페이지 수 계산하기
     const totalPage = Math.ceil(filteredItems.length / itemsPerPage) || 1;
     const start = (currentPage - 1) * itemsPerPage;
-    const currentItems = filteredItems.slice(start, start + itemsPerPage);
-
+    const currentItems = filteredItems.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
     // 페이징 버튼 그룹 단위
     const pageGroupSize = 5;
     const currentGroup = Math.floor((currentPage - 1) / pageGroupSize);
@@ -222,6 +253,8 @@ const ProductListPage = () => {
                             category={mainCategory}
                             subcategory={mainSubcategory}
                             subCategoryList={subCategoryList}
+                            selectedSize={selectedSize} // 🔥 현재 선택된 사이즈
+                            onSizeSelect={setSelectedSize} // 🔥 사이즈 선택 시 상태 업데이트
                         />
                     </div>
 
@@ -236,6 +269,7 @@ const ProductListPage = () => {
                                             onClick={() => navigate(`/product/${p.id}`)}
                                             // 🔥 이미지 경로 확인
                                             image={p.product_img?.[0] || '/images/default.png'}
+                                            onSizeSelect={setSelectedSize}
                                         />
                                     ))}
                                 </ul>

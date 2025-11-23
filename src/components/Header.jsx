@@ -12,10 +12,8 @@ const Header = () => {
     const searchOpen = useSearchStore((state) => state.searchOpen);
     const onOpenSearch = useSearchStore((state) => state.onOpenSearch);
     const onCloseSearch = useSearchStore((state) => state.onCloseSearch);
-
     const [depthOpen, setDepthOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false); // <- 스크롤 상태
-
     const location = useLocation();
     const isSubPage = location.pathname !== '/'; // 예: 메인 페이지가 '/'일 경우
 

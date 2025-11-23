@@ -81,7 +81,7 @@ const Main = () => {
                 <section data-section-id="instagram">
                     <MainInstagram />
                 </section>
-                <Footer />
+                {/* <Footer /> */}
             </FullPageScroll>
 
             {/* 팝업창 */}

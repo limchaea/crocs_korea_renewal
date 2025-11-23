@@ -58,80 +58,60 @@ const ProductCardSwiper = ({ images }) => {
     );
 };
 
-// 상품명
+// ---------- 상품명 ----------
 const ProductName = ({ name }) => (
     <div className="product-card__name--wrap">
         <p style={{ whiteSpace: 'pre-line' }}>{name}</p>
     </div>
 );
 
-// 가격 - prices 배열 사용: [원가, 할인가, 할인율]
+// ---------- 가격 ----------
 const ProductPrice = ({ prices }) => {
-    // prices가 없거나 배열이 아니거나, 원가가 없으면 공란
-    if (!prices || !Array.isArray(prices) || !prices[0]) {
-        return null;
-    }
-
-    // prices 배열 구조 분해: [원가, 할인가, 할인율]
+    if (!prices || !Array.isArray(prices) || !prices[0]) return null;
     const [originalPrice, discountPrice, discountRate] = prices;
-
-    // 할인 여부 확인
-    const hasDiscount = discountPrice !== null && discountPrice !== undefined;
+    const hasDiscount = discountPrice != null;
 
     return (
         <div className="product-card__price_wrap">
             {hasDiscount ? (
                 <>
-                    {/* 할인가 */}
                     <div className="discount-price">
                         {discountPrice}
-                        {discountRate && discountRate !== 'undefined' && ` (${discountRate} 할인)`}
+                        {discountRate && ` (${discountRate} 할인)`}
                     </div>
-                    {/* 원가 (취소선) */}
                     <div className="original-price" style={{ textDecoration: 'line-through' }}>
                         {originalPrice}
                     </div>
                 </>
             ) : (
-                <>
-                    {/* 정상가 */}
-                    <div className="original-price">{originalPrice}</div>
-                </>
+                <div className="original-price">{originalPrice}</div>
             )}
         </div>
     );
 };
 
+// ---------- 색상 ----------
 const normalizeColor = (c) => {
     if (!c) return null;
-
-    // 이미 rgb() 형태면 그대로 반환
     if (c.startsWith('rgb')) return c;
-
-    // 숫자만 있는 경우 → rgb() 생성
-    if (c.match(/^\d+\s*,/)) {
-        return `rgb(${c})`;
-    }
-
-    // hex 값일 경우 그대로 사용
+    if (c.match(/^\d+\s*,/)) return `rgb(${c})`;
     if (c.startsWith('#')) return c;
-
     return null;
 };
 
 const ProductColorBadges = ({ colors = [], onColorClick }) => {
-    // colors가 배열이 아니면 배열로 변환
-    const colorList = Array.isArray(colors) ? colors : [colors];
+    const normalized = (Array.isArray(colors) ? colors : [colors])
+        .map(normalizeColor)
+        .filter(Boolean);
 
-    // 컬러 정규화 + null 제거
-    const normalized = colorList.map((c) => normalizeColor(c)).filter(Boolean);
+    // 컬러가 하나도 없으면 렌더링하지 않음
+    if (normalized.length === 0) return null;
 
     return (
         <div className="product-card__color">
             <div className="product-card__color__title--wrap">
                 <p>색상</p>
             </div>
-
             <div className="color-badge__wrap">
                 {normalized.map((color, i) => (
                     <button
@@ -146,67 +126,25 @@ const ProductColorBadges = ({ colors = [], onColorClick }) => {
     );
 };
 
-// 사이즈 선택
-// const ProductSizeButtons = ({ category, soldOutSizes = [], onSizeSelect }) => {
-//     const [active, setActive] = useState(null);
-
-//     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
-
-//     useEffect(() => {
-//         if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
-//             onFetchSize(); // store 초기화
-//         }
-//     }, [crocsSizesByCategory, onFetchSize]);
-
-//     // 카테고리 id 매칭
-//     let categoryId = null;
-//     if (category?.includes('키즈')) categoryId = 'kids';
-//     else if (category?.includes('여성')) categoryId = 'women';
-//     else if (category?.includes('남성')) categoryId = 'men';
-
-//     // 해당 카테고리 사이즈 가져오기
-//     const sizes = crocsSizesByCategory[categoryId] || [];
-
-//     return (
-//         <div className="product-card__size">
-//             <div className="product-card__size__title--wrap">
-//                 <p>사이즈</p>
-//             </div>
-//             <ul className="product-card__size--btns__wrap">
-//                 {sizes.map((size) => {
-//                     const soldOut = soldOutSizes.includes(size);
-//                     const isActive = active === size;
-
-//                     return (
-//                         <li key={size} className="size--btns__item">
-//                             <button
-//                                 className={`size--btns__button ${isActive ? 'active' : ''} ${
-//                                     soldOut ? 'sold-out' : ''
-//                                 }`}
-//                                 onClick={() => !soldOut && (setActive(size), onSizeSelect?.(size))}
-//                                 disabled={soldOut}
-//                             >
-//                                 {size}
-//                             </button>
-//                         </li>
-//                     );
-//                 })}
-//             </ul>
-//         </div>
-//     );
-// };
-const ProductSizeButtons = ({ category, soldOutSizes = [], onSizeSelect }) => {
-    const [active, setActive] = useState(null);
+// ---------- 사이즈 ----------
+const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
+    const [active, setActive] = useState(null);
 
     useEffect(() => {
         if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
-            onFetchSize(); // store 초기화
+            onFetchSize();
         }
     }, [crocsSizesByCategory, onFetchSize]);
 
-    const categoryMap = { 키즈: 'kids', 여성: 'women', 남성: 'men' };
-    const categoryId = categoryMap[category] || null;
+    // cate 안에 특정 단어가 포함되어 있는지 체크
+    let categoryId = null;
+    if (cate?.includes('여성')) categoryId = 'women';
+    else if (cate?.includes('남성')) categoryId = 'men';
+    else if (cate?.includes('키즈')) categoryId = 'kids';
+
+    console.log('cate:', cate);
+    console.log('categoryId:', categoryId);
 
     const sizes = crocsSizesByCategory[categoryId] || [];
 
@@ -244,13 +182,10 @@ const ProductSizeButtons = ({ category, soldOutSizes = [], onSizeSelect }) => {
     );
 };
 
-// 상품 카드
-const ProductCard = ({ product, onClick }) => (
+// ---------- 상품 카드 ----------
+const ProductCard = ({ product, onClick, onSizeSelect }) => (
     <li className="product-card" onClick={onClick}>
-        <ProductCardSwiper
-            images={product.product_img || []}
-            onClick={(e) => e.stopPropagation()}
-        />
+        <ProductCardSwiper images={product.product_img || []} />
         <ProductName name={product.product} />
         <ProductPrice prices={product.prices} />
         <ProductColorBadges
@@ -258,9 +193,9 @@ const ProductCard = ({ product, onClick }) => (
             onColorClick={(c) => console.log('색상 선택:', c)}
         />
         <ProductSizeButtons
-            category={product.category} // 예: "여성", "남성", "키즈"
+            cate={product.cate} // 여기서 cate 값을 전달
             soldOutSizes={product.soldOutSizes || []}
-            onSizeSelect={(s) => console.log('사이즈 선택:', s)}
+            onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
         />
     </li>
 );

@@ -6,7 +6,7 @@
 export const Products = [
     {
         id: '212106',
-        cate: '신상품, 클로그, 퍼즈',
+        cate: '신상품, 여성, 클로그, 퍼즈',
         color: ['rgb(0, 0, 0)', 'rgb(26, 24, 21)', 'rgb(150, 105, 74)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -19,7 +19,7 @@ export const Products = [
     },
     {
         id: '211979',
-        cate: '신상품, 클로그, 퍼즈',
+        cate: '신상품, 여성, 클로그, 퍼즈',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/2_클래식_퍼프_스트랩_라인드_클로그_1.jpg',
@@ -45,7 +45,7 @@ export const Products = [
     },
     {
         id: '212074',
-        cate: '출시 예정, 클로그, 콜라보',
+        cate: '출시 예정, 남성, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/4_기묘한_이야기_클래식_클로그_1.jpg',
@@ -58,7 +58,7 @@ export const Products = [
     },
     {
         id: '211768',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 남성, 클로그, 콜라보',
         color: ['rgb(0, 0, 0)', 'rgb(82, 48, 27)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -71,7 +71,7 @@ export const Products = [
     },
     {
         id: '211116',
-        cate: '신상품, 클로그, 퍼즈',
+        cate: '신상품, 여성, 클로그, 퍼즈',
         color: ['rgb(0, 0, 0)', 'rgb(147, 134, 102)', 'rgb(179, 163, 155)', 'rgb(150, 115, 89)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -93,14 +93,14 @@ export const Products = [
         ],
         review: '7',
         product: '클래식 플리스 라인드 클로그(플리스 스트랩)',
-        cate: '클로그, 퍼즈',
+        cate: '클로그, 남성, 퍼즈',
         subcategory: '클로그, 퍼즈',
         prices: ['₩84,900', null, null],
     },
     {
         rating: '/images/icon_start.svg',
         id: '212854',
-        cate: '신상품, 클로그, 퍼즈, 플랫폼',
+        cate: '신상품, 여성, 클로그, 퍼즈, 플랫폼',
         color: ['rgb(0, 0, 0)', 'rgb(168, 144, 118)', 'rgb(219, 214, 198)', 'rgb(250, 213, 220)'],
         product_img: [
             '/images/8_클래식_플랫폼_퍼즈_라인드_클로그_1.jpg',
@@ -112,7 +112,7 @@ export const Products = [
     },
     {
         id: '211767',
-        cate: 'App Exclusive, 클로그, 콜라보',
+        cate: 'App Exclusive, 클로그, 콜라보, 여성',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/9_장_폴_고티에_x_크록스_클래식_클로그_1.jpg',
@@ -125,7 +125,7 @@ export const Products = [
     },
     {
         id: '211751',
-        cate: '출시 예정, 클로그, 콜라보, 퍼즈, 플랫폼',
+        cate: '출시 예정, 클로그, 콜라보, 퍼즈, 플랫폼, 여성',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/10_주토피아_라인드_플랫폼_클로그_1.jpg',
@@ -138,7 +138,7 @@ export const Products = [
     },
     {
         id: '210813',
-        cate: '온라인 한정, 클로그, 콜라보, 퍼즈',
+        cate: '온라인한정, 여성, 클로그, 콜라보, 퍼즈',
         review: '28',
         rating: '/images/icon_start.svg',
         product_img: [
@@ -153,7 +153,7 @@ export const Products = [
     {
         rating: '/images/icon_start.svg',
         id: '212770',
-        cate: '신상품, 클로그, 퍼즈, 플랫폼',
+        cate: '신상품, 남성, 클로그, 퍼즈, 플랫폼',
         color: ['rgb(150, 105, 74)', 'rgb(179, 163, 155)', 'rgb(0, 0, 0)'],
         product_img: [
             '/images/12_딜런_플랫폼_라인드_클로그_1.jpg',
@@ -165,7 +165,7 @@ export const Products = [
     },
     {
         id: '211919',
-        cate: '신상품, 클로그',
+        cate: '신상품, 여성, 클로그',
         color: ['rgb(0, 0, 0)', 'rgb(160, 21, 51)'],
         rating: '/images/icon_start.svg',
         product_img: ['/images/13_베이_벨벳_클로그_1.jpg', '/images/13_베이_벨벳_클로그_2.jpg'],
@@ -176,7 +176,7 @@ export const Products = [
     },
     {
         id: '211753',
-        cate: '신상품, 클로그, 퍼즈',
+        cate: '신상품, 여성, 클로그, 퍼즈',
         color: [
             'rgb(0, 0, 0)',
             'rgb(230, 229, 198)',
@@ -207,7 +207,7 @@ export const Products = [
     },
     {
         id: '212097',
-        cate: '신상품',
+        cate: '신상품, 남성',
         color: ['rgb(0, 0, 0)', 'rgb(179, 170, 157)', 'rgb(116, 121, 78)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -220,7 +220,7 @@ export const Products = [
     },
     {
         id: '211380',
-        cate: '신상품, 퍼즈',
+        cate: '신상품, 여성, 퍼즈',
         color: ['rgb(0, 0, 0)', 'rgb(179, 170, 157)', 'rgb(150, 105, 74)'],
         rating: '/images/icon_start.svg',
         product_img: ['/images/17_클래식_라인드_쇼티_1.jpg', '/images/17_클래식_라인드_쇼티_2.jpg'],
@@ -231,7 +231,7 @@ export const Products = [
     },
     {
         id: '211131',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 남성, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/18_슈퍼맨_클래식_클로그_1.jpg',
@@ -244,7 +244,7 @@ export const Products = [
     },
     {
         id: '211684',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 남성, 클로그, 콜라보',
         review: '2',
         rating: '/images/icon_start.svg',
         product_img: [
@@ -258,7 +258,7 @@ export const Products = [
     },
     {
         id: '211483',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 여성, 클로그, 콜라보',
         review: '1',
         rating: '/images/icon_start.svg',
         product_img: [
@@ -285,7 +285,7 @@ export const Products = [
     },
     {
         id: '211749',
-        cate: '출시 예정, 클로그, 콜라보',
+        cate: '출시 예정, 여성, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             'https://media.crocs.com/images/t_ok_card/f_auto%2Cq_auto/products/211749_90H_ALT100/crocs',
@@ -311,7 +311,7 @@ export const Products = [
     },
     {
         id: '211691',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 여성, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             'https://media.crocs.com/images/t_ok_card/f_auto%2Cq_auto/products/211691_90H_ALT100/crocs',
@@ -324,7 +324,7 @@ export const Products = [
     },
     {
         id: '211507',
-        cate: '출시 예정, 클로그, 콜라보',
+        cate: '출시 예정, 남성, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             'https://media.crocs.com/images/t_ok_card/f_auto%2Cq_auto/products/211507_90H_ALT100/crocs',
@@ -337,7 +337,7 @@ export const Products = [
     },
     {
         id: '211082',
-        cate: 'App Exclusive, 장 폴 고티에, 클로그, 콜라보',
+        cate: 'App Exclusive, 여성, 장 폴 고티에, 클로그, 콜라보',
         color: ['rgb(225, 220, 209)', 'rgb(175, 179, 174)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -351,7 +351,7 @@ export const Products = [
     },
     {
         id: '211892',
-        cate: '신상품, 키즈, 클로그',
+        cate: '신상품, 여성, 키즈, 클로그',
         color: ['rgb(60, 65, 120)', 'rgb(186, 182, 190)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -377,7 +377,7 @@ export const Products = [
     },
     {
         id: '211798',
-        cate: 'App Exclusive, 장 폴 고티에, 플랫폼, 콜라보',
+        cate: 'App Exclusive, 여성, 시몬 로샤, 플랫폼, 콜라보',
         color: ['rgb(220, 189, 180)', 'rgb(0, 0, 0)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -390,7 +390,7 @@ export const Products = [
     },
     {
         id: '211079',
-        cate: '신상품, 플랫폼, 콜라보',
+        cate: '신상품, 여성, 시몬 로샤, 플랫폼, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             'https://media.crocs.com/images/t_ok_card/f_auto%2Cq_auto/products/211079_159_ALT100/crocs',
@@ -403,7 +403,7 @@ export const Products = [
     },
     {
         id: '211928',
-        cate: '신상품, 클로그, 퍼즈',
+        cate: '신상품, 여성, 클로그, 퍼즈',
         color: ['rgb(0, 0, 0)', 'rgb(193, 193, 193)'],
         rating: '/images/icon_start.svg',
         product_img: [
@@ -416,7 +416,7 @@ export const Products = [
     },
     {
         id: '212297',
-        cate: 'App Exclusive, 시몬 로샤, 콜라보, 스니커즈',
+        cate: 'App Exclusive, 여성, 시몬 로샤, 콜라보, 스니커즈',
         rating: '/images/icon_start.svg',
         product_img: [
             'https://media.crocs.com/images/t_ok_card/f_auto%2Cq_auto/products/212297_159_ALT100/crocs',
@@ -429,7 +429,7 @@ export const Products = [
     },
     {
         id: '211688',
-        cate: '신상품, 클로그, 퍼즈, 콜라보',
+        cate: '신상품, 남성, 클로그, 퍼즈, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             'https://media.crocs.com/images/t_ok_card/f_auto%2Cq_auto/products/211688_90H_ALT100/crocs',
@@ -482,7 +482,7 @@ export const Products = [
     },
     {
         id: '211766',
-        cate: 'App Exclusive, 장 폴 고티에, 클로그, 콜라보',
+        cate: 'App Exclusive, 여성, 장 폴 고티에, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/37_장_폴_고티에_x_크록스_하이드라_클로그_1.jpg',
@@ -495,7 +495,7 @@ export const Products = [
     },
     {
         id: '212001',
-        cate: '신상품, 클로그',
+        cate: '신상품, 남성, 클로그',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/38_클래식_언퍼게터블_카모_클로그_1.jpg',
@@ -587,7 +587,7 @@ export const Products = [
     },
     {
         id: '212387',
-        cate: 'Croctober, 퍼즈, 신상품',
+        cate: 'Croctober, 여성, 퍼즈, 신상품',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/45_클래식_언퍼게터블_레오파드_니_하이_부츠_1.jpg',
@@ -600,7 +600,7 @@ export const Products = [
     },
     {
         id: '211980',
-        cate: '신상품, 클로그, 퍼즈',
+        cate: '신상품, 남성, 클로그, 퍼즈',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/46_클래식_퍼프_스트랩_마블_라인드_클로그_1.jpg',
@@ -640,7 +640,7 @@ export const Products = [
     },
     {
         id: '212416',
-        cate: 'Croctober, 클로그, 퍼즈',
+        cate: 'Croctober, 여성, 클로그, 퍼즈',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/49_클래식_언퍼게터블_레오파드_클로그_1.jpg',
@@ -653,7 +653,7 @@ export const Products = [
     },
     {
         id: '212386',
-        cate: 'Croctober, 부츠, 퍼즈',
+        cate: 'Croctober, 여성, 부츠, 퍼즈',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/50_클래식_언퍼게터블_레오파드_부츠_1.jpg',
@@ -666,7 +666,7 @@ export const Products = [
     },
     {
         id: '212260',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 여성, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/51_M&Ms_x_크록스_베이_클로그_1.jpg',
@@ -679,7 +679,7 @@ export const Products = [
     },
     {
         id: '211988',
-        cate: '신상품, 클로그',
+        cate: '신상품, 남성, 클로그',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/52_클래식_썸머_데님_클로그_1.jpg',
@@ -706,7 +706,7 @@ export const Products = [
     },
     {
         id: '211982',
-        cate: '신상품, 클로그',
+        cate: '신상품, 남성, 클로그',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/54_크록밴드_리플렉티브_클로그_1.jpg',
@@ -733,7 +733,7 @@ export const Products = [
     },
     {
         id: '211758',
-        cate: '신상품, 클로그, 콜라보, 퍼즈',
+        cate: '신상품, 여성, 클로그, 콜라보, 퍼즈',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/56_디즈니_앤_픽사_랏소_클래식_라인드_클로그_1.jpg',
@@ -759,7 +759,7 @@ export const Products = [
     },
     {
         id: '211535',
-        cate: '신상품, 클로그',
+        cate: '신상품, 남성, 클로그',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/58_클래식_디지털_카모_클로그_1.jpg',
@@ -785,7 +785,7 @@ export const Products = [
     },
     {
         id: '211491',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 여성, 클로그, 콜라보',
         rating: '/images/icon_start.svg',
         product_img: [
             '/images/60_쿠로미™_클래식_클로그_1.jpg',
@@ -811,7 +811,7 @@ export const Products = [
     },
     {
         id: '211482',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 여성, 클로그, 콜라보',
         review: '3',
         rating: '/images/icon_start.svg',
         product_img: [
@@ -825,7 +825,7 @@ export const Products = [
     },
     {
         id: '211414',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 남성, 클로그, 콜라보',
         review: '26',
         rating: '/images/icon_start.svg',
         product_img: [
@@ -839,7 +839,7 @@ export const Products = [
     },
     {
         id: '211412',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 여성, 클로그, 콜라보',
         review: '10',
         rating: '/images/icon_start.svg',
         product_img: [
@@ -880,7 +880,7 @@ export const Products = [
     },
     {
         id: '210101',
-        cate: '신상품, 클로그, 콜라보, 플랫폼',
+        cate: '신상품, 여성, 클로그, 콜라보, 플랫폼',
         review: '7',
         rating: '/images/icon_start.svg',
         product_img: [
@@ -894,7 +894,7 @@ export const Products = [
     },
     {
         id: '209320',
-        cate: '신상품, 클로그, 콜라보',
+        cate: '신상품, 여성, 클로그, 콜라보',
         review: '23',
         rating: '/images/icon_start.svg',
         product_img: [

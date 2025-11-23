@@ -1,18 +1,11 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
-// import New from './pages/New';
-// import Women from './pages/Women';
-// import Men from './pages/Men';
-// import Kids from './pages/Kids';
-// import Jibbitz from './pages/Jibbitz';
-// import Collabs from './pages/Collabs';
 import Brand from './pages/Brand';
-import Promotion from './pages/Promotion';
 import Login from './pages/Login';
 import Join from './pages/Join';
 // import Cart from './pages/Cart3';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import CrocsClubPopup from './components/CrocsClubPopup';
 import UserInfo from './pages/UserInfo';
@@ -26,6 +19,7 @@ import { loginAuthStore } from './store/loginStore';
 import CustomerService from './components/CustomerService';
 import ProductListPage from './pages/ProductListPage';
 import CrocsProductDetail from './pages/CrocsProductDetail';
+import Store from './pages/Store';
 // import Order from './components/Order/Order';
 
 function App() {
@@ -60,7 +54,7 @@ function App() {
             <Header />
             <Routes>
                 <Route index element={<Main />} />
-                <Route path="/promotion" element={<Promotion />} />
+                <Route path="/store" element={<Store />} />
                 <Route path="/Brand" element={<Brand />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />
@@ -73,6 +67,7 @@ function App() {
                 <Route path="/cscenter" element={<CustomerService />} />
                 <Route path="/product/:id" element={<CrocsProductDetail />} />
             </Routes>
+            <Footer />
         </div>
     );
 }
