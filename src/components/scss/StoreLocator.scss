@@ -1,7 +1,9 @@
+@use '../../App.scss' as g;
+
 // 크록스 매장 찾기 스타일
 
 .store_locator {
-    max-width: 1200px;
+    // max-width: 1200px;
     // height: 100vh;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -17,7 +19,7 @@
             margin: 0 0 1rem 0;
 
             .crocs_logo {
-                color: #97c24e;
+                color: g.$mainColor;
                 font-size: 4.4rem;
             }
         }
@@ -50,7 +52,7 @@
                 transition: border-color 0.3s ease;
 
                 &:focus {
-                    border-color: #97c24e;
+                    border-color: g.$mainColor;
                 }
 
                 &::placeholder {
@@ -63,7 +65,7 @@
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: #fff;
-                background-color: #97c24e;
+                background-color: g.$mainColor;
                 border: none;
                 border-radius: 0.8rem;
                 cursor: pointer;
@@ -71,7 +73,7 @@
                 white-space: nowrap;
 
                 &:hover:not(:disabled) {
-                    background-color: #7fb037;
+                    background-color: g.$mainColor;
                 }
 
                 &:disabled {
@@ -102,7 +104,7 @@
                 outline: none;
 
                 &:focus {
-                    border-color: #97c24e;
+                    border-color: g.$mainColor;
                 }
             }
         }
@@ -125,7 +127,7 @@
             margin-bottom: 2rem;
 
             strong {
-                color: #97c24e;
+                color: g.$mainColor;
                 font-weight: 700;
             }
         }
@@ -147,7 +149,7 @@
 
                 &:hover {
                     box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
-                    border-color: #97c24e;
+                    border-color: g.$mainColor;
                 }
 
                 .store_info {

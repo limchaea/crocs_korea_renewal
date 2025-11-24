@@ -78,64 +78,6 @@ export const useCrocsProductStore = create(
             setSelectedCategory: (cate) => set({ selectedCategory: cate }),
             setSelectedSubcategory: (sub) => set({ selectedSubcategory: sub }),
 
-            // ---------------------------
-            // 📌 상품 로드 + 태그 생성
-            // ---------------------------
-            // onFetchItems: async () => {
-            //     const current = get().crocsItems;
-            //     if (current.length > 0) return;
-
-            //     const map = get().categoryMap;
-
-            //     const parsed = Products.filter((item) => item.prices && item.prices[0]) // 가격 없는 제품 제외
-            //         .map((item) => {
-            //             const cateList = item.cate
-            //                 ? item.cate
-            //                       .split(',')
-            //                       .map((v) => v.trim())
-            //                       .filter(Boolean)
-            //                 : [];
-
-            //             const subList = item.subcategory
-            //                 ? item.subcategory
-            //                       .split(',')
-            //                       .map((v) => v.trim())
-            //                       .filter(Boolean)
-            //                 : [];
-
-            //             const allKoreanTags = [...cateList, ...subList];
-
-            //             const englishTags = [
-            //                 ...new Set(
-            //                     allKoreanTags
-            //                         .map((tag) => {
-            //                             if (tag.includes('_')) {
-            //                                 return tag.split('_').map((p) => map[p] || p);
-            //                             }
-            //                             return map[tag] || tag;
-            //                         })
-            //                         .flat()
-            //                         .filter(Boolean)
-            //                 ),
-            //             ];
-
-            //             AUTO_TAG_KEYWORDS.forEach((keyword) => {
-            //                 if (item.product.includes(keyword)) {
-            //                     if (!englishTags.includes(keyword)) englishTags.push(keyword);
-            //                     if (!englishTags.includes('collabs')) englishTags.push('collabs');
-            //                 }
-            //             });
-
-            //             return {
-            //                 ...item,
-            //                 tags: englishTags,
-            //                 tags_ko: allKoreanTags,
-            //             };
-            //         });
-
-            //     set({ crocsItems: parsed });
-            // },
-
             onFetchItems: async () => {
                 const current = get().crocsItems;
                 if (current.length > 0) return;
@@ -224,22 +166,6 @@ export const useCrocsProductStore = create(
                 if (!cate || cate === 'all') return items;
                 return items.filter((item) => item.tags?.includes(cate));
             },
-
-            // filterByMenu: (mainKey, subKey = null) => {
-            //     const items = get().crocsItems;
-            //     const hasTag = (item, key) => item?.tags?.includes(key);
-
-            //     if (mainKey === 'all') {
-            //         if (!subKey || subKey === 'all') return items;
-            //         return items.filter((i) => hasTag(i, subKey));
-            //     }
-
-            //     if (!subKey || subKey === 'all') {
-            //         return items.filter((i) => hasTag(i, mainKey));
-            //     }
-
-            //     return items.filter((i) => hasTag(i, mainKey) && hasTag(i, subKey));
-            // },
 
             filterByMenu: (mainKey, subKey = null) => {
                 const items = get().crocsItems;

@@ -7,6 +7,7 @@ import './scss/depth1.scss';
 const Depth1 = () => {
     // 서브메뉴 상태 저장
     const [activeMenu, setActiveMenu] = useState('all');
+    const [activeSubMenu, setActiveSubMenu] = useState('');
 
     const currentMenu = menuList.find((m) => m.key === activeMenu);
 
@@ -17,7 +18,12 @@ const Depth1 = () => {
                     <DepthmenuList activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
                 </div>
                 <div className="depth1_right">
-                    <SubmenuList mainmenu={currentMenu} submenus={currentMenu?.submenu_list} />
+                    <SubmenuList
+                        mainmenu={currentMenu}
+                        submenus={currentMenu?.submenu_list}
+                        activeSubMenu={activeSubMenu}
+                        setActiveSubMenu={setActiveSubMenu}
+                    />
                 </div>
             </div>
         </div>

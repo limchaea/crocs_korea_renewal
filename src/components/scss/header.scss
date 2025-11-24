@@ -84,6 +84,10 @@
                                 padding: 1rem 2rem;
                                 height: 8rem;
                             }
+
+                            &:hover {
+                                color: g.$mainColor;
+                            }
                         }
 
                         .collabs {
