@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchStore } from '../store/useSearchStore';
-import { Link } from 'react-router-dom';
+import { useCrocsProductStore } from '../store/useCrocsProductStore';
+import { useNavigate } from 'react-router-dom';
 
 const hashtags = [
     '신상',
@@ -37,13 +37,47 @@ const shuffleTag = (tag) => {
 };
 
 const SearchLeft = () => {
-    const { recentSearches, onRemoveSearch, onClearAll } = useSearchStore();
+    const {
+        recentSearches,
+        onRemoveSearch,
+        onClearAll,
+        setSearchWord,
+        onCloseSearch,
+        onAddRecentSearches,
+    } = useCrocsProductStore();
+
+    const navigate = useNavigate();
+
     const [randomTags, setRandomTags] = useState([]);
 
     useEffect(() => {
         const shuffled = shuffleTag(hashtags).slice(0, 6);
         setRandomTags(shuffled);
     }, []);
+
+    // 최근 검색어 클릭 핸들러
+    const handleRecentSearchClick = (searchText) => {
+        // 1. 검색어 설정하여 제품 필터링
+        setSearchWord(searchText);
+
+        // 2. 최근 검색어에 재추가 (최상단으로 이동)
+        onAddRecentSearches(searchText);
+    };
+
+    // 해시태그 클릭 핸들러
+    const handleHashtagClick = (hashtag) => {
+        // 1. 검색어 설정하여 제품 필터링
+        setSearchWord(hashtag);
+
+        // 2. 최근 검색어에 추가
+        // onAddRecentSearches(hashtag);
+
+        // 3. 검색 모달 닫기
+        onCloseSearch();
+
+        // 4. 검색 결과 페이지로 이동
+        navigate(`/all?search=${encodeURIComponent(hashtag)}`);
+    };
 
     return (
         <>
@@ -53,7 +87,12 @@ const SearchLeft = () => {
                     {recentSearches.length > 0 ? (
                         recentSearches.map((search) => (
                             <li key={search.id}>
-                                <Link to="*">{search.inputText}</Link>
+                                <p
+                                    className="search_text"
+                                    onClick={() => handleRecentSearchClick(search.inputText)}
+                                >
+                                    {search.inputText}
+                                </p>
                                 <button onClick={() => onRemoveSearch(search.id)}>x</button>
                             </li>
                         ))
@@ -71,15 +110,14 @@ const SearchLeft = () => {
             <div className="hashtag_wrap">
                 <h4 className="hashtag"># HASHTAG</h4>
                 <div className="hashtag_list">
-                    {/* {hashtags.map((hashtag) => (
-                        <span className="tag">
-                            <Link to="*">{`# ${hashtag}`}</Link>
-                        </span>
-                    ))} */}
                     {randomTags.map((hashtag, id) => (
-                        <span className="tag" key={id}>
-                            <Link to="*">{`# ${hashtag}`}</Link>
-                        </span>
+                        <button
+                            className="tag"
+                            key={id}
+                            onClick={() => handleHashtagClick(hashtag)}
+                        >
+                            {`# ${hashtag}`}
+                        </button>
                     ))}
                 </div>
             </div>

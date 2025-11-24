@@ -5,15 +5,17 @@ import './scss/header.scss';
 import GnbWrap from './GnbWrap';
 import Depth1 from './Depth1';
 import Search from './Search';
-import { useSearchStore } from '../store/useSearchStore';
+import { useCrocsProductStore } from '../store/useCrocsProductStore';
 import { useLocation } from 'react-router-dom';
 
 const Header = () => {
-    const searchOpen = useSearchStore((state) => state.searchOpen);
-    const onOpenSearch = useSearchStore((state) => state.onOpenSearch);
-    const onCloseSearch = useSearchStore((state) => state.onCloseSearch);
+    const searchOpen = useCrocsProductStore((state) => state.searchOpen);
+    const onOpenSearch = useCrocsProductStore((state) => state.onOpenSearch);
+    const onCloseSearch = useCrocsProductStore((state) => state.onCloseSearch);
+
     const [depthOpen, setDepthOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false); // <- 스크롤 상태
+    const [activeDepthMenu, setActiveDepthMenu] = useState('all');
     const location = useLocation();
     const isSubPage = location.pathname !== '/'; // 예: 메인 페이지가 '/'일 경우
 
@@ -45,8 +47,6 @@ const Header = () => {
                 ${searchOpen ? 'hide' : ''}
                 ${scrolled ? 'scrolled' : ''}
                 ${isSubPage ? 'subpage' : ''}`}
-                onMouseEnter={() => setDepthOpen(true)}
-                onMouseLeave={() => setDepthOpen(false)}
             >
                 <header className="header">
                     <div className="wide_inner">
@@ -56,7 +56,10 @@ const Header = () => {
                                     <img src="/images/crocs_logo.svg" alt="crocs logo" />
                                 </Link>
                             </h1>
-                            <nav>
+                            <nav
+                                onMouseEnter={() => setDepthOpen(true)}
+                                onMouseLeave={() => setDepthOpen(false)}
+                            >
                                 <MainmenuList />
                             </nav>
                         </div>
@@ -66,7 +69,7 @@ const Header = () => {
                     </div>
                 </header>
 
-                {depthOpen && <Depth1 />}
+                {depthOpen && <Depth1 setDepthOpen={setDepthOpen} />}
             </div>
 
             {/* {searchOpen && <Search onClose={onCloseSearch} />} */}

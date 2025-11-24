@@ -2,18 +2,40 @@ import React from 'react';
 import SearchInput from './SearchInput';
 import './scss/search.scss';
 import SearchLeft from './SearchLeft';
-import { useSearchStore } from '../store/useSearchStore';
 import SearchRight from './SearchRight';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useCrocsProductStore } from '../store/useCrocsProductStore';
 
 const Search = ({ scrolled }) => {
-    const { inputText, onInputText, onAddRecentSearches, searchOpen, onCloseSearch } =
-        useSearchStore();
+    const {
+        inputText,
+        onInputText,
+        onAddRecentSearches,
+        searchOpen,
+        onCloseSearch,
+        setSearchWord,
+    } = useCrocsProductStore();
+
+    const navigate = useNavigate();
 
     const handleSearch = (e) => {
         e.preventDefault();
-        onAddRecentSearches();
+        if (!inputText.trim()) return;
+
+        // 1. 검색어로 제품 필터링
+        setSearchWord(inputText);
+
+        // 2. 최근 검색어에 추가
+        onAddRecentSearches(inputText);
+
+        // 3. 입력창 초기화
         onInputText('');
+
+        // 4. 검색 모달 닫기
+        onCloseSearch();
+
+        // 5. 검색 결과 페이지로 이동.
+        navigate(`/all?search=${encodeURIComponent(inputText)}`);
     };
 
     const location = useLocation();
