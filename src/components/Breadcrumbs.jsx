@@ -31,7 +31,7 @@ export default function Breadcrumbs({ category, subcategory }) {
                 {/* 🟢 메인 카테고리 */}
                 <li className="breadcrumbs__list--women">
                     <Link to={`/${category}`} className="breadcrumbs__list--women_link">
-                        <span>{category}</span>
+                        <span>{category.toUpperCase()}</span>
                     </Link>
                     <button className="close_btn" onClick={handleClose}>
                         <img src="/images/Sub_Women_Images/icon-close_cross.svg" alt="닫기 버튼" />
@@ -49,7 +49,7 @@ export default function Breadcrumbs({ category, subcategory }) {
                                 to={`/${category}/${subcategory}`}
                                 className="breadcrumbs__list--Fur-lined_link"
                             >
-                                <span>{subcategory}</span>
+                                <span>{subcategory.toUpperCase()}</span>
                             </Link>
                             <button className="close_btn" onClick={handleClose}>
                                 <img
@@ -63,7 +63,11 @@ export default function Breadcrumbs({ category, subcategory }) {
             </ul>
 
             <div className="breadcrumbs__title">
-                <h2>{subcategory || category}</h2>
+                <h2>
+                    {subcategory
+                        ? `${category.toUpperCase()} : ${subcategory.toUpperCase()}`
+                        : category.toUpperCase()}
+                </h2>
             </div>
         </div>
     );

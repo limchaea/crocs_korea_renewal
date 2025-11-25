@@ -5,9 +5,11 @@
         @include g.flex($jc: center, $gap: 10px);
         width: fit-content;
         background: lightgreen;
-        padding: 1rem;
+        padding-left: 1rem;
+        margin-bottom: 4rem;
         border-radius: 5px;
         .search_info {
+            @include g.flex($jc: center, $gap: 10px);
             font-weight: 600;
         }
     }
