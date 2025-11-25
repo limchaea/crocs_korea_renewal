@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from 'react';
 import { create } from 'zustand';
 import { Products } from '../data/CrocsProductsData.js';
+=======
+import React from "react";
+import { create } from "zustand";
+import { Products } from "../data/CrocsProductsData.js";
+>>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
 // import { newProducts } from "../data/newProductData.js";
 
 export const useNewProductStore = create((set, get) => ({
@@ -14,9 +20,13 @@ export const useNewProductStore = create((set, get) => ({
             if (!product.cate) return false;
             // cate 속성비교
             const cateLower = product.cate.toLowerCase();
+<<<<<<< HEAD
             return cateLower.includes('신상품') || cateLower.includes('출시 예정');
+=======
+            return cateLower.includes("신상품") || cateLower.includes("출시 예정");
+>>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
         });
-        // console.log(`전체상품: ${Prouducts.length}, 신상품 출시예정 상품: ${filteredProuducts.length}`);
+        // console.log(`전체상품: ${Products.length}, 신상품 출시예정 상품: ${filteredProuducts.length}`);
 
         set({ items: filteredProuducts });
     },

@@ -1,5 +1,6 @@
 @use '../../App.scss' as g;
 
+<<<<<<< HEAD
 .product_list_page {
     .title_wrap {
         margin: 0 auto;
@@ -51,6 +52,8 @@
 
 @use '../../App.scss' as g;
 
+=======
+>>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
 .product_list_wrap {
     .search_info_wrap {
         @include g.flex($jc: center, $gap: 10px);
