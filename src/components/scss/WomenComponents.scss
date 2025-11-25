@@ -67,6 +67,7 @@
 //             justify-content: center;
 //         }
 
+<<<<<<< HEAD
 //         &--home,
 //         &--women,
 //         &--Fur-lined {
@@ -102,6 +103,8 @@
                 }
             }
         }
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 //         &--home,
 //         &--women,
 //         &--Fur-lined {
@@ -204,6 +207,7 @@
 // ColorBadge 컴포넌트
 // ============================================
 
+<<<<<<< HEAD
 // .color-badge {
 //     width: 1rem;
 //     height: 1rem;
@@ -264,6 +268,8 @@
         background-color: #0000ff;
     }
 }
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 // .color-badge {
 //     width: 1rem;
 //     height: 1rem;
@@ -335,6 +341,7 @@
 // }
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 // .select__color--wrap {
 //     width: 100%;
 //     @include g.flex($jc: space-between, $ai: center, $fd: row, $fw: wrap, $gap: 1.5rem 3rem);
@@ -575,6 +582,8 @@
         }
     }
 }
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 // .select__color--wrap {
 //     width: 100%;
 //     @include g.flex($jc: space-between, $ai: center, $fd: row, $fw: wrap, $gap: 1.5rem 3rem);
@@ -942,6 +951,7 @@
         }
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
 
+<<<<<<< HEAD
     .filter-menu__wrap {
         // 기존 menu_wrap-style 스타일 적용
     }
@@ -1015,6 +1025,9 @@
         &--color {
 =======
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+=======
+        &--color {
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
             background-color: #e3f2fd;
 
             &:hover {
@@ -1065,6 +1078,7 @@
         padding: 30px 0;
         margin: 0;
     }
+}
 
 // 애니메이션
 .filter-tag {
@@ -1224,6 +1238,7 @@
     border-radius: 10px;
     padding: 2rem 2rem;
     transition: all 0.3s ease;
+<<<<<<< HEAD
     outline: 1px solid #cccccc;
 
     .product-card__color,
@@ -1246,6 +1261,8 @@
             opacity: 1;
             margin-top: 0;
         }
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
     outline: 1px solid #cccccc;
 
     .product-card__color,
@@ -1311,9 +1328,12 @@
 
     .product-card__link {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         @include g.flex($jc: center, $ai: center, $fd: null, $fw: null, $gap: null);
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
         @include g.flex($jc: center, $gap: null);
         position: relative;
         width: 100%;

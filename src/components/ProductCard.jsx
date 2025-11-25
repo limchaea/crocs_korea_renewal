@@ -38,6 +38,7 @@ const ProductCardSwiper = ({ images }) => {
                 {imgList.map((img, i) => (
                     <div className="swiper-slide" key={i}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <img
                             src={typeof img === 'string' ? img : img.src}
                             alt={`상품 이미지 ${i + 1}`}
@@ -62,6 +63,8 @@ const ProductCardSwiper = ({ images }) => {
 <<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
 =======
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                         <img
                             src={typeof img === 'string' ? img : img.src}
                             alt={`상품 이미지 ${i + 1}`}
@@ -92,6 +95,7 @@ const ProductName = ({ name }) => (
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // ---------- 가격 ----------
 const ProductPrice = ({ prices }) => {
     if (!prices || !Array.isArray(prices) || !prices[0]) return null;
@@ -121,6 +125,8 @@ const ProductPrice = ({ product }) => {
 <<<<<<< HEAD
 >>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
 =======
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 // ---------- 가격 ----------
 const ProductPrice = ({ prices }) => {
     if (!prices || !Array.isArray(prices) || !prices[0]) return null;
@@ -156,6 +162,7 @@ const ProductPrice = ({ prices }) => {
     const [originalPrice, discountPrice, discountRate] = prices;
     const hasDiscount = discountPrice != null;
 
+<<<<<<< HEAD
     return (
         <div className="product-card__price_wrap">
             {hasDiscount ? (
@@ -212,6 +219,8 @@ const ProductPrice = ({ prices }) => {
 <<<<<<< HEAD
 >>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
 
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 // ---------- 색상 ----------
 const normalizeColor = (c) => {
     if (!c) return null;
@@ -262,42 +271,36 @@ const ProductColorBadges = ({ colors = [], onColorClick }) => {
 // ---------- 사이즈 ----------
 const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
-    // ---------- 색상 ----------
-    const normalizeColor = (c) => {
-        if (!c) return null;
-        if (c.startsWith('rgb')) return c;
-        if (c.match(/^\d+\s*,/)) return `rgb(${c})`;
-        if (c.startsWith('#')) return c;
-        return null;
-    };
+    const [active, setActive] = useState(null);
 
-    const ProductColorBadges = ({ colors = [], onColorClick }) => {
-        const normalized = (Array.isArray(colors) ? colors : [colors])
-            .map(normalizeColor)
-            .filter(Boolean);
+    useEffect(() => {
+        if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
+            onFetchSize();
+        }
+    }, [crocsSizesByCategory, onFetchSize]);
 
-        // 컬러가 하나도 없으면 렌더링하지 않음
-        if (normalized.length === 0) return null;
+    // cate 안에 특정 단어가 포함되어 있는지 체크
+    let categoryId = null;
+    if (cate?.includes('여성')) categoryId = 'women';
+    else if (cate?.includes('남성')) categoryId = 'men';
+    else if (cate?.includes('키즈')) categoryId = 'kids';
 
-        return (
-            <div className="product-card__color">
-                <div className="product-card__color__title--wrap">
-                    <p>색상</p>
-                </div>
-                <div className="color-badge__wrap">
-                    {normalized.map((color, i) => (
-                        <button
-                            key={i}
-                            className="color-badge"
-                            style={{ background: color }}
-                            onClick={() => onColorClick?.(color)}
-                        />
-                    ))}
-                </div>
+    console.log('cate:', cate);
+    console.log('categoryId:', categoryId);
+
+    const sizes = crocsSizesByCategory[categoryId] || [];
+
+    return (
+        <div className="product-card__size">
+            <div className="product-card__size__title--wrap">
+                <p>사이즈</p>
             </div>
-        );
-    };
+            <ul className="product-card__size--btns__wrap">
+                {sizes.map((size) => {
+                    const soldOut = soldOutSizes.includes(size);
+                    const isActive = active === size;
 
+<<<<<<< HEAD
     // ---------- 사이즈 ----------
     const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
         const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
@@ -372,10 +375,18 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                                 className={`size--btns__button ${isActive ? 'active' : ''} ${
                                     soldOut ? 'sold-out' : ''
                                 }`}
+=======
+                    return (
+                        <li key={size} className="size--btns__item">
+                            <button
+                                className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
+                                    }`}
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                                 onClick={() => {
                                     if (!soldOut) {
                                         setActive(size);
                                         onSizeSelect?.(size);
+<<<<<<< HEAD
                                     }}
 =======
                         return (
@@ -416,12 +427,15 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
 <<<<<<< HEAD
 >>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
 =======
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                                     }
                                 }}
                                 disabled={soldOut}
                             >
                                 {size}
                             </button>
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
 =======
@@ -433,11 +447,14 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                                 {size}
                             </button>
 >>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                         </li>
                     );
                 })}
             </ul>
         </div>
+<<<<<<< HEAD
 =======
                     {size}
                 </button>
@@ -509,6 +526,12 @@ const WomenProductCard = ({ product }) => (
 =======
 // ---------- 상품 카드 ----------
 <<<<<<< HEAD
+=======
+    );
+};
+
+// ---------- 상품 카드 ----------
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 const ProductCard = ({ product, onClick, onSizeSelect }) => (
     <li className="product-card" onClick={onClick}>
         <ProductCardSwiper images={product.product_img || []} />
@@ -523,6 +546,7 @@ const ProductCard = ({ product, onClick, onSizeSelect }) => (
             soldOutSizes={product.soldOutSizes || []}
             onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
         />
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
 =======
@@ -577,5 +601,9 @@ const ProductCard = ({ product, onClick, onSizeSelect }) => (
             </li>
             );
 >>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
+=======
+    </li>
+);
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 
-            export default ProductCard;
+export default ProductCard;

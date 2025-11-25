@@ -69,7 +69,14 @@ const UserInfo = () => {
                                             <span>{item.price}</span>
                                             <span>{item.price}</span>
                                         </p>
+<<<<<<< HEAD
                                         <p className="price_bottom">{item.discountPercent}</p>
+=======
+                                        <p className="price_bottom">
+                                            {item.discountPercent}
+
+                                        </p>
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +104,13 @@ const UserInfo = () => {
                                             <span>{item.price}</span>
                                             <span>{item.price}</span>
                                         </p>
+<<<<<<< HEAD
                                         <p className="price_bottom">{item.discountPercent}</p>
+=======
+                                        <p className="price_bottom">
+                                            {item.discountPercent}
+                                        </p>
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                                     </div>
                                 </div>
                             </div>

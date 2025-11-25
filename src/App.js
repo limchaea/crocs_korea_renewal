@@ -60,7 +60,11 @@ import Store from './pages/Store';
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
 =======
 import Promotion from './pages/Promotion';
+<<<<<<< HEAD
 >>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
+=======
+import StoreLocator from './components/StoreLocator';
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 
 function App() {
     const { user, loading, checkSession, initAuthListener } = loginAuthStore();
@@ -86,6 +90,7 @@ function App() {
             <Routes>
                 <Route index element={<Main />} />
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <Route path="/store" element={<Store />} />
                 <Route path="/Brand" element={<Brand />} />
                 <Route path="/login" element={<Login />} />
@@ -97,6 +102,8 @@ function App() {
                 {/* <Route path="/men" element={<Men />} /> */}
                 {/* <Route path="/kids" element={<Kids />} /> */}
                 {/* <Route path="/jibbitz" element={<Jibbitz />} /> */}
+=======
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                 <Route path="/jibbitz" element={<JibbitzProductListPage />} />
                 <Route path="/collabs" element={<Collabs />} />
                 <Route path="/promotion" element={<Promotion />} />
@@ -113,7 +120,12 @@ function App() {
                 <Route path="/userinfo" element={<UserInfo />} />
                 <Route path="/nonmember" element={<Nonmember />} />
                 <Route path="/comaspopup" element={<ComeAsPopup />} />
+<<<<<<< HEAD
                 <Route path="/product/:id" element={<CrocsProductDetail />} />
+=======
+                <Route path="/product/:id" element={<JibbitzCollaboProductDetail />} />
+                <Route path="/wishlist" element={<WishList />} />
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
                 <Route path="/orderhistory" element={<OrderHistory />} />
                 <Route path="/wishlist" element={<WishList />} />
                 <Route path="/jibbitz" element={<JibbitzProductListPage />} />
@@ -124,7 +136,6 @@ function App() {
                 <Route path="/order" element={<Order />} />
 =======
                 <Route path="/jibbitz/:cate/:id" element={<JibbitzProductListPage />} />
-                <Route path="/product/:id" element={<JibbitzProductDetail />} />
                 <Route path="/jibbitz/:id" element={<JibbitzProductDetail />} />
                 <Route path="/wishlist" element={<WishList />} />
                 <Route path="/orderhistory" element={<OrderHistory />} />
@@ -135,7 +146,11 @@ function App() {
 =======
                 {/* <Route path="/cscenter" element={<CustomerService />} /> */}
                 <Route path="/product/:id" element={<CrocsProductDetail />} />
+<<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+=======
+                <Route path="/store" element={<StoreLocator />} />
+>>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
             </Routes>
             {/* <Footer /> */}
         </div>
