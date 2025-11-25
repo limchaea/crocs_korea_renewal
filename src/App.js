@@ -26,7 +26,7 @@ import JibbitzProductDetail from './pages/JibbitzProductDetail';
 import JibbitzProductListPage from './pages/JibbitzProductListPage';
 import ProductListPage from './pages/ProductListPage';
 // import CustomerService from './components/CustomerService';
-import ProductListPage from './pages/ProductListPage';
+
 import CrocsProductDetail from './pages/CrocsProductDetail';
 import Store from './pages/Store';
 
