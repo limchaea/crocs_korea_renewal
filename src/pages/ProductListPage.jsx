@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { useCrocsProductStore } from '../store/useCrocsProductStore';
 import LeftNavigation from '../components/LeftNavigation';
@@ -461,6 +462,8 @@ const ProductListPage = () => {
 
 // export default ProductListPage;
 
+=======
+>>>>>>> 5f19bce (2025-11-25(화) 채아 - v05)
 import React, { useEffect, useState } from 'react';
 import { useCrocsProductStore } from '../store/useCrocsProductStore';
 import LeftNavigation from '../components/LeftNavigation';
