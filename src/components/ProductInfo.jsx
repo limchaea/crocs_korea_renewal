@@ -58,8 +58,8 @@ const ProductInfo = () => {
                     </div>
                     <div className="product-info__color-badge-wrap" role="group" aria-label="색상 선택">
                         {colors.map((color) => (
-                            <button 
-                                key={color.id} 
+                            <button
+                                key={color.id}
                                 type="button"
                                 className={`color-badge color-badge--${color.name} ${selectedColor === color.name ? 'active' : ''}`}
                                 onClick={() => handleColorClick(color.name)}
@@ -80,7 +80,7 @@ const ProductInfo = () => {
                         <ul className="product-info_size-btns" role="group" aria-label="사이즈 선택">
                             {sizes.map((size) => (
                                 <li key={size}>
-                                    <button 
+                                    <button
                                         type="button"
                                         onClick={() => handleSizeClick(size)}
                                         className={selectedSize === size ? 'active' : ''}
@@ -96,7 +96,7 @@ const ProductInfo = () => {
                             <span>원하는 옵션이 없으신가요?</span>
                             <div>
                                 <button type="button" className="product-info_size-restock-btn">
-                                    <img 
+                                    <img
                                         src={`${process.env.PUBLIC_URL}/images/icon-bell.svg`}
                                         alt="재입고 알림 아이콘"
                                     />
@@ -129,16 +129,16 @@ const ProductInfo = () => {
                                         onClick={handleIncrease}
                                     >
                                         <span className="product-info-select__count-link product-info-select__count-link--disabled-1">
-                                            <img 
+                                            <img
                                                 src={`${process.env.PUBLIC_URL}/images/icon-arrow-up_bold-1.svg`}
-                                                alt="수량 증가 버튼" 
+                                                alt="수량 증가 버튼"
                                                 className="count-btn__icon-1"
                                             />
                                         </span>
                                         <span className="product-info-select__count-link product-info-select__count-link--disabled-2">
-                                            <img 
+                                            <img
                                                 src={`${process.env.PUBLIC_URL}/images/icon-arrow-up_bold-2.svg`}
-                                                alt="수량 증가 버튼 비활성화" 
+                                                alt="수량 증가 버튼 비활성화"
                                                 className="count-btn__icon-2"
                                             />
                                         </span>
@@ -150,16 +150,16 @@ const ProductInfo = () => {
                                         disabled={count <= 1}
                                     >
                                         <span className="product-info-select__count-link product-info-select__count-link--disabled-1">
-                                            <img 
+                                            <img
                                                 src={`${process.env.PUBLIC_URL}/images/icon-arrow-down_bold-1.svg`}
-                                                alt="수량 감소 버튼" 
+                                                alt="수량 감소 버튼"
                                                 className="count-btn__icon-1"
                                             />
                                         </span>
                                         <span className="product-info-select__count-link product-info-select__count-link--disabled-2">
-                                            <img 
+                                            <img
                                                 src={`${process.env.PUBLIC_URL}/images/icon-arrow-down_bold-2.svg`}
-                                                alt="수량 감소 버튼 비활성화" 
+                                                alt="수량 감소 버튼 비활성화"
                                                 className="count-btn__icon-2"
                                             />
                                         </span>

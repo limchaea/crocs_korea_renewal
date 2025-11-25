@@ -14,18 +14,51 @@ export const wishListStore = create((set, get) => ({
     // 위시리스트 저장 메서드
     onAddWishList: (product) => {
         console.log('선택상품 들어왔나?:', product);
+<<<<<<< HEAD
         const wish = get().wishLists;
         const existing = wish.find((item) => item.id === product.id);
         if (existing) {
             set({ popUp: { show: true, message: '이미 위시리스트에 담긴 상품입니다 💚' } });
             return false;
         }
+=======
+        // const wish = get().wishLists;
+
+        // const existing = wish.find((wish) => wish.id === product.id);
+        // let updateWish;
+        // if (existing) {
+        //     set({ popUp: { show: true, message: "이미 위시리스트에 담긴 상품입니다 💚" } });
+        //     return false;
+        // } else {
+        //     updateWish = [...wish, { ...product }];
+
+        //     console.log('선택상품 담겼나?:', wish);
+        // }
+
+        // set({ wishLists: updateWish });
+
+        // // set({ popUp: { show: true, message: '장바구니에 담겼습니다! 💚' } });
+        // console.log('wishLists에 담긴 것 확인:', get().wishLists);
+        // console.log('찜완💚되었으니 계속 개발을 하시어요');
+        // return true;
+        const wish = get().wishLists;
+        const existing = wish.find((item) => item.id === product.id);
+
+        if (existing) {
+            set({ popUp: { show: true, message: '이미 위시리스트에 담긴 상품입니다 💚' } });
+            return;
+        }
+
+>>>>>>> 669cad9 (2025-11-25(화) 초원 - feat: 상세페이지 지비츠 연결, 장바구니 팝업...)
         set({
             wishLists: [...wish, product],
             popUp: { show: true, message: '위시리스트에 추가되었습니다! 💚' },
         });
+<<<<<<< HEAD
         console.log('wishLists에 담긴 것 확인:', get().wishLists);
         return true;
+=======
+>>>>>>> 669cad9 (2025-11-25(화) 초원 - feat: 상세페이지 지비츠 연결, 장바구니 팝업...)
     },
 
     // 위시 추가 팝업창 끄기
@@ -109,6 +142,7 @@ export const wishListStore = create((set, get) => ({
         });
     },
 
+<<<<<<< HEAD
     // ✅ cartItems - 상품 상세에서 직접 장바구니 담기용
     cartItems: [],
 
@@ -116,11 +150,19 @@ export const wishListStore = create((set, get) => ({
     onProductAddCart: (product, count = 1) => {
         console.log('🛒 onProductAddCart 호출:', { product, count });
 
+=======
+    cartItems: [],
+
+    // //진짜 장바구니 버튼 클릭 시 장바구니 추가 메서드 (위시리스트랑 합쳐)
+
+    onProductAddCart: (product, count = 1) => {
+>>>>>>> 669cad9 (2025-11-25(화) 초원 - feat: 상세페이지 지비츠 연결, 장바구니 팝업...)
         const cartItems = get().cartItems;
         const existing = cartItems.find((item) => item.id === product.id);
 
         let updated;
         if (existing) {
+<<<<<<< HEAD
             // 이미 있으면 수량 증가
             updated = cartItems.map((item) =>
                 item.id === product.id ? { ...item, count: item.count + count } : item
@@ -134,15 +176,74 @@ export const wishListStore = create((set, get) => ({
 
         console.log('📦 업데이트된 cartItems:', updated);
 
+=======
+            updated = cartItems.map((item) =>
+                item.id === product.id ? { ...item, count: item.count + count } : item
+            );
+        } else {
+            updated = [...cartItems, { ...product, count }];
+        }
+
+>>>>>>> 669cad9 (2025-11-25(화) 초원 - feat: 상세페이지 지비츠 연결, 장바구니 팝업...)
         set({
             cartItems: updated,
             cartCount: updated.reduce((sum, item) => sum + item.count, 0),
             popUp: { show: true, message: '장바구니에 담겼습니다! 🛒' },
         });
+<<<<<<< HEAD
 
         return true;
     },
 
+=======
+    },
+
+    hidePopup: () => set({ popUp: { show: false, message: '' } }),
+
+    // addToCart: (product, count = 1) => {
+    //     const cartItems = get().cartItems;
+    //     const existing = cartItems.find((item) => item.id === product.id);
+
+    //     let updatedCart;
+    //     if (existing) {
+    //         updatedCart = cartItems.map((item) =>
+    //             item.id === product.id ? { ...item, count: item.count + count } : item
+    //         );
+    //     } else {
+    //         updatedCart = [...cartItems, { ...product, count }];
+    //     }
+
+    //     set({
+    //         cartItems: updatedCart,
+    //         cartCount: updatedCart.reduce((sum, item) => sum + item.count, 0),
+    //     });
+    //     set({ popUp: { show: true, message: '장바구니에 담겼습니다! 💚' } });
+
+    //     console.log('장바구니 상태:', get().cartItems);
+
+    //     // if (existing) {
+    //     //     // 이미 장바구니에 있는 경우 팝업만 띄우고 종료
+    //     //     set({ popUp: { show: true, message: '이미 장바구니에 담긴 상품입니다! 🛒' } });
+    //     //     return;
+    //     // }
+
+    //     // const updatedCart = [...cartItems, { ...product, count }];
+
+    //     // set({
+    //     //     cartItems: updatedCart,
+    //     //     cartCount: updatedCart.reduce((sum, item) => sum + (item.count || 1), 0),
+    //     //     popUp: { show: true, message: '장바구니에 추가되었습니다! 💚' },
+    //     // });
+
+    //     // console.log('장바구니 상태:', get().cartItems);
+    // },
+
+    // onProductAddCart: (product, count = 1) => {
+    //     console.log('상품 상세에서 장바구니:', product);
+    //     get().addToCart(product, count);
+    // },
+
+>>>>>>> 669cad9 (2025-11-25(화) 초원 - feat: 상세페이지 지비츠 연결, 장바구니 팝업...)
     // 장바구니 추가 버튼 메서드(위시리스트 목록에서 지우기 )
     // onAddCartBtn: () => {
     //     console.log('장바구니 추가 버튼');
