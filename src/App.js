@@ -4,7 +4,7 @@ import Main from './pages/Main';
 import Brand from './pages/Brand';
 import Login from './pages/Login';
 import Join from './pages/Join';
-// import Footer from './components/Footer';
+
 import Header from './components/Header';
 import CrocsClubPopup from './components/CrocsClubPopup';
 import UserInfo from './pages/UserInfo';
@@ -12,7 +12,6 @@ import Nonmember from './pages/Nonmember';
 import ComeAsPopup from './components/ComeAsPopup';
 import { useEffect } from 'react';
 import { loginAuthStore } from './store/loginStore';
-// import CustomerService from './components/CustomerService';
 import ProductListPage from './pages/ProductListPage';
 import CrocsProductDetail from './pages/CrocsProductDetail';
 import Store from './pages/Store';
@@ -49,7 +48,6 @@ function App() {
                 <Route path="/userinfo" element={<UserInfo />} />
                 <Route path="/nonmember" element={<Nonmember />} />
                 <Route path="/comaspopup" element={<ComeAsPopup />} />
-                {/* <Route path="/cscenter" element={<CustomerService />} /> */}
                 <Route path="/product/:id" element={<CrocsProductDetail />} />
             </Routes>
             {/* <Footer /> */}

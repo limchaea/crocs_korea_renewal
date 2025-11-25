@@ -39,7 +39,7 @@
 // export default UserInfoTop;
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { loginAuthStore } from '../store/loginStore';
 
 // const UserInfoTop = () => {
@@ -90,18 +90,20 @@ import { loginAuthStore } from '../store/loginStore';
 // };
 
 const UserInfoTop = () => {
-    const { user, setClubMember } = loginAuthStore();
+    const { user } = loginAuthStore();
+    const navigate = useNavigate();
 
     if (!user) return null; // ⭐ 중요! user 준비가 안 되면 렌더링 X
 
     const isClubMember = user.isClubMember === true;
 
     const handleJoin = () => {
-        setClubMember(user.uid, true);
+        navigate('/crocsclub');
     };
 
     return (
         <div className="user_info_top">
+            {/* 미가입자 영역 */}
             {!isClubMember && (
                 <div className="user_info_left_wrap">
                     <p className="user_info_text">
@@ -115,6 +117,7 @@ const UserInfoTop = () => {
                 </div>
             )}
 
+            {/* 가입자 영역 */}
             {isClubMember && (
                 <div className="user_info_left_wrap club_join_wrap">
                     <p>
@@ -129,6 +132,7 @@ const UserInfoTop = () => {
                 </div>
             )}
 
+            {/* 오른쪽 고정 영역 */}
             <div className="usr_info_right">
                 <strong>쿠폰</strong>
                 <p>쿠폰 개수</p>

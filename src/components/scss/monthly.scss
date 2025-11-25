@@ -154,46 +154,16 @@
         }
 
         .monthly_right {
-            // position: absolute;
-            // left: 50%;
-            // top: 0;
-            // width: 300rem;
-            // height: 100vh;
-            // background: #eee;
-            // padding-left: 20rem;
-            // transition: left 1s ease-in-out;
-            // transform: translateX(0);
-
-            // &.active {
-            //     left: 0;
-            //     transform: translateX(0);
-            // }
-
-            // position: absolute;
-            // top: 0;
-            // left: 50%;
-            // width: 300rem;
-            // height: 100vh;
-            // background: #eee;
-            // padding-left: 20rem;
-            // transition: transform 1s ease-in-out;
-            // transform: translateX(0);
-
             position: absolute;
             top: 0;
             left: 50%;
             width: 240rem;
-            // height: 100vh;
             background: #eee;
             padding-left: 20rem;
             transition: transform 1s ease-in-out;
             transform: translateX(0);
             z-index: 600;
 
-            // &.active {
-            //     left: 0;
-            //     transform: translateX(-50%);
-            // }
             &.active {
                 // left: 0;
                 transform: translateX(-50%);
@@ -217,6 +187,7 @@
                 }
 
                 .monthly_card {
+                    display: block;
                     position: relative;
 
                     .card_img {

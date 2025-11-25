@@ -1,5 +1,5 @@
-import React from 'react';
-import { collaboAuthStore } from '../store/authStore';
+import React, { useEffect } from 'react';
+import { collaboAuthStore } from '../store/collaboAuthStore';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { EffectCoverflow, Navigation, Scrollbar } from 'swiper/modules';
@@ -9,7 +9,13 @@ import './scss/jibbitzcollaboswiper.scss';
 import Title from './Title';
 
 const JibbitzCollaboSwiper = () => {
-    const { disneyItems } = collaboAuthStore();
+    const { disneyItems, onFetchJibbitz } = collaboAuthStore();
+
+    // 상품 불러오기
+    useEffect(() => {
+        onFetchJibbitz();
+    }, []);
+
     return (
         <section className="jibbitz_wrap">
             <div className="inner">
@@ -37,9 +43,9 @@ const JibbitzCollaboSwiper = () => {
                     >
                         {disneyItems.map((item) => (
                             <SwiperSlide>
-                                <Link>
-                                    <JibbitzProductCard sendItem={item} />
-                                </Link>
+                                {/* <Link> */}
+                                <JibbitzProductCard sendItem={item} />
+                                {/* </Link> */}
                             </SwiperSlide>
                         ))}
                     </Swiper>

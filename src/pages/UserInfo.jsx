@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Title from '../components/Title';
 import UserInfoTop from '../components/UserInfoTop';
 import './scss/userinfo.scss';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import WishListCard from '../components/WishListCard';
 import { wishListStore } from '../store/wishListStore';
 import OrderHistoryCard from '../components/OrderHistoryCard';

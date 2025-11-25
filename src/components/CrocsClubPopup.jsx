@@ -34,7 +34,9 @@ const CrocsClubPopup = () => {
                         </div>
                     </div>
                     <p>
-                        <Link to="/userinfo">Crocs Club Join</Link>
+                        <Link to="/userinfo" className="club_join_btn">
+                            Crocs Club Join
+                        </Link>
                     </p>
                 </div>
             </div>

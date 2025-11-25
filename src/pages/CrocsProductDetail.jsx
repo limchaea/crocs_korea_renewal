@@ -5,13 +5,13 @@ import { wishListStore } from '../store/wishListStore';
 import Title from '../components/Title';
 import WishAddPopup from '../components/WishAddPopup';
 import { useCrocsSizeStore } from '../store/useCrocsSizeStore';
+import { Products } from '../data/CrocsProductsData';
 
 const CrocsProductDetail = () => {
     const { id } = useParams();
     const { crocsItems, onFetchItems } = useCrocsProductStore();
     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
     const { onAddWishList } = wishListStore();
-
     const [CrocsProduct, setCrocsProduct] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
 
@@ -91,7 +91,7 @@ const CrocsProductDetail = () => {
                         </div>
                         <button onClick={() => onAddWishList(CrocsProduct)}>위시버튼💚</button>
                         <WishAddPopup />
-                    </div>{' '}
+                    </div>
                     {/* detail-info 닫는 태그 */}
                 </div>
             </div>
