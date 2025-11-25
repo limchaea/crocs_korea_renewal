@@ -23,6 +23,7 @@ import Nonmember from './pages/Nonmember';
 import ComeAsPopup from './components/ComeAsPopup';
 import { useEffect } from 'react';
 import { loginAuthStore } from './store/loginStore';
+<<<<<<< HEAD
 import ProductListPage from './pages/ProductListPage';
 import CrocsProductDetail from './pages/CrocsProductDetail';
 import Store from './pages/Store';
@@ -34,6 +35,9 @@ import Cart from './pages/Cart';
 <<<<<<< HEAD
 import Order from './components/Order/Order';
 =======
+=======
+import JibbitzCollaboProductDetail from './pages/JibbitzCollaboProductDetail';
+>>>>>>> 93debeb (2025-11-25(화) 초원 - v03)
 // import Order from './components/Order/Order';
 import WishList from './pages/WishList';
 import OrderHistory from './pages/OrderHistory';
