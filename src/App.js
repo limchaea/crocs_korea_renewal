@@ -18,6 +18,7 @@ import Store from './pages/Store';
 import WishList from './pages/WishList';
 import JibbitzProductDetail from './pages/JibbitzProductDetail';
 import JibbitzProductListPage from './pages/JibbitzProductListPage';
+import JibbitzCollaboProductDetail from './pages/JibbitzCollaboProductDetail';
 import Cart from './pages/Cart';
 import Order from './components/Order/Order';
 
@@ -58,6 +59,7 @@ function App() {
                 <Route path="/wishlist" element={<WishList />} />
                 <Route path="/jibbitz" element={<JibbitzProductListPage />} />
                 <Route path="/jibbitz/:id" element={<JibbitzProductDetail />} />
+                <Route path="/collabo/:id" element={<JibbitzCollaboProductDetail />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/order" element={<Order />} />
             </Routes>
