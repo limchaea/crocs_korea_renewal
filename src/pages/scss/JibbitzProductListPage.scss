@@ -1,7 +1,11 @@
 @use '../../App.scss' as g;
 
 .product_list_wrap {
+<<<<<<< HEAD
     @include g.flex($ai: unset, $jc: unset);
+=======
+    @include g.flex($ai: unset);
+>>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
     .list_left {
         .left_nav_wrap {
             color: g.$subColor;
@@ -16,7 +20,10 @@
             border-radius: 1rem;
             background-color: #fafafd;
             .filter-menu__wrap {
+<<<<<<< HEAD
                 gap: 2rem;
+=======
+>>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
             }
             .filter_list_menu {
                 width: 100%;
@@ -68,8 +75,13 @@
                     }
                 }
             }
+<<<<<<< HEAD
             // .pager {
             // }
+=======
+            .pager {
+            }
+>>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
         }
     }
 }
