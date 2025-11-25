@@ -3,6 +3,7 @@ import { jibbitzs } from '../data/jibbitzs';
 
 export const collaboAuthStore = create((set, get) => ({
     jibbitzItems: [],
+<<<<<<< HEAD
     selectFilterLists: [],
 
     onFetchJibbitz: async () => {
@@ -22,6 +23,8 @@ export const collaboAuthStore = create((set, get) => ({
 
     disneyItems: jibbitzs.filter(
     jibbitzItems: [],
+=======
+>>>>>>> f7a4375 (2025-11-25(화) 초원 - v01)
     selectFilterLists: [],
 
     onFetchJibbitz: async () => {
