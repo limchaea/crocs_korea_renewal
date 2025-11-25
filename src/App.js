@@ -28,7 +28,7 @@ import ProductListPage from './pages/ProductListPage';
 // import CustomerService from './components/CustomerService';
 
 import CrocsProductDetail from './pages/CrocsProductDetail';
-import Store from './pages/Store';
+import Promotion from './pages/Promotion';
 
 function App() {
     const { user, loading, checkSession, initAuthListener } = loginAuthStore();
@@ -61,7 +61,7 @@ function App() {
                 <Route path="/jibbitz" element={<JibbitzProductListPage />} />
                 <Route path="/collabs" element={<Collabs />} />
                 <Route path="/promotion" element={<Promotion />} />
-                <Route path="/store" element={<Store />} />
+                {/* <Route path="/store" element={<Store />} /> */}
                 <Route path="/Brand" element={<Brand />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />

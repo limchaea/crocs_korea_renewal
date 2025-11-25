@@ -15,8 +15,8 @@ const ProductCardSwiper = ({ images }) => {
     const imgList = Array.isArray(images)
         ? images
         : images
-        ? [images] // 문자열 또는 객체라도 배열로 변환됨
-        : [];
+            ? [images] // 문자열 또는 객체라도 배열로 변환됨
+            : [];
 
     useEffect(() => {
         if (!imgList.length) return;
@@ -89,37 +89,6 @@ const ProductName = ({ name }) => (
 //         </div>
 //     </div>
 // );
-const ProductPrice = ({ product }) => {
-    if (!product) return null; // product 없으면 렌더 안 함
-
-    const discounted = product.discountedPrice ?? product.price ?? 0;
-
-    return <div className="product_price">{discounted.toLocaleString()}원</div>;
-};
-// ---------- 가격 ----------
-const ProductPrice = ({ prices }) => {
-    if (!prices || !Array.isArray(prices) || !prices[0]) return null;
-    const [originalPrice, discountPrice, discountRate] = prices;
-    const hasDiscount = discountPrice != null;
-
-    return (
-        <div className="product-card__price_wrap">
-            {hasDiscount ? (
-                <>
-                    <div className="discount-price">
-                        {discountPrice}
-                        {discountRate && ` (${discountRate} 할인)`}
-                    </div>
-                    <div className="original-price" style={{ textDecoration: 'line-through' }}>
-                        {originalPrice}
-                    </div>
-                </>
-            ) : (
-                <div className="original-price">{originalPrice}</div>
-            )}
-        </div>
-    );
-};
 // ---------- 가격 ----------
 const ProductPrice = ({ prices }) => {
     if (!prices || !Array.isArray(prices) || !prices[0]) return null;
@@ -203,109 +172,107 @@ const ProductColorBadges = ({ colors = [], onColorClick }) => {
 // ---------- 사이즈 ----------
 const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
-// ---------- 색상 ----------
-const normalizeColor = (c) => {
-    if (!c) return null;
-    if (c.startsWith('rgb')) return c;
-    if (c.match(/^\d+\s*,/)) return `rgb(${c})`;
-    if (c.startsWith('#')) return c;
-    return null;
-};
+    // ---------- 색상 ----------
+    const normalizeColor = (c) => {
+        if (!c) return null;
+        if (c.startsWith('rgb')) return c;
+        if (c.match(/^\d+\s*,/)) return `rgb(${c})`;
+        if (c.startsWith('#')) return c;
+        return null;
+    };
 
-const ProductColorBadges = ({ colors = [], onColorClick }) => {
-    const normalized = (Array.isArray(colors) ? colors : [colors])
-        .map(normalizeColor)
-        .filter(Boolean);
+    const ProductColorBadges = ({ colors = [], onColorClick }) => {
+        const normalized = (Array.isArray(colors) ? colors : [colors])
+            .map(normalizeColor)
+            .filter(Boolean);
 
-    // 컬러가 하나도 없으면 렌더링하지 않음
-    if (normalized.length === 0) return null;
+        // 컬러가 하나도 없으면 렌더링하지 않음
+        if (normalized.length === 0) return null;
 
-    return (
-        <div className="product-card__color">
-            <div className="product-card__color__title--wrap">
-                <p>색상</p>
+        return (
+            <div className="product-card__color">
+                <div className="product-card__color__title--wrap">
+                    <p>색상</p>
+                </div>
+                <div className="color-badge__wrap">
+                    {normalized.map((color, i) => (
+                        <button
+                            key={i}
+                            className="color-badge"
+                            style={{ background: color }}
+                            onClick={() => onColorClick?.(color)}
+                        />
+                    ))}
+                </div>
             </div>
-            <div className="color-badge__wrap">
-                {normalized.map((color, i) => (
-                    <button
-                        key={i}
-                        className="color-badge"
-                        style={{ background: color }}
-                        onClick={() => onColorClick?.(color)}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-};
+        );
+    };
 
-// ---------- 사이즈 ----------
-const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
-    const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
-    const [active, setActive] = useState(null);
+    // ---------- 사이즈 ----------
+    const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
+        const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
+        const [active, setActive] = useState(null);
 
-    useEffect(() => {
-        if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
-            onFetchSize();
-        }
-    }, [crocsSizesByCategory, onFetchSize]);
+        useEffect(() => {
+            if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
+                onFetchSize();
+            }
+        }, [crocsSizesByCategory, onFetchSize]);
 
-    // cate 안에 특정 단어가 포함되어 있는지 체크
-    let categoryId = null;
-    if (cate?.includes('여성')) categoryId = 'women';
-    else if (cate?.includes('남성')) categoryId = 'men';
-    else if (cate?.includes('키즈')) categoryId = 'kids';
+        // cate 안에 특정 단어가 포함되어 있는지 체크
+        let categoryId = null;
+        if (cate?.includes('여성')) categoryId = 'women';
+        else if (cate?.includes('남성')) categoryId = 'men';
+        else if (cate?.includes('키즈')) categoryId = 'kids';
 
-    console.log('cate:', cate);
-    console.log('categoryId:', categoryId);
+        console.log('cate:', cate);
+        console.log('categoryId:', categoryId);
 
-    const sizes = crocsSizesByCategory[categoryId] || [];
+        const sizes = crocsSizesByCategory[categoryId] || [];
 
-    return (
-        <div className="product-card__size">
-            <div className="product-card__size__title--wrap">
-                <p>사이즈</p>
-            </div>
-            <ul className="product-card__size--btns__wrap">
-                {sizes.map((size) => {
-                    const soldOut = soldOutSizes.includes(size);
-                    const isActive = active === size;
+        return (
+            <div className="product-card__size">
+                <div className="product-card__size__title--wrap">
+                    <p>사이즈</p>
+                </div>
+                <ul className="product-card__size--btns__wrap">
+                    {sizes.map((size) => {
+                        const soldOut = soldOutSizes.includes(size);
+                        const isActive = active === size;
 
-                    return (
-                        <li key={size} className="size--btns__item">
-                            {soldOut ? (
-                                <span className="size--btns__link sold-out">
-                                    <span className="size--btns__button">{size}</span>
-                                    <span className="sold-out-line" />
-                                </span>
-                            ) : (
-                                <a
-                                    href="#"
-                                    className={`size--btns__link btn-menu-style ${
-                                        isActive ? 'active' : ''
-                                    }`}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                            <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${
-                                    soldOut ? 'sold-out' : ''
-                                }`}
-                                onClick={() => {
-                                    if (!soldOut) {
-                            <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${
-                                    soldOut ? 'sold-out' : ''
-                                }`}
-                                onClick={() => {
-                                    if (!soldOut) {
-                                        setActive(size);
-                                        onSizeSelect?.(size);
-                                    }}
+                        return (
+                            <li key={size} className="size--btns__item">
+                                {soldOut ? (
+                                    <span className="size--btns__link sold-out">
+                                        <span className="size--btns__button">{size}</span>
+                                        <span className="sold-out-line" />
+                                    </span>
+                                ) : (
+                                    <a
+                                        href="#"
+                                        className={`size--btns__link btn-menu-style ${isActive ? 'active' : ''
+                                            }`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            <button
+                                                className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
+                                                    }`}
+                                                onClick={() => {
+                                                    if (!soldOut) {
+                                                        <button
+                                                            className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
+                                                                }`}
+                                                            onClick={() => {
+                                                                if (!soldOut) {
+                                                                    setActive(size);
+                                                                    onSizeSelect?.(size);
+                                                                }
+                                                            }
                                 >
-                                    <button className="size--btns__button btn-menu__button">
-                                        {size}
-                                    </button>
-                                </a>
+                                                            <button className="size--btns__button btn-menu__button">
+                                                                {size}
+                                                            </button>
+                                                        </a>
                             )}
                                     }
                                 }}
@@ -315,15 +282,16 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                             </button>
                                     }
                                 }}
-                                disabled={soldOut}
+                    disabled={soldOut}
                             >
-                                {size}
-                            </button>
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
+                    {size}
+                </button>
+            </li>
+        );
+    })
+}
+            </ul >
+        </div >
     );
 };
 
@@ -364,36 +332,36 @@ const WomenProductCard = ({ product }) => (
             />
         </div>
 // ---------- 상품 카드 ----------
-const ProductCard = ({ product, onClick, onSizeSelect }) => (
-    <li className="product-card" onClick={onClick}>
-        <ProductCardSwiper images={product.product_img || []} />
-        <ProductName name={product.product} />
-        <ProductPrice prices={product.prices} />
-        <ProductColorBadges
-            colors={product.color || []}
-            onColorClick={(c) => console.log('색상 선택:', c)}
-        />
-        <ProductSizeButtons
-            cate={product.cate} // 여기서 cate 값을 전달
-            soldOutSizes={product.soldOutSizes || []}
-            onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
-        />
+        const ProductCard = ({product, onClick, onSizeSelect}) => (
+        <li className="product-card" onClick={onClick}>
+            <ProductCardSwiper images={product.product_img || []} />
+            <ProductName name={product.product} />
+            <ProductPrice prices={product.prices} />
+            <ProductColorBadges
+                colors={product.color || []}
+                onColorClick={(c) => console.log('색상 선택:', c)}
+            />
+            <ProductSizeButtons
+                cate={product.cate} // 여기서 cate 값을 전달
+                soldOutSizes={product.soldOutSizes || []}
+                onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
+            />
 // ---------- 상품 카드 ----------
-const ProductCard = ({ product, onClick, onSizeSelect }) => (
-    <li className="product-card" onClick={onClick}>
-        <ProductCardSwiper images={product.product_img || []} />
-        <ProductName name={product.product} />
-        <ProductPrice prices={product.prices} />
-        <ProductColorBadges
-            colors={product.color || []}
-            onColorClick={(c) => console.log('색상 선택:', c)}
-        />
-        <ProductSizeButtons
-            cate={product.cate} // 여기서 cate 값을 전달
-            soldOutSizes={product.soldOutSizes || []}
-            onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
-        />
-    </li>
-);
+            const ProductCard = ({product, onClick, onSizeSelect}) => (
+            <li className="product-card" onClick={onClick}>
+                <ProductCardSwiper images={product.product_img || []} />
+                <ProductName name={product.product} />
+                <ProductPrice prices={product.prices} />
+                <ProductColorBadges
+                    colors={product.color || []}
+                    onColorClick={(c) => console.log('색상 선택:', c)}
+                />
+                <ProductSizeButtons
+                    cate={product.cate} // 여기서 cate 값을 전달
+                    soldOutSizes={product.soldOutSizes || []}
+                    onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
+                />
+            </li>
+            );
 
-export default ProductCard;
+            export default ProductCard;
