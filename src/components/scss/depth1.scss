@@ -90,14 +90,14 @@
 
                     li {
                         a {
-                            @include g.flex($fd: column, $gap: 0.5rem);
+                            @include g.flex($jc: center, $fd: column, $gap: 1.6rem);
                             background: #eee;
                             width: 28rem;
                             height: 16rem;
                             border-radius: 1rem;
 
                             img {
-                                height: 12rem;
+                                height: 8rem;
                             }
                             span {
                                 height: 2.8rem;
