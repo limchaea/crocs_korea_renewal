@@ -53,7 +53,7 @@ import ProductListPage from './pages/ProductListPage';
 >>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
 =======
 // import CustomerService from './components/CustomerService';
-import ProductListPage from './pages/ProductListPage';
+
 import CrocsProductDetail from './pages/CrocsProductDetail';
 import Store from './pages/Store';
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)

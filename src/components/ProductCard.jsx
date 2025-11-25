@@ -59,7 +59,15 @@ const ProductCardSwiper = ({ images }) => {
                             alt={`상품 이미지 ${i + 1}`}
                             className="product-card__img"
                         />
+<<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+=======
+                        <img
+                            src={typeof img === 'string' ? img : img.src}
+                            alt={`상품 이미지 ${i + 1}`}
+                            className="product-card__img"
+                        />
+>>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
                     </div>
                 ))}
             </div>
@@ -136,7 +144,34 @@ const ProductPrice = ({ prices }) => {
         </div>
     );
 };
+<<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+=======
+// ---------- 가격 ----------
+const ProductPrice = ({ prices }) => {
+    if (!prices || !Array.isArray(prices) || !prices[0]) return null;
+    const [originalPrice, discountPrice, discountRate] = prices;
+    const hasDiscount = discountPrice != null;
+
+    return (
+        <div className="product-card__price_wrap">
+            {hasDiscount ? (
+                <>
+                    <div className="discount-price">
+                        {discountPrice}
+                        {discountRate && ` (${discountRate} 할인)`}
+                    </div>
+                    <div className="original-price" style={{ textDecoration: 'line-through' }}>
+                        {originalPrice}
+                    </div>
+                </>
+            ) : (
+                <div className="original-price">{originalPrice}</div>
+            )}
+        </div>
+    );
+};
+>>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
 
     return (
         <div className="product-card__price_wrap">
@@ -194,6 +229,45 @@ const normalizeColor = (c) => {
 };
 
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+const ProductColorBadges = ({ colors = [], onColorClick }) => {
+    const normalized = (Array.isArray(colors) ? colors : [colors])
+        .map(normalizeColor)
+        .filter(Boolean);
+
+    // 컬러가 하나도 없으면 렌더링하지 않음
+    if (normalized.length === 0) return null;
+
+    return (
+        <div className="product-card__color">
+            <div className="product-card__color__title--wrap">
+                <p>색상</p>
+            </div>
+            <div className="color-badge__wrap">
+                {normalized.map((color, i) => (
+                    <button
+                        key={i}
+                        className="color-badge"
+                        style={{ background: color }}
+                        onClick={() => onColorClick?.(color)}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+// ---------- 사이즈 ----------
+const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
+    const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
+// ---------- 색상 ----------
+const normalizeColor = (c) => {
+    if (!c) return null;
+    if (c.startsWith('rgb')) return c;
+    if (c.match(/^\d+\s*,/)) return `rgb(${c})`;
+    if (c.startsWith('#')) return c;
+    return null;
+};
+
 const ProductColorBadges = ({ colors = [], onColorClick }) => {
     const normalized = (Array.isArray(colors) ? colors : [colors])
         .map(normalizeColor)
@@ -290,6 +364,12 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                                 }`}
                                 onClick={() => {
                                     if (!soldOut) {
+                            <button
+                                className={`size--btns__button ${isActive ? 'active' : ''} ${
+                                    soldOut ? 'sold-out' : ''
+                                }`}
+                                onClick={() => {
+                                    if (!soldOut) {
                                         setActive(size);
                                         onSizeSelect?.(size);
                                     }}
@@ -308,7 +388,16 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                             >
                                 {size}
                             </button>
+<<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+=======
+                                    }
+                                }}
+                                disabled={soldOut}
+                            >
+                                {size}
+                            </button>
+>>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
                         </li>
                     );
                 })}
@@ -388,7 +477,25 @@ const ProductCard = ({ product, onClick, onSizeSelect }) => (
             soldOutSizes={product.soldOutSizes || []}
             onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
         />
+<<<<<<< HEAD
 >>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
+=======
+// ---------- 상품 카드 ----------
+const ProductCard = ({ product, onClick, onSizeSelect }) => (
+    <li className="product-card" onClick={onClick}>
+        <ProductCardSwiper images={product.product_img || []} />
+        <ProductName name={product.product} />
+        <ProductPrice prices={product.prices} />
+        <ProductColorBadges
+            colors={product.color || []}
+            onColorClick={(c) => console.log('색상 선택:', c)}
+        />
+        <ProductSizeButtons
+            cate={product.cate} // 여기서 cate 값을 전달
+            soldOutSizes={product.soldOutSizes || []}
+            onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
+        />
+>>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
     </li>
 );
 
