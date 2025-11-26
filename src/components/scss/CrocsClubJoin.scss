@@ -42,7 +42,15 @@
         border: none;
         font-weight: bold;
         font-size: 1.6rem;
-        background: g.$mainColor;
+        background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+        &:hover {
+            transform: translateY(-2px);
+            // box-shadow: 0 6px 20px rgba(102, 222, 27, 0.4);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
     }
 
     a {
@@ -93,6 +101,85 @@
     position: relative;
     text-align: center;
     animation: slideUp 0.3s ease-out;
+
+    /* 닫기 버튼 */
+    .popup_close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #666;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s;
+        &:hover {
+            color: #000;
+        }
+    }
+
+    /* 팝업 제목 */
+    h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #333;
+        font-weight: 700;
+    }
+
+    /* 팝업 내용 */
+    p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    /* 버튼 그룹 */
+    .popup_buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    /* 로그인 버튼 */
+    .login_btn {
+        flex: 1;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        &:hover {
+            background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
+        }
+    }
+
+    /* 취소 버튼 */
+    .cancel_btn {
+        flex: 1;
+        padding: 14px 24px;
+        background-color: #f0f0f0;
+        color: #333;
+        border: none;
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #e0e0e0;
+        }
+    }
 }
 
 @keyframes slideUp {
@@ -104,88 +191,6 @@
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-/* 닫기 버튼 */
-.login_popup .popup_close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #666;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s;
-}
-
-.login_popup .popup_close:hover {
-    color: #000;
-}
-
-/* 팝업 제목 */
-.login_popup h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
-    font-weight: 700;
-}
-
-/* 팝업 내용 */
-.login_popup p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 30px;
-    line-height: 1.6;
-}
-
-/* 버튼 그룹 */
-.login_popup .popup_buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-/* 로그인 버튼 */
-.login_popup .login_btn {
-    flex: 1;
-    padding: 14px 24px;
-    background-color: #000;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.login_popup .login_btn:hover {
-    background-color: #333;
-}
-
-/* 취소 버튼 */
-.login_popup .cancel_btn {
-    flex: 1;
-    padding: 14px 24px;
-    background-color: #f0f0f0;
-    color: #333;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.login_popup .cancel_btn:hover {
-    background-color: #e0e0e0;
 }
 
 /* 반응형 */

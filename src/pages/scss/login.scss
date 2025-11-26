@@ -56,10 +56,19 @@
         .login_btn {
             background: g.$subColor;
             color: #fff;
+
+            &:hover {
+                transform: translateY(-2px);
+                // box-shadow: 0 6px 20px rgba(102, 222, 27, 0.4);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
         }
 
         .join_btn {
-            background: g.$mainColor;
+            background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
         }
 
         .join_link {
@@ -70,8 +79,17 @@
             border: none;
             font-weight: bold;
             font-size: 1.6rem;
-            background: g.$mainColor;
+            background: linear-gradient(135deg, g.$mainColor 0%, #b0d96e 100%);
             line-height: 4rem;
+
+            &:hover {
+                transform: translateY(-2px);
+                // box-shadow: 0 6px 20px rgba(102, 222, 27, 0.4);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
         }
 
         .sns_login_wrap {
