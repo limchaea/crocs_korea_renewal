@@ -19,6 +19,7 @@ import WishList from './pages/WishList';
 import JibbitzProductDetail from './pages/JibbitzProductDetail';
 import JibbitzProductListPage from './pages/JibbitzProductListPage';
 import Cart from './pages/Cart';
+import Order from './components/Order/Order';
 
 function App() {
     const { user, loading, checkSession, initAuthListener } = loginAuthStore();
@@ -58,6 +59,7 @@ function App() {
                 <Route path="/jibbitz" element={<JibbitzProductListPage />} />
                 <Route path="/jibbitz/:id" element={<JibbitzProductDetail />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/order" element={<Order />} />
             </Routes>
             {/* <Footer /> */}
         </div>
