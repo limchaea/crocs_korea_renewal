@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React, { useCallback, useEffect, useState } from 'react';
-=======
-import React, { useEffect, useState } from 'react';
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
-import React, { useEffect, useState } from 'react';
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
 import { useParams } from 'react-router-dom';
 import { useCrocsProductStore } from '../store/useCrocsProductStore';
 import { wishListStore } from '../store/wishListStore';
@@ -18,8 +10,6 @@ const CrocsProductDetail = () => {
     const { id } = useParams();
     const { crocsItems, onFetchItems } = useCrocsProductStore();
     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
-<<<<<<< HEAD
-<<<<<<< HEAD
     const { onAddWishList, onProductAddCart } = wishListStore();
 
     const [CrocsProduct, setCrocsProduct] = useState(null);
@@ -119,17 +109,6 @@ const CrocsProductDetail = () => {
         { key: 'green', label: '그린' },
         { key: 'blue', label: '블루' },
     ];
-=======
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-    const { onAddWishList } = wishListStore();
-
-    const [CrocsProduct, setCrocsProduct] = useState(null);
-    const [selectedSize, setSelectedSize] = useState(null);
-<<<<<<< HEAD
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
 
     useEffect(() => {
         onFetchItems();
@@ -171,17 +150,15 @@ const CrocsProductDetail = () => {
     const images = Array.isArray(CrocsProduct.product_img)
         ? CrocsProduct.product_img
         : String(CrocsProduct.product_img)
-              .split(',')
-              .map((v) => v.trim())
-              .filter(Boolean);
+            .split(',')
+            .map((v) => v.trim())
+            .filter(Boolean);
 
     return (
         <div className="sub_page">
             <div className="inner">
                 <Title title="ProductDetail" />
                 <div className="product-detail-wrap">
-<<<<<<< HEAD
-<<<<<<< HEAD
                     {/* 이미지 + 썸네일 + 크럼브 영역 */}
                     <div className="product-img">
                         <div className="product-img__crumbs-wrap">
@@ -282,9 +259,9 @@ const CrocsProductDetail = () => {
                                                 style={
                                                     selectedImageIdx === idx
                                                         ? {
-                                                              filter: 'brightness(1.05)',
-                                                              transform: 'scale(1.05)',
-                                                          }
+                                                            filter: 'brightness(1.05)',
+                                                            transform: 'scale(1.05)',
+                                                        }
                                                         : undefined
                                                 }
                                             />
@@ -389,9 +366,8 @@ const CrocsProductDetail = () => {
                                         <button
                                             key={c.key}
                                             type="button"
-                                            className={`color-badge color-badge--${c.key} ${
-                                                selectedColor === c.key ? 'active' : ''
-                                            }`}
+                                            className={`color-badge color-badge--${c.key} ${selectedColor === c.key ? 'active' : ''
+                                                }`}
                                             aria-label={`${c.label} 선택`}
                                             aria-pressed={selectedColor === c.key}
                                             onClick={() => handleColorSelect(c.key)}
@@ -493,24 +469,6 @@ const CrocsProductDetail = () => {
                         </p>
                     )} */}
                     {/* 🔥 사이즈 선택 
-=======
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-                    <div className="img_box">
-                        <img src={images[0]} alt={CrocsProduct.product} />
-                    </div>
-                    <div className="detail-info">
-                        {/* 🔥 제품명 */}
-                        <h2 className="detail-title">{CrocsProduct.product}</h2>
-
-                        {/* 🔥 가격 */}
-                        <p className="detail-price">₩{CrocsProduct.prices?.[0] || '가격 없음'}</p>
-
-                        {/* 🔥 사이즈 선택 */}
-<<<<<<< HEAD
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                         <div className="detail-sizes">
                             <h3>사이즈</h3>
                             <div className="size-buttons">
@@ -526,8 +484,6 @@ const CrocsProductDetail = () => {
                             </div>
                         </div>
                         <button onClick={() => onAddWishList(CrocsProduct)}>위시버튼💚</button>
-<<<<<<< HEAD
-<<<<<<< HEAD
                         <button
                             className="product-btn-cart"
                             onClick={() => onProductAddCart(CrocsProduct)}
@@ -536,14 +492,6 @@ const CrocsProductDetail = () => {
                         </button>
                         <WishAddPopup />
                     </div> */}{' '}
-=======
-                        <WishAddPopup />
-                    </div>{' '}
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
-                        <WishAddPopup />
-                    </div>{' '}
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                     {/* detail-info 닫는 태그 */}
                 </div>
             </div>

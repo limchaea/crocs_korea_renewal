@@ -37,46 +37,11 @@ const ProductCardSwiper = ({ images }) => {
             <div className="swiper-wrapper">
                 {imgList.map((img, i) => (
                     <div className="swiper-slide" key={i}>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                         <img
                             src={typeof img === 'string' ? img : img.src}
                             alt={`상품 이미지 ${i + 1}`}
                             className="product-card__img"
                         />
-<<<<<<< HEAD
-=======
-                        <a href="#" className="product-card__link">
-                            <img
-                                src={img.src}
-                                alt={img.alt || `상품 이미지 ${i + 1}`}
-                                className="product-card__img"
-                            />
-                        </a>
-<<<<<<< HEAD
->>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
-=======
-                        <img
-                            src={typeof img === 'string' ? img : img.src}
-                            alt={`상품 이미지 ${i + 1}`}
-                            className="product-card__img"
-                        />
-<<<<<<< HEAD
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
-=======
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
-                        <img
-                            src={typeof img === 'string' ? img : img.src}
-                            alt={`상품 이미지 ${i + 1}`}
-                            className="product-card__img"
-                        />
->>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                     </div>
                 ))}
             </div>
@@ -100,52 +65,12 @@ const ProductName = ({ name }) => (
     </div>
 );
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-// ---------- 가격 ----------
-const ProductPrice = ({ prices }) => {
-    if (!prices || !Array.isArray(prices) || !prices[0]) return null;
-    const [originalPrice, discountPrice, discountRate] = prices;
-    const hasDiscount = discountPrice != null;
-<<<<<<< HEAD
-=======
-// 가격
-// const ProductPrice = ({ price: { discountedPrice, discountRate, originalPrice } }) => (
-//     <div className="product-card__price_wrap">
-//         <div className="product-card__price">
-//             <span className="product-card__price_dc_rate">{discountedPrice.toLocaleString()}</span>
-//             <span className="product-card__price_breadcrumbs__line" />
-//             <span className="product-card__price_slel">{discountRate}%</span>
-//             <span className="product-card__price_breadcrumbs__line" />
-//             <span className="product-card__price_cost">{originalPrice.toLocaleString()}</span>
-//         </div>
-//     </div>
-// );
-<<<<<<< HEAD
-const ProductPrice = ({ product }) => {
-    if (!product) return null; // product 없으면 렌더 안 함
-
-    const discounted = product.discountedPrice ?? product.price ?? 0;
-
-    return <div className="product_price">{discounted.toLocaleString()}원</div>;
-};
-<<<<<<< HEAD
->>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
-=======
-=======
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 // ---------- 가격 ----------
 const ProductPrice = ({ prices }) => {
     if (!prices || !Array.isArray(prices) || !prices[0]) return null;
     const [originalPrice, discountPrice, discountRate] = prices;
     const hasDiscount = discountPrice != null;
 
-=======
-
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
     return (
         <div className="product-card__price_wrap">
             {hasDiscount ? (
@@ -164,80 +89,7 @@ const ProductPrice = ({ prices }) => {
         </div>
     );
 };
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
-=======
->>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
-// ---------- 가격 ----------
-const ProductPrice = ({ prices }) => {
-    if (!prices || !Array.isArray(prices) || !prices[0]) return null;
-    const [originalPrice, discountPrice, discountRate] = prices;
-    const hasDiscount = discountPrice != null;
 
-<<<<<<< HEAD
-    return (
-        <div className="product-card__price_wrap">
-            {hasDiscount ? (
-                <>
-                    <div className="discount-price">
-                        {discountPrice}
-                        {discountRate && ` (${discountRate} 할인)`}
-                    </div>
-                    <div className="original-price" style={{ textDecoration: 'line-through' }}>
-                        {originalPrice}
-                    </div>
-                </>
-            ) : (
-                <div className="original-price">{originalPrice}</div>
-            )}
-        </div>
-    );
-};
->>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
-
-    return (
-        <div className="product-card__price_wrap">
-            {hasDiscount ? (
-                <>
-                    <div className="discount-price">
-                        {discountPrice}
-                        {discountRate && ` (${discountRate} 할인)`}
-                    </div>
-                    <div className="original-price" style={{ textDecoration: 'line-through' }}>
-                        {originalPrice}
-                    </div>
-                </>
-            ) : (
-                <div className="original-price">{originalPrice}</div>
-            )}
-        </div>
-<<<<<<< HEAD
-    );
-};
-=======
-        <div className="color-badge__wrap">
-            {colors.map((color, i) => (
-                <span
-                    key={i}
-                    className={`color-badge color-badge--${color}`}
-                    onClick={() => onColorClick?.(color)}
-                    role="button"
-                    tabIndex={0}
-                />
-            ))}
-        </div>
-    </div>
-);
-<<<<<<< HEAD
->>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
-
-=======
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
-=======
-
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
 // ---------- 색상 ----------
 const normalizeColor = (c) => {
     if (!c) return null;
@@ -247,20 +99,6 @@ const normalizeColor = (c) => {
     return null;
 };
 
-<<<<<<< HEAD
-=======
-// ---------- 색상 ----------
-const normalizeColor = (c) => {
-    if (!c) return null;
-    if (c.startsWith('rgb')) return c;
-    if (c.match(/^\d+\s*,/)) return `rgb(${c})`;
-    if (c.startsWith('#')) return c;
-    return null;
-};
-
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
 const ProductColorBadges = ({ colors = [], onColorClick }) => {
     const normalized = (Array.isArray(colors) ? colors : [colors])
         .map(normalizeColor)
@@ -320,48 +158,11 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                     const soldOut = soldOutSizes.includes(size);
                     const isActive = active === size;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // ---------- 사이즈 ----------
-    const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
-        const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
-        const [active, setActive] = useState(null);
-
-        useEffect(() => {
-            if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
-                onFetchSize();
-            }
-        }, [crocsSizesByCategory, onFetchSize]);
-
-        // cate 안에 특정 단어가 포함되어 있는지 체크
-        let categoryId = null;
-        if (cate?.includes('여성')) categoryId = 'women';
-        else if (cate?.includes('남성')) categoryId = 'men';
-        else if (cate?.includes('키즈')) categoryId = 'kids';
-
-        console.log('cate:', cate);
-        console.log('categoryId:', categoryId);
-
-        const sizes = crocsSizesByCategory[categoryId] || [];
-
-        return (
-            <div className="product-card__size">
-                <div className="product-card__size__title--wrap">
-                    <p>사이즈</p>
-                </div>
-                <ul className="product-card__size--btns__wrap">
-                    {sizes.map((size) => {
-                        const soldOut = soldOutSizes.includes(size);
-                        const isActive = active === size;
-
-<<<<<<< HEAD
                     return (
                         <li key={size} className="size--btns__item">
-<<<<<<< HEAD
                             <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${
-                                    soldOut ? 'sold-out' : ''
-                                }`}
+                                className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
+                                    }`}
                                 onClick={() => {
                                     if (!soldOut) {
                                         setActive(size);
@@ -372,204 +173,15 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                             >
                                 {size}
                             </button>
-=======
-                            {soldOut ? (
-                                <span className="size--btns__link sold-out">
-                                    <span className="size--btns__button">{size}</span>
-                                    <span className="sold-out-line" />
-                                </span>
-                            ) : (
-                                <a
-                                    href="#"
-                                    className={`size--btns__link btn-menu-style ${
-                                        isActive ? 'active' : ''
-                                    }`}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                            <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${
-                                    soldOut ? 'sold-out' : ''
-                                }`}
-                                onClick={() => {
-                                    if (!soldOut) {
-                            <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${
-                                    soldOut ? 'sold-out' : ''
-                                }`}
-=======
-                    return (
-                        <li key={size} className="size--btns__item">
-                            <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
-                                    }`}
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
-=======
-                    return (
-                        <li key={size} className="size--btns__item">
-                            <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
-                                    }`}
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-                                onClick={() => {
-                                    if (!soldOut) {
-                                        setActive(size);
-                                        onSizeSelect?.(size);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                    }}
-=======
-                        return (
-                            <li key={size} className="size--btns__item">
-                                {soldOut ? (
-                                    <span className="size--btns__link sold-out">
-                                        <span className="size--btns__button">{size}</span>
-                                        <span className="sold-out-line" />
-                                    </span>
-                                ) : (
-                                    <a
-                                        href="#"
-                                        className={`size--btns__link btn-menu-style ${isActive ? 'active' : ''
-                                            }`}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            <button
-                                                className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
-                                                    }`}
-                                                onClick={() => {
-                                                    if (!soldOut) {
-                                                        <button
-                                                            className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
-                                                                }`}
-                                                            onClick={() => {
-                                                                if (!soldOut) {
-                                                                    setActive(size);
-                                                                    onSizeSelect?.(size);
-                                                                }
-                                                            }
->>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
-                                >
-                                                            <button className="size--btns__button btn-menu__button">
-                                                                {size}
-                                                            </button>
-                                                        </a>
-                            )}
-<<<<<<< HEAD
->>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
-=======
-=======
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-                                    }
-                                }}
-                                disabled={soldOut}
-                            >
-                                {size}
-                            </button>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
-                                    }
-                                }}
-                    disabled={soldOut}
-                            >
-<<<<<<< HEAD
-                                {size}
-                            </button>
->>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
-=======
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                         </li>
                     );
                 })}
             </ul>
         </div>
-<<<<<<< HEAD
-=======
-                    {size}
-                </button>
-            </li>
-        );
-    })
-}
-            </ul >
-        </div >
->>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
-    );
-};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-// ---------- 상품 카드 ----------
-const ProductCard = ({ product, onClick, onSizeSelect }) => (
-    <li className="product-card" onClick={onClick}>
-        <ProductCardSwiper images={product.product_img || []} />
-        <ProductName name={product.product} />
-        <ProductPrice prices={product.prices} />
-        <ProductColorBadges
-            colors={product.color || []}
-            onColorClick={(c) => console.log('색상 선택:', c)}
-        />
-        <ProductSizeButtons
-            cate={product.cate} // 여기서 cate 값을 전달
-            soldOutSizes={product.soldOutSizes || []}
-            onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
-        />
-<<<<<<< HEAD
-=======
-// 상품 카드
-// const WomenProductCard = ({ product }) => (
-//     <li className="product-card">
-//         <div className="product-card__img_info_wrap">
-//             <ProductCardSwiper images={product.images} />
-//             <ProductName name={product.name} />
-//             <ProductPrice price={product.price} />
-//             <ProductColorBadges
-//                 colors={product.colors}
-//                 onColorClick={(c) => console.log('색상:', c)}
-//             />
-//             <ProductSizeButtons
-//                 sizes={product.sizes}
-//                 soldOutSizes={product.soldOutSizes || []}
-//                 onSizeSelect={(s) => console.log('사이즈:', s)}
-//             />
-//         </div>
-//     </li>
-// );
-
-const WomenProductCard = ({ product }) => (
-    <li className="product-card">
-        <div className="product-card__img_info_wrap">
-            <ProductCardSwiper images={product?.images ?? []} />
-            <ProductName name={product?.name ?? ''} />
-            <ProductPrice product={product} />
-            <ProductColorBadges
-                colors={product?.colors ?? []}
-                onColorClick={(c) => console.log('색상:', c)}
-            />
-            <ProductSizeButtons
-                sizes={product?.sizes ?? []}
-                soldOutSizes={product?.soldOutSizes ?? []}
-                onSizeSelect={(s) => console.log('사이즈:', s)}
-            />
-        </div>
-<<<<<<< HEAD
->>>>>>> e38f4cb (2025-11-25(화) 초원 - v02)
-=======
-// ---------- 상품 카드 ----------
-<<<<<<< HEAD
-=======
     );
 };
 
 // ---------- 상품 카드 ----------
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 const ProductCard = ({ product, onClick, onSizeSelect }) => (
     <li className="product-card" onClick={onClick}>
         <ProductCardSwiper images={product.product_img || []} />
@@ -584,66 +196,7 @@ const ProductCard = ({ product, onClick, onSizeSelect }) => (
             soldOutSizes={product.soldOutSizes || []}
             onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
         />
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> da04fa9 (2025-11-25(화) 채아 - v01)
-=======
-// ---------- 상품 카드 ----------
-const ProductCard = ({ product, onClick, onSizeSelect }) => (
-    <li className="product-card" onClick={onClick}>
-        <ProductCardSwiper images={product.product_img || []} />
-        <ProductName name={product.product} />
-        <ProductPrice prices={product.prices} />
-        <ProductColorBadges
-            colors={product.color || []}
-            onColorClick={(c) => console.log('색상 선택:', c)}
-        />
-        <ProductSizeButtons
-            cate={product.cate} // 여기서 cate 값을 전달
-            soldOutSizes={product.soldOutSizes || []}
-            onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
-        />
->>>>>>> cd9cbcd (2025-11-25(화) 채아 - v02)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
     </li>
 );
-=======
-        const ProductCard = ({product, onClick, onSizeSelect}) => (
-        <li className="product-card" onClick={onClick}>
-            <ProductCardSwiper images={product.product_img || []} />
-            <ProductName name={product.product} />
-            <ProductPrice prices={product.prices} />
-            <ProductColorBadges
-                colors={product.color || []}
-                onColorClick={(c) => console.log('색상 선택:', c)}
-            />
-            <ProductSizeButtons
-                cate={product.cate} // 여기서 cate 값을 전달
-                soldOutSizes={product.soldOutSizes || []}
-                onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
-            />
-// ---------- 상품 카드 ----------
-            const ProductCard = ({product, onClick, onSizeSelect}) => (
-            <li className="product-card" onClick={onClick}>
-                <ProductCardSwiper images={product.product_img || []} />
-                <ProductName name={product.product} />
-                <ProductPrice prices={product.prices} />
-                <ProductColorBadges
-                    colors={product.color || []}
-                    onColorClick={(c) => console.log('색상 선택:', c)}
-                />
-                <ProductSizeButtons
-                    cate={product.cate} // 여기서 cate 값을 전달
-                    soldOutSizes={product.soldOutSizes || []}
-                    onSizeSelect={onSizeSelect} // 🔥 상위 상태로 전달
-                />
-            </li>
-            );
->>>>>>> 62a1c80 (2025-11-25(화) 채아 - v03)
-=======
-    </li>
-);
->>>>>>> 420c130 (2025-11-25(화) 채아 - v04)
 
 export default ProductCard;
