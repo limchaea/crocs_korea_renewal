@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import OrderForm from './OrderForm.jsx';
 import OrderSummary from './OrderSummary.jsx';
 import './styles/Order.scss';
+
 import { Products } from '../../data/CrocsProductsData.js';
 import OrderProgress from './OrderProgress.jsx';
 import Title from '../Title.jsx';
@@ -233,7 +234,7 @@ function Order() {
 
         // 3초 후 주문완료 페이지로 이동 // 임시로 메인페이지
         setTimeout(() => {
-            navigate('/', { replace: true });
+            navigate('/userinfo', { replace: true });
         }, 3000);
     };
 
