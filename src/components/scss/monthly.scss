@@ -240,7 +240,7 @@
                                 @include g.flex($gap: null);
                                 position: absolute;
                                 z-index: 700; // 이미지 위로
-                                border: 0.5px solid #ccc;
+                                // border: 0.5px solid #ccc;
                                 border-radius: 1rem;
                                 opacity: 0;
                                 // visibility: hidden;
@@ -250,7 +250,7 @@
                                 .img_box {
                                     width: 15rem;
                                     height: 15rem;
-                                    background: rgba($color: #fff, $alpha: 0.6);
+                                    background: #fff;
                                     text-align: center;
                                     border-radius: 1rem 0 0 1rem;
                                     line-height: 15rem;
