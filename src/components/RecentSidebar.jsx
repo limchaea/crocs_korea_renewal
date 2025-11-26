@@ -1,32 +1,35 @@
-import React, { useEffect } from 'react';
-import { useRecentProductsStore } from '../store/recentProductsStore';
-import Title from '../components/Title';
-import './scss/RecentSidebar.scss';
+import React, { useEffect } from "react";
+import { useRecentProductsStore } from "../store/recentProductsStore";
+import Title from "../components/Title";
+import "./scss/RecentSidebar.scss";
 
 const RecentSidebar = ({ isOpen, onClose }) => {
     const { recentProducts, removeProduct, clearAll } = useRecentProductsStore();
 
     const formatPrice = (price, discountPrice) => {
-        return new Intl.NumberFormat('ko-KR').format(price);
+        return new Intl.NumberFormat("ko-KR").format(price);
     };
+
+    // 브라우저 콘솔에서 확인
+    localStorage.getItem("recent-products-storage");
 
     // ESC 키로 닫기
     useEffect(() => {
         const handleEsc = (e) => {
-            if (e.key === 'Escape' && onClose) {
+            if (e.key === "Escape" && onClose) {
                 onClose();
             }
         };
 
         if (isOpen) {
-            document.addEventListener('keydown', handleEsc);
+            document.addEventListener("keydown", handleEsc);
             // 배경 스크롤 방지
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = "hidden";
         }
 
         return () => {
-            document.removeEventListener('keydown', handleEsc);
-            document.body.style.overflow = 'unset';
+            document.removeEventListener("keydown", handleEsc);
+            document.body.style.overflow = "unset";
         };
     }, [isOpen, onClose]);
 
@@ -38,30 +41,30 @@ const RecentSidebar = ({ isOpen, onClose }) => {
         const diffHours = Math.floor(diffMs / 3600000);
         const diffDays = Math.floor(diffMs / 86400000);
 
-        if (diffMins < 1) return '방금 전';
+        if (diffMins < 1) return "방금 전";
         if (diffMins < 60) return `${diffMins}분 전`;
         if (diffHours < 24) return `${diffHours}시간 전`;
         if (diffDays < 7) return `${diffDays}일 전`;
-        return viewed.toLocaleDateString('ko-KR');
+        return viewed.toLocaleDateString("ko-KR");
     };
 
     return (
         <>
             {/* 배경 오버레이 */}
-            {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
+            {isOpen && <div className='sidebar-overlay' onClick={onClose} />}
 
-            <div className={`recent-side-container ${isOpen ? 'open' : ''}`}>
-                <div className="recent-inner">
-                    <div className="recent-side-products-wrap">
-                        <div className="recent-side-product">
-                            <Title title="최근 본 상품" />
-                            <button className="close-btn" onClick={onClose}>
+            <div className={`recent-side-container ${isOpen ? "open" : ""}`}>
+                <div className='recent-inner'>
+                    <div className='recent-side-products-wrap'>
+                        <div className='recent-side-product'>
+                            <Title title='최근 본 상품' />
+                            <button className='close-btn' onClick={onClose}>
                                 ✕
                             </button>
                             {recentProducts.length > 0 && (
-                                <div className="header-info">
-                                    <span className="count">{recentProducts.length}개</span>
-                                    <button className="clear-btn" onClick={clearAll}>
+                                <div className='header-info'>
+                                    <span className='count'>{recentProducts.length}개</span>
+                                    <button className='clear-btn' onClick={clearAll}>
                                         전체 삭제
                                     </button>
                                 </div>
@@ -69,16 +72,16 @@ const RecentSidebar = ({ isOpen, onClose }) => {
                         </div>
 
                         {recentProducts.length == 0 ? (
-                            <div className="recent-side-products__empty">
-                                <div className="empty-icon">👀</div>
+                            <div className='recent-side-products__empty'>
+                                <div className='empty-icon'>👀</div>
                                 <p>최근 본 상품이 없습니다</p>
                             </div>
                         ) : (
-                            <div className="recent-side-products__list">
+                            <div className='recent-side-products__list'>
                                 {recentProducts.map((item) => (
-                                    <div key={item.id} className="product-item">
-                                        <div className="product-meta">
-                                            <span className="viewed-time">
+                                    <div key={item.id} className='product-item'>
+                                        <div className='product-meta'>
+                                            <span className='viewed-time'>
                                                 {formatDate(item.viewedAt)}
                                             </span>
                                             {/* 리뷰별점표시 */}
@@ -88,37 +91,36 @@ const RecentSidebar = ({ isOpen, onClose }) => {
                                 </span>
                             )} */}
                                         </div>
-                                        <div className="product_imgbox">
+                                        <div className='product_imgbox'>
                                             <img src={item.image} alt={item.name} />
                                         </div>
 
-                                        <div className="product_textbox">
-                                            <h3 className="product-name">{item.name}</h3>
+                                        <div className='product_textbox'>
+                                            <h3 className='product-name'>{item.name}</h3>
                                             {/* <p className='product-category'>{item.category}</p> */}
-                                            <div className="product-price-wrap">
-                                                <span className="price-text">
-                                                    {item.discountPrice == ''
+                                            <div className='product-price-wrap'>
+                                                <span className='price-text'>
+                                                    {item.discountPrice == ""
                                                         ? item.price
                                                         : item.discountPrice}
                                                 </span>
-                                                <span className="price-text">
-                                                    {item.discountPrice == ''
-                                                        ? ''
+                                                <span className='price-text'>
+                                                    {item.discountPrice == ""
+                                                        ? ""
                                                         : item.originPrice}
                                                 </span>
                                                 {/* <span className='price-text'>{formatPrice(item.price)}원</span>
                                 <span className='price-text'>{item.price}</span> */}
                                                 {item.discount && (
-                                                    <span className="discount">
+                                                    <span className='discount'>
                                                         {item.discount}%
                                                     </span>
                                                 )}
                                             </div>
                                         </div>
 
-                                        <div className="product-actions">
-                                            {/* <button 
-                className="remove-btn"
+                                        <div className='product-actions'>
+                                            {/* <button  className="remove-btn"
                 onClick={() => removeProduct(product.id)}
                 aria-label="삭제"
               >
