@@ -15,8 +15,8 @@ const ProductCardSwiper = ({ images }) => {
     const imgList = Array.isArray(images)
         ? images
         : images
-            ? [images] // 문자열 또는 객체라도 배열로 변환됨
-            : [];
+        ? [images] // 문자열 또는 객체라도 배열로 변환됨
+        : [];
 
     useEffect(() => {
         if (!imgList.length) return;
@@ -161,8 +161,9 @@ const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
                     return (
                         <li key={size} className="size--btns__item">
                             <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${soldOut ? 'sold-out' : ''
-                                    }`}
+                                className={`size--btns__button ${isActive ? 'active' : ''} ${
+                                    soldOut ? 'sold-out' : ''
+                                }`}
                                 onClick={() => {
                                     if (!soldOut) {
                                         setActive(size);

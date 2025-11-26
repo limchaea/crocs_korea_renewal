@@ -1,14 +1,14 @@
 import React from 'react';
 import Title from '../components/Title';
 
-const Jibbitz = () => {
+const Men = () => {
     return (
         <div className="sub_page">
             <div className="inner">
-                <Title title="jibbitz" />
+                <Title title="men" />
             </div>
         </div>
     );
 };
 
-export default Jibbitz;
+export default Men;

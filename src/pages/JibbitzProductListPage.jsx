@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { collaboAuthStore } from '../store/collaboAuthStore';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import Breadcrumbs from '../components/Breadcrumbs';
-=======
->>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
 import './scss/JibbitzProductListPage.scss';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,15 +29,7 @@ const JibbitzProductListPage = () => {
 
     const JibbitzLeftNavigation = {
         category: '지비츠',
-<<<<<<< HEAD
-<<<<<<< HEAD
         subcategory: '콜라보',
-=======
-        subcategory: '',
->>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
-=======
-        subcategory: '',
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
         filters: [],
     };
 
@@ -66,21 +52,9 @@ const JibbitzProductListPage = () => {
 
     // 페이징 처리
     const itemsPerPage = 12;
-<<<<<<< HEAD
-<<<<<<< HEAD
     const [currentPage, setCurrentPage] = useState(1);
     const list = displayList(selectFilter);
     const totalPage = Math.ceil(displayList.length / itemsPerPage);
-=======
-    const list = displayList();
-    const totalPage = Math.ceil(list.length / itemsPerPage);
-    const [currentPage, setCurrentPage] = useState(1);
->>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
-=======
-    const list = displayList();
-    const totalPage = Math.ceil(list.length / itemsPerPage);
-    const [currentPage, setCurrentPage] = useState(1);
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
     const start = (currentPage - 1) * itemsPerPage;
     const currentItems = list.slice(start, start + itemsPerPage);
 
@@ -89,66 +63,19 @@ const JibbitzProductListPage = () => {
         setCurrentPage(pageNum);
     };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [selectFilter]);
-
-<<<<<<< HEAD
->>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
     return (
         <div className="product_list_wrap">
             <div className="list_left">
                 <div className="left_nav_wrap">
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <Breadcrumbs
                         category={JibbitzLeftNavigation.category}
                         subcategory={JibbitzLeftNavigation.subcategory}
                     />
-=======
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-                    <div className="breadcrumbs--section">
-                        <ul className="breadcrumbs__list">
-                            <li className="breadcrumbs__list--home">
-                                <a href="/" className="breadcrumbs__list--home_link">
-                                    <img
-                                        src="/images/Sub_Women_Images/icon-home.svg"
-                                        alt="홈 버튼"
-                                    />
-                                </a>
-                            </li>
-                            <li className="breadcrumbs__list--section">
-                                <span>:</span>
-                            </li>
-                            <li className="breadcrumbs__list--women">
-                                <a href="/jibbitz" className="breadcrumbs__list--women_link">
-                                    <span>지비츠</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div className="breadcrumbs__title">
-                            <h2>지비츠</h2>
-                        </div>
-                    </div>
-<<<<<<< HEAD
->>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                     <nav className="left_nav">
                         <div className="filter-menu">
                             <div className="filter-menu__wrap menu_wrap-style">
                                 <div className="filter-menu__wrap--title_wrap title--wrap">
                                     <h3 className="filter-menu__wrap--title title">필터</h3>
-<<<<<<< HEAD
-<<<<<<< HEAD
                                     {/* <a
                                         href="#"
                                         className="filter-menu--title__toggle title--toggle"
@@ -166,31 +93,14 @@ const JibbitzProductListPage = () => {
                                     {/* <li className="filter-menu__item filter_list_menu"> */}
                                     <button className="filter_menu_btn">
                                         {selectFilter}
-=======
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
-                                </div>
-                                <div className="filter_list_menu">
-                                    <button className="filter_menu_btn">
-                                        {selectFilter} 지비츠 참
-<<<<<<< HEAD
->>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                                         <img
                                             src="/images/Sub_Women_Images/icon-close_cross.svg"
                                             alt="필터 닫기 버튼"
                                             className="close-btn"
                                         />
                                     </button>
-<<<<<<< HEAD
-<<<<<<< HEAD
                                     {/* </li> */}
                                     {/* </ul> */}
-=======
->>>>>>> 4f06edf (2025-11-25(화) 초원 - 지비츠 리스트 페이지 연결 페이지 app.js 수정)
-=======
->>>>>>> 780a81759eccba996f9bd1cc453c50c360e3b11f
                                 </div>
                             </div>
                         </div>

@@ -1,14 +1,14 @@
 import React from 'react';
-import Title from '../components/Title';
+import StoreLocator from '../components/StoreLocator';
 
-const Jibbitz = () => {
+const Store = () => {
     return (
         <div className="sub_page">
             <div className="inner">
-                <Title title="jibbitz" />
+                <StoreLocator />
             </div>
         </div>
     );
 };
 
-export default Jibbitz;
+export default Store;

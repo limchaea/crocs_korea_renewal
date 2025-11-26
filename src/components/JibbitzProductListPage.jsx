@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { collaboAuthStore } from '../store/collaboAuthStore';
-import Breadcrumbs from './Breadcrumbs';
+import Breadcrumbs from '../components/Breadcrumbs';
 import './scss/JibbitzProductListPage.scss';
 import { useNavigate } from 'react-router-dom';
 
