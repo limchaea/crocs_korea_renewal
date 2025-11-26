@@ -115,7 +115,7 @@ const Main = () => {
                         <button className="cs-close-btn" onClick={closeCS}>
                             ×
                         </button>
-                        <CustomerService />
+                        <CustomerService onClose={closeCS} />
                     </div>
                 </div>
             )}

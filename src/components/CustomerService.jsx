@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import './scss/CustomerService.scss';
 import Title from './Title';
+import './scss/CustomerService.scss';
+import { loginAuthStore } from '../store/loginStore';
 
-function CustomerService() {
+function CustomerService({ onClose }) {
     const navigate = useNavigate();
-
+    const { user } = loginAuthStore();
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isAgreed, setIsAgreed] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -15,8 +18,20 @@ function CustomerService() {
         message: '',
     });
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isAgreed, setIsAgreed] = useState(false);
+    if (!isOpen) return null;
+
+    // 입력값 팝업 함수
+    const showUserInfoPopup = () => {
+        const popupMessage = `
+[문의 정보]
+
+이름: ${formData.name || '-'}
+전화: ${formData.phone || '-'}
+이메일: ${formData.email || '-'}
+제목: ${formData.subject || '-'}
+        `;
+        alert(popupMessage);
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,56 +41,64 @@ function CustomerService() {
         }));
     };
 
+    // 🔸 문의하기
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // 간단한 유효성 검사
+        if (!user) {
+            showUserInfoPopup();
+            onClose(); // 🔥 모달 닫힘
+            navigate('/');
+            return;
+        }
+
+        // 로그인 O → 기존 검사
         if (!formData.name || !formData.email || !formData.subject || !formData.message) {
             alert('필수 항목을 모두 입력해주세요.');
             return;
         }
 
-        // 이메일 형식 검사
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             alert('올바른 이메일 형식을 입력해주세요.');
             return;
         }
 
-        // 개인정보 동의 체크 확인
         if (!isAgreed) {
             alert('개인정보 수집 및 이용에 동의해주세요.');
             return;
         }
 
-        // 제출 처리
-        console.log('문의 내용:', formData);
         setIsSubmitted(true);
 
-        // 3초 후 /userinfo로 이동
         setTimeout(() => {
+            onClose(); // ⭐ 모달 닫기
             navigate('/userinfo');
         }, 3000);
     };
 
+    // 🔸 취소하기
     const handleCancel = () => {
-        if (window.confirm('작성 중인 내용이 삭제됩니다. 취소하시겠습니까?')) {
-            setFormData({
-                name: '',
-                phone: '',
-                email: '',
-                subject: '',
-                message: '',
-            });
-            setIsAgreed(false);
+        if (!user) {
+            alert('작성 중인 내용이 삭제됩니다. 취소하시겠습니까?');
+            onClose(); // 🔥 모달 닫힘
+            navigate('/');
+            return;
         }
+
+        alert('작성 중인 내용이 삭제됩니다. 취소하시겠습니까?');
+        onClose(); // 🔥 모달 닫힘
+        navigate('/userinfo');
     };
 
+    // ⭐ 여기서 return 시작해야 함 (중복 중괄호 제거)
     return (
         <div className="cs-container">
-            <Title title="Customer Service" />
+            <div className="main-title">
+                <Title title="Customer Service" />
+            </div>
             <div className="cs-content">
-                {/* 왼쪽: 안내 영역 */}
+                {/* 왼쪽 안내 영역 */}
                 <div className="cs-left">
                     <div className="cs-info-box">
                         <h2 className="info-title">이메일 문의</h2>
@@ -116,7 +139,7 @@ function CustomerService() {
                     </div>
                 </div>
 
-                {/* 오른쪽: 문의 폼 */}
+                {/* 오른쪽 폼 영역 */}
                 <div className="cs-right">
                     {!isSubmitted ? (
                         <form className="cs-form" onSubmit={handleSubmit}>
@@ -198,7 +221,7 @@ function CustomerService() {
                                 <div className="privacy-details">
                                     <p className="privacy-item">
                                         <strong>수집항목(필수)</strong>: 이름, 이메일 주소, 문의내용
-                                        /<strong> 수집항목(선택)</strong>: 전화 번호
+                                        /<strong> 선택</strong>: 전화 번호
                                     </p>
                                 </div>
                             </div>
@@ -218,8 +241,6 @@ function CustomerService() {
                             <h3 className="success-title">문의가 접수되었습니다!</h3>
                             <p className="success-message">
                                 빠른 시일 내에 답변드리겠습니다.
-                                <br />
-                                감사합니다.
                                 <br />
                                 <br />
                                 <span className="redirect-notice">
