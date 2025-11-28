@@ -81,6 +81,9 @@ const JibbitzProductListPage = () => {
   };
 
   return (
+    <div className='sub_page'>
+    <div className="inner">
+
     <div className='product_list_wrap'>
       <div className='list_left'>
         <div className='left_nav_wrap'>
@@ -173,6 +176,8 @@ const JibbitzProductListPage = () => {
           </div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };
