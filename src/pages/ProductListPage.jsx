@@ -44,14 +44,10 @@ const ProductListPage = () => {
         setCurrentPage(1);
     }, [cate, subcategory, searchWord]);
 
-    // -----------------------------------
-    // 1) 카테고리 필터 (기존 정상 작동 코드 기반)
-    // -----------------------------------
+    // 1) 카테고리 필터
     let filteredItems = filterByMenu(cate, subcategory);
 
-    // -----------------------------------
     // 2) 검색어 필터
-    // -----------------------------------
     if (searchWord) {
         const lower = searchWord.toLowerCase();
         filteredItems = filteredItems.filter(
@@ -61,17 +57,16 @@ const ProductListPage = () => {
         );
     }
 
-    // -----------------------------------
-    // 3) 카테고리 기반 사이즈 자동 부여
-    // -----------------------------------
+    // 3) 카테고리 기반 사이즈 자동 지정
     const normalizeCate = (cateString) => {
         if (!cateString) return null;
         const lower = cateString.toLowerCase();
 
         if (lower.includes('kid') || lower.includes('키즈')) return 'kids';
-        if (lower.includes('women') || lower.includes('여성') || lower.includes('여'))
-            return 'women';
-        if (lower.includes('men') || lower.includes('남성') || lower.includes('남')) return 'men';
+        if (lower.includes('women') || lower.includes('여성')) return 'women';
+        if (lower.includes('men') || lower.includes('남성')) return 'men';
+        if (lower.includes('women') || lower.includes('여성')) return 'women';
+        if (lower.includes('men') || lower.includes('남성')) return 'men';
 
         return null;
     };
@@ -82,9 +77,7 @@ const ProductListPage = () => {
         return { ...item, sizes: autoSizes };
     });
 
-    // -----------------------------------
     // 4) 사이즈 필터
-    // -----------------------------------
     if (selectedSize) {
         const sizeNum = Number(selectedSize);
         if (!isNaN(sizeNum)) {
@@ -94,49 +87,7 @@ const ProductListPage = () => {
         }
     }
 
-    // -----------------------------------
-    // 5) 🔥 색상 필터 (store 기반, item.color 배열 사용)
-    // -----------------------------------
-    const normalizeRGB = (rgb) => {
-        if (!rgb) return null;
-
-        const nums = rgb.match(/\d+/g);
-        if (!nums) return null;
-
-        const [r, g, b] = nums.map(Number);
-        return `rgb(${r}, ${g}, ${b})`;
-    };
-
-    // 🔥 5) 색상 필터 적용
-    // if (selectedColors.length > 0) {
-    //     filteredItems = filteredItems.filter((item) => {
-    //         if (!Array.isArray(item.color)) return false;
-
-    //         return item.color.some((productColor) => {
-    //             const productNorm = normalizeRGB(productColor);
-
-    //             return selectedColors.some((selected) => {
-    //                 const selectedNorm = normalizeRGB(selected.value);
-    //                 return productNorm === selectedNorm;
-    //             });
-    //         });
-    //     });
-    // }
-    // if (selectedColors.length > 0) {
-    //     filteredItems = filteredItems.filter((item) => {
-    //         const productColors = Array.isArray(item.color) ? item.color : [item.color];
-
-    //         return selectedColors.some((selected) => {
-    //             // selected.value 가 배열일 수도 있음 → 배열로 통일
-    //             const selectedValues = Array.isArray(selected.value)
-    //                 ? selected.value
-    //                 : [selected.value];
-
-    //             // 상품 색상 중 하나라도 선택된 색상 배열 안에 있으면 통과
-    //             return productColors.some((productColor) => selectedValues.includes(productColor));
-    //         });
-    //     });
-    // }
+    // 5) 색상 필터
     if (selectedColors.length > 0) {
         filteredItems = filteredItems.filter((item) => {
             const productColors = Array.isArray(item.color) ? item.color : [item.color];
@@ -145,16 +96,12 @@ const ProductListPage = () => {
                 const selectedValues = Array.isArray(selected.value)
                     ? selected.value
                     : [selected.value];
-
-                // 정확히 완전 일치해야 매칭됨
                 return productColors.some((pColor) => selectedValues.includes(pColor));
             });
         });
     }
 
-    // -----------------------------------
     // 6) 페이징
-    // -----------------------------------
     const itemsPerPage = 12;
     const totalPage = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
     const start = (currentPage - 1) * itemsPerPage;
@@ -183,10 +130,10 @@ const ProductListPage = () => {
         );
     }
 
-    // -----------------------------------
-    // UI용 서브카테고리 계산
-    // -----------------------------------
+    // UI 서브카테고리
     const currentMenu = menuList.find((m) => m.key === cate);
+
+
     const subCategoryList = [
         ...new Set(
             filteredItems.flatMap(
@@ -202,84 +149,162 @@ const ProductListPage = () => {
     return (
         <div className="sub_page">
             <div className="inner">
-                <div className="product_list_page">
-                    <Title title={cate?.toUpperCase()} />
-                    {/* 검색결과 */}
-                    {searchWord && (
-                        <div className="search_info_wrap">
-                            <div className="search_info">
-                                {`" ${searchWord} " 검색 결과 : `}
-                                <p>
-                                    <strong>{filteredItems.length}</strong>개
-                                </p>
-                            </div>
-                            <button
-                                className="clear_search_info_btn"
-                                onClick={() => {
-                                    setSearchWord('');
-                                    navigate(`/${cate}`);
-                                }}
-                            >
-                                ×
-                            </button>
-                        </div>
-                    )}
+                <div className="jibbitz_list_wrap">
+                    <div className="product_list_page">
+                        <Title title={cate?.toUpperCase()} />
 
-                    {/* 서브 메뉴 */}
-                    {currentMenu?.submenu_list?.length > 0 && !searchWord && (
-                        <div className="sub_menu_wrap">
-                            {currentMenu.submenu_list.map((sub) => (
-                                <div
-                                    key={sub.key}
-                                    className={`btn_menu_item ${
-                                        subcategory === sub.key ? 'active' : ''
-                                    }`}
-                                    onClick={() => navigate(`/${cate}/${sub.key}`)}
-                                >
-                                    <button className="sub_menu_btn">{sub.label}</button>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-
-                    <div className="product_list_wrap">
-                        {/* 좌측 필터 */}
-                        <div className="list_left">
-                            <LeftNavigation
-                                category={mainCategory}
-                                subcategory={mainSubcategory}
-                                subCategoryList={subCategoryList}
-                                selectedSize={selectedSize}
-                                onSizeSelect={setSelectedSize}
-                            />
-                        </div>
-
-                        {/* 우측 리스트 */}
-                        <div className="list_right">
-                            {currentItems.length > 0 ? (
-                                <ul className="product-card__item_list">
-                                    {currentItems.map((p) => (
-                                        <ProductCard
-                                            key={p.id}
-                                            product={p}
-                                            onClick={() => navigate(`/product/${p.id}`)}
-                                            onSizeSelect={setSelectedSize}
-                                        />
-                                    ))}
-                                </ul>
-                            ) : (
-                                <div className="empty_state">
+                        {/* 검색결과 */}
+                        {searchWord && (
+                            <div className="search_info_wrap">
+                                <div className="search_info">
+                                    {`" ${searchWord} " 검색 결과 : `}
                                     <p>
-                                        {searchWord
-                                            ? `"${searchWord}"에 대한 검색 결과가 없습니다.`
-                                            : '해당 조건에 맞는 상품이 없습니다.'}
+                                        <strong>{filteredItems.length}</strong>개
                                     </p>
                                 </div>
-                            )}
+                                <button
+                                    className="clear_search_info_btn"
+                                    onClick={() => {
+                                        setSearchWord('');
+                                        navigate(`/${cate}`);
+                                    }}
+                                >
+                                    ×
+                                </button>
+                            </div>
+                        )}
+                <div className="jibbitz_list_wrap">
+                    <div className="product_list_page">
+                        <Title title={cate?.toUpperCase()} />
+
+                        {/* 검색결과 */}
+                        {searchWord && (
+                            <div className="search_info_wrap">
+                                <div className="search_info">
+                                    {`" ${searchWord} " 검색 결과 : `}
+                                    <p>
+                                        <strong>{filteredItems.length}</strong>개
+                                    </p>
+                                </div>
+                                <button
+                                    className="clear_search_info_btn"
+                                    onClick={() => {
+                                        setSearchWord('');
+                                        navigate(`/${cate}`);
+                                    }}
+                                >
+                                    ×
+                                </button>
+                            </div>
+                        )}
+
+                        {/* 서브 메뉴 (Jibbitz 스타일 유지) */}
+                        {currentMenu?.submenu_list?.length > 0 && !searchWord && (
+                            <div className="sub_menu_wrap">
+                                {currentMenu.submenu_list.map((sub) => (
+                                    <div
+                                        key={sub.key}
+                                        className={`btn_menu_item ${
+                                            subcategory === sub.key ? 'active' : ''
+                                        }`}
+                                        onClick={() => navigate(`/${cate}/${sub.key}`)}
+                                    >
+                                        <button className="sub_menu_btn">{sub.label}</button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {/* 서브 메뉴 (Jibbitz 스타일 유지) */}
+                        {currentMenu?.submenu_list?.length > 0 && !searchWord && (
+                            <div className="sub_menu_wrap">
+                                {currentMenu.submenu_list.map((sub) => (
+                                    <div
+                                        key={sub.key}
+                                        className={`btn_menu_item ${
+                                            subcategory === sub.key ? 'active' : ''
+                                        }`}
+                                        onClick={() => navigate(`/${cate}/${sub.key}`)}
+                                    >
+                                        <button className="sub_menu_btn">{sub.label}</button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        <div className="product_list_wrap">
+                            {/* 좌측 네비게이션 */}
+                            <div className="list_left">
+                                <LeftNavigation
+                                    category={mainCategory}
+                                    subcategory={mainSubcategory}
+                                    subCategoryList={subCategoryList}
+                                    selectedSize={selectedSize}
+                                    onSizeSelect={setSelectedSize}
+                                />
+                            </div>
+                        <div className="product_list_wrap">
+                            {/* 좌측 네비게이션 */}
+                            <div className="list_left">
+                                <LeftNavigation
+                                    category={mainCategory}
+                                    subcategory={mainSubcategory}
+                                    subCategoryList={subCategoryList}
+                                    selectedSize={selectedSize}
+                                    onSizeSelect={setSelectedSize}
+                                />
+                            </div>
+
+                            {/* 우측 리스트 (Jibbitz 스타일 유지) */}
+                            <div className="list_right">
+                                {currentItems.length > 0 ? (
+                                    <ul className="product-card__item_list">
+                                        {currentItems.map((p) => (
+                                            <ProductCard
+                                                key={p.id}
+                                                product={p}
+                                                onClick={() => navigate(`/product/${p.id}`)}
+                                                onSizeSelect={setSelectedSize}
+                                            />
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <div className="empty_state">
+                                        <p>
+                                            {searchWord
+                                                ? `"${searchWord}"에 대한 검색 결과가 없습니다.`
+                                                : '해당 조건에 맞는 상품이 없습니다.'}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                            {/* 우측 리스트 (Jibbitz 스타일 유지) */}
+                            <div className="list_right">
+                                {currentItems.length > 0 ? (
+                                    <ul className="product-card__item_list">
+                                        {currentItems.map((p) => (
+                                            <ProductCard
+                                                key={p.id}
+                                                product={p}
+                                                onClick={() => navigate(`/product/${p.id}`)}
+                                                onSizeSelect={setSelectedSize}
+                                            />
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <div className="empty_state">
+                                        <p>
+                                            {searchWord
+                                                ? `"${searchWord}"에 대한 검색 결과가 없습니다.`
+                                                : '해당 조건에 맞는 상품이 없습니다.'}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                {/* 페이징 */}
                 {totalPage > 1 && (
                     <div className="page_pager">
                         <button onClick={() => handleGoPage(currentPage - 1)}>이전</button>
