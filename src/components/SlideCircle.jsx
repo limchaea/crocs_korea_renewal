@@ -3,6 +3,7 @@ import { useNewProductStore } from "../store/useNewProductStore";
 import Title from "./Title";
 import "./scss/SlideCircle.scss";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const SlideCircle = ({ showDot }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -229,9 +230,9 @@ const SlideCircle = ({ showDot }) => {
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <a
-                                                            href={slide.link}
-                                                            className='btn middle arrow'
+                                                        <Link
+                                                            to={slide.link}
+                                                            className="btn middle arrow"
                                                             style={{
                                                                 "--selectedColor":
                                                                     selectedColor || "#444444",
@@ -243,7 +244,7 @@ const SlideCircle = ({ showDot }) => {
                                                             >
                                                                 READ MORE
                                                             </span>
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,10 +320,10 @@ const SlideCircle = ({ showDot }) => {
                             </button>
 
                             {/* Scroll Indicator */}
-                            <div className='goods_scroll'>
-                                <a href='#page'>
-                                    <span className='blind'>이동</span>
-                                </a>
+                            <div className="goods_scroll">
+                                <Link to="#page">
+                                    <span className="blind">이동</span>
+                                </Link>
                             </div>
                         </div>
                     </div>

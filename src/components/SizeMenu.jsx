@@ -3,11 +3,13 @@ import './scss/WomenComponents.scss';
 
 export default function SizeMenu({ sizes = [], selectedSize, onSizeSelect }) {
     const [isOpen, setIsOpen] = useState(true);
+     const [activeSize, setActiveSize] = useState(selectedSize || null);
 
     const handleClick = (size, e) => {
         e.preventDefault();
         const newSize = selectedSize === size ? null : size;
-        onSizeSelect?.(newSize);
+        setActiveSize(newSize);
+        onSizeSelect?.(newSize); // 상위로 선택 사이즈 전달
     };
 
     const handleToggle = (e) => {

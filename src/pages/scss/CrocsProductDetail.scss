@@ -1,16 +1,13 @@
-@use "../../App.scss" as g;
+@use '../../App.scss' as g;
 
 // ========================================
 // Product Detail Container - Order 스타일과 동일한 구조
 // ========================================
 .product-detail-container {
     // max-width: 1200px;
-    // margin: 0 auto;
-    // padding: 4rem 2rem 10rem;
-    // min-height: 100vh;
-    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 2.5%;
+    padding: 4rem 2rem 10rem;
+    // min-height: 100vh;
 
     // ========================================
     // 전체 레이아웃 - 다른 페이지와 충돌 방지를 위해 구체적인 클래스명 사용
@@ -121,7 +118,7 @@
                 justify-content: flex-end;
                 align-items: center;
                 gap: 1.2rem;
-                font-family: "all-round-gothic", sans-serif;
+                font-family: 'all-round-gothic', sans-serif;
 
                 .discount-rate {
                     font-size: 2.4rem;
@@ -186,7 +183,7 @@
                         border-width: 3px;
 
                         &::after {
-                            content: "✓";
+                            content: '✓';
                             position: absolute;
                             top: 50%;
                             left: 50%;
@@ -737,7 +734,7 @@
                                 color: #666;
 
                                 &::before {
-                                    content: "•";
+                                    content: '•';
                                     position: absolute;
                                     left: 0;
                                     color: g.$mainColor;
