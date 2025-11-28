@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useCrocsProductStore } from '../store/useCrocsProductStore';
-import LeftNavigation from '../components/LeftNavigation';
-import ProductCard from '../components/ProductCard';
-import './scss/productListpage.scss';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { menuList } from '../store/menuList';
-import Title from '../components/Title';
-import { useCrocsSizeStore } from '../store/useCrocsSizeStore';
-import { useColorFilterStore } from '../store/useColorFilterStore';
+import React, { useEffect, useState } from "react";
+import { useCrocsProductStore } from "../store/useCrocsProductStore";
+import LeftNavigation from "../components/LeftNavigation";
+import ProductCard from "../components/ProductCard";
+import "./scss/productListpage.scss";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { menuList } from "../store/menuList";
+import Title from "../components/Title";
+import { useCrocsSizeStore } from "../store/useCrocsSizeStore";
+import { useColorFilterStore } from "../store/useColorFilterStore";
 
 const ProductListPage = () => {
     const [searchParams] = useSearchParams();
-    const searchQuery = searchParams.get('search');
+    const searchQuery = searchParams.get("search");
 
     // --- size store ---
     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
@@ -62,11 +62,9 @@ const ProductListPage = () => {
         if (!cateString) return null;
         const lower = cateString.toLowerCase();
 
-        if (lower.includes('kid') || lower.includes('키즈')) return 'kids';
-        if (lower.includes('women') || lower.includes('여성')) return 'women';
-        if (lower.includes('men') || lower.includes('남성')) return 'men';
-        if (lower.includes('women') || lower.includes('여성')) return 'women';
-        if (lower.includes('men') || lower.includes('남성')) return 'men';
+        if (lower.includes("kid") || lower.includes("키즈")) return "kids";
+        if (lower.includes("women") || lower.includes("여성")) return "women";
+        if (lower.includes("men") || lower.includes("남성")) return "men";
 
         return null;
     };
@@ -122,7 +120,7 @@ const ProductListPage = () => {
         pagerButton.push(
             <button
                 key={i}
-                className={currentPage === i ? 'active' : ''}
+                className={currentPage === i ? "active" : ""}
                 onClick={() => handleGoPage(i)}
             >
                 {i}
@@ -133,63 +131,38 @@ const ProductListPage = () => {
     // UI 서브카테고리
     const currentMenu = menuList.find((m) => m.key === cate);
 
-
     const subCategoryList = [
         ...new Set(
             filteredItems.flatMap(
-                (item) => item.subcategory?.split(',')?.map((sc) => sc.trim().toLowerCase()) || []
+                (item) => item.subcategory?.split(",")?.map((sc) => sc.trim().toLowerCase()) || []
             )
         ),
     ];
 
     const mainItem = filteredItems.find((item) => item.cate?.toLowerCase() === cate?.toLowerCase());
     const mainCategory = mainItem ? mainItem.cate : cate;
-    const mainSubcategory = subcategory || (mainItem?.subcategory?.split(',')[0] ?? null);
+    const mainSubcategory = subcategory || (mainItem?.subcategory?.split(",")[0] ?? null);
 
     return (
-        <div className="sub_page">
-            <div className="inner">
-                <div className="jibbitz_list_wrap">
-                    <div className="product_list_page">
+        <div className='sub_page'>
+            <div className='inner'>
+                <div className='jibbitz_list_wrap'>
+                    <div className='product_list_page'>
                         <Title title={cate?.toUpperCase()} />
 
                         {/* 검색결과 */}
                         {searchWord && (
-                            <div className="search_info_wrap">
-                                <div className="search_info">
+                            <div className='search_info_wrap'>
+                                <div className='search_info'>
                                     {`" ${searchWord} " 검색 결과 : `}
                                     <p>
                                         <strong>{filteredItems.length}</strong>개
                                     </p>
                                 </div>
                                 <button
-                                    className="clear_search_info_btn"
+                                    className='clear_search_info_btn'
                                     onClick={() => {
-                                        setSearchWord('');
-                                        navigate(`/${cate}`);
-                                    }}
-                                >
-                                    ×
-                                </button>
-                            </div>
-                        )}
-                <div className="jibbitz_list_wrap">
-                    <div className="product_list_page">
-                        <Title title={cate?.toUpperCase()} />
-
-                        {/* 검색결과 */}
-                        {searchWord && (
-                            <div className="search_info_wrap">
-                                <div className="search_info">
-                                    {`" ${searchWord} " 검색 결과 : `}
-                                    <p>
-                                        <strong>{filteredItems.length}</strong>개
-                                    </p>
-                                </div>
-                                <button
-                                    className="clear_search_info_btn"
-                                    onClick={() => {
-                                        setSearchWord('');
+                                        setSearchWord("");
                                         navigate(`/${cate}`);
                                     }}
                                 >
@@ -200,51 +173,24 @@ const ProductListPage = () => {
 
                         {/* 서브 메뉴 (Jibbitz 스타일 유지) */}
                         {currentMenu?.submenu_list?.length > 0 && !searchWord && (
-                            <div className="sub_menu_wrap">
+                            <div className='sub_menu_wrap'>
                                 {currentMenu.submenu_list.map((sub) => (
                                     <div
                                         key={sub.key}
                                         className={`btn_menu_item ${
-                                            subcategory === sub.key ? 'active' : ''
+                                            subcategory === sub.key ? "active" : ""
                                         }`}
                                         onClick={() => navigate(`/${cate}/${sub.key}`)}
                                     >
-                                        <button className="sub_menu_btn">{sub.label}</button>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                        {/* 서브 메뉴 (Jibbitz 스타일 유지) */}
-                        {currentMenu?.submenu_list?.length > 0 && !searchWord && (
-                            <div className="sub_menu_wrap">
-                                {currentMenu.submenu_list.map((sub) => (
-                                    <div
-                                        key={sub.key}
-                                        className={`btn_menu_item ${
-                                            subcategory === sub.key ? 'active' : ''
-                                        }`}
-                                        onClick={() => navigate(`/${cate}/${sub.key}`)}
-                                    >
-                                        <button className="sub_menu_btn">{sub.label}</button>
+                                        <button className='sub_menu_btn'>{sub.label}</button>
                                     </div>
                                 ))}
                             </div>
                         )}
 
-                        <div className="product_list_wrap">
+                        <div className='product_list_wrap'>
                             {/* 좌측 네비게이션 */}
-                            <div className="list_left">
-                                <LeftNavigation
-                                    category={mainCategory}
-                                    subcategory={mainSubcategory}
-                                    subCategoryList={subCategoryList}
-                                    selectedSize={selectedSize}
-                                    onSizeSelect={setSelectedSize}
-                                />
-                            </div>
-                        <div className="product_list_wrap">
-                            {/* 좌측 네비게이션 */}
-                            <div className="list_left">
+                            <div className='list_left'>
                                 <LeftNavigation
                                     category={mainCategory}
                                     subcategory={mainSubcategory}
@@ -255,9 +201,9 @@ const ProductListPage = () => {
                             </div>
 
                             {/* 우측 리스트 (Jibbitz 스타일 유지) */}
-                            <div className="list_right">
+                            <div className='list_right'>
                                 {currentItems.length > 0 ? (
-                                    <ul className="product-card__item_list">
+                                    <ul className='product-card__item_list'>
                                         {currentItems.map((p) => (
                                             <ProductCard
                                                 key={p.id}
@@ -268,34 +214,11 @@ const ProductListPage = () => {
                                         ))}
                                     </ul>
                                 ) : (
-                                    <div className="empty_state">
+                                    <div className='empty_state'>
                                         <p>
                                             {searchWord
                                                 ? `"${searchWord}"에 대한 검색 결과가 없습니다.`
-                                                : '해당 조건에 맞는 상품이 없습니다.'}
-                                        </p>
-                                    </div>
-                                )}
-                            </div>
-                            {/* 우측 리스트 (Jibbitz 스타일 유지) */}
-                            <div className="list_right">
-                                {currentItems.length > 0 ? (
-                                    <ul className="product-card__item_list">
-                                        {currentItems.map((p) => (
-                                            <ProductCard
-                                                key={p.id}
-                                                product={p}
-                                                onClick={() => navigate(`/product/${p.id}`)}
-                                                onSizeSelect={setSelectedSize}
-                                            />
-                                        ))}
-                                    </ul>
-                                ) : (
-                                    <div className="empty_state">
-                                        <p>
-                                            {searchWord
-                                                ? `"${searchWord}"에 대한 검색 결과가 없습니다.`
-                                                : '해당 조건에 맞는 상품이 없습니다.'}
+                                                : "해당 조건에 맞는 상품이 없습니다."}
                                         </p>
                                     </div>
                                 )}
@@ -306,7 +229,7 @@ const ProductListPage = () => {
 
                 {/* 페이징 */}
                 {totalPage > 1 && (
-                    <div className="page_pager">
+                    <div className='page_pager'>
                         <button onClick={() => handleGoPage(currentPage - 1)}>이전</button>
                         {pagerButton}
                         <button onClick={() => handleGoPage(currentPage + 1)}>다음</button>
