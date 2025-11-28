@@ -12,6 +12,11 @@ export const menuList = [
                 imgUrl: '/images/28_클래식_아이_엠_레인보우_유니콘_클로그_토들러_1.jpg',
             },
             {
+                key: 'jibbitz',
+                label: 'JIBBITZ',
+                imgUrl: '/images/3_인디_럭스_실버_5개_세트.jpg',
+            },
+            {
                 key: 'collabs',
                 label: 'COLLABS',
                 imgUrl: '/images/6_시몬_로샤_x_크록스_발레리나_플랫폼_1.jpg',
@@ -28,11 +33,6 @@ export const menuList = [
                 imgUrl: '/images/2_베이_라인드_클로그_1.jpg',
             },
             { key: 'fuzz', label: 'FUZZ', imgUrl: '/images/13_클래식_언퍼게터블_클로그_1.png' },
-            {
-                key: 'jibbitz',
-                label: 'JIBBITZ',
-                imgUrl: '/images/3_인디_럭스_실버_5개_세트.jpg',
-            },
             {
                 key: 'collabs',
                 label: 'COLLABS',
