@@ -7,15 +7,18 @@ const Brand = () => {
     <div className="sub_page brand_page">
       <div className="brand_banner_wrap">
         <img src="/images/brand_img_01.png" alt="brand_page_banner" />
-        <div className="title_video_wrap">
-          <video
-            src="https://vod.vogue.co.kr/outputs/style_68a2a956166b5/MP4/style_68a2a956166b5_1080p.mp4"
-            autoPlay
-            muted
-            loop
-          ></video>
+        <div className="brand_title_wrap">
+          <div className="title_video_wrap">
+            <video
+              src="https://vod.vogue.co.kr/outputs/style_68a2a956166b5/MP4/style_68a2a956166b5_1080p.mp4"
+              autoPlay
+              muted
+              loop
+            ></video>
+          </div>
         </div>
       </div>
+
       <div className="inner">
         {/* <Title title="brand" /> */}
         <p className="jibbitz jibbitz_img1">

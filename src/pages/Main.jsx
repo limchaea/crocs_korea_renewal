@@ -54,11 +54,21 @@ const Main = () => {
     };
   }, [isPopupOpen]);
 
-  //  FullPageScroll에서 섹션이 바뀔 때 id만 받아서 상태로 저장
+  // FullPageScroll에서 섹션이 바뀔 때 id만 받아서 상태로 저장
   const handleSectionChange = (index, element) => {
     const sectionId = element?.getAttribute("data-section-id");
     if (sectionId) {
       setCurrentSection(sectionId);
+
+      // 헤더에 scrolled 클래스 추가/제거
+      const headerWrapper = document.querySelector(".header_wrapper");
+      if (headerWrapper) {
+        if (sectionId === "main-slider") {
+          headerWrapper.classList.remove("scrolled");
+        } else {
+          headerWrapper.classList.add("scrolled");
+        }
+      }
     }
   };
 

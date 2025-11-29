@@ -84,7 +84,7 @@ const ProductListPage = () => {
   // 카테고리/검색 변경 시 페이지 초기화
   useEffect(() => {
     setCurrentPage(1);
-  }, [cate, subcategory, searchWord, categoryQuery]); // ⭐ categoryQuery 추가
+  }, [cate, subcategory, searchWord, categoryQuery]); // categoryQuery 추가
 
   // 1) ALL 페이지 - 전체 상품으로 시작
   let filteredItems = isAllPage
@@ -115,7 +115,7 @@ const ProductListPage = () => {
 
       // 매칭된 것만 로그
       if (match) {
-        console.log("✅ 매칭:", item.product);
+        console.log(" 매칭:", item.product);
       }
 
       return match;
@@ -157,6 +157,14 @@ const ProductListPage = () => {
       (item) => Array.isArray(item.sizes) && item.sizes.includes(sizeNum)
     );
   }
+  // if (selectedSize) {
+  //       const sizeNum = Number(selectedSize);
+  //       if (!isNaN(sizeNum)) {
+  //           filteredItems = filteredItems.filter(
+  //               (item) => Array.isArray(item.sizes) && item.sizes.includes(sizeNum)
+  //           );
+  //       }
+  //   }
 
   // 6) 색상 필터
   if (selectedColors.length > 0) {
