@@ -46,6 +46,10 @@
                 margin-bottom: 2rem;
                 text-align: left;
                 font-weight: 600;
+                span {
+                    margin-left: 0.2rem;
+                    color: #66de1b;
+                }
             }
 
             .required_input {
@@ -53,14 +57,60 @@
                 width: 100%;
                 height: 4rem;
                 padding-left: 2rem;
-                background-color: #eee;
+                // background-color: #eee;
+                border: 1px solid #ddd;
                 border-radius: 5rem;
+                &:focus {
+                    outline: none !important;
+                    border-color: g.$mainColor !important;
+                }
             }
 
             .required_content {
                 padding: 0 4rem 1.2rem;
                 font-size: 1.2rem;
                 color: #8a8a8a;
+            }
+
+            .password-message {
+                font-size: 1.3rem;
+                margin-top: 0.8rem;
+
+                &.valid {
+                    color: #27ae60;
+                }
+
+                &.invalid {
+                    color: #e74c3c;
+                }
+            }
+            .email-separator {
+                color: #333;
+                font-weight: 500;
+            }
+            .email-input-group {
+                @include g.flex($gap: 1rem);
+                .email-select {
+                    width: 12rem !important;
+                    padding: 1.2rem 3rem 1.2rem 1.5rem !important;
+                    appearance: none !important;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+                    background-repeat: no-repeat !important;
+                    background-position: right 1.5rem center !important;
+                    background-size: 1rem !important;
+                    background-color: white !important;
+                    border: 1px solid #ddd !important;
+                    border-radius: 50px !important;
+                    font-size: 1.3rem !important;
+                    color: #333 !important;
+                    box-sizing: border-box !important;
+                    cursor: pointer !important;
+
+                    &:focus {
+                        outline: none !important;
+                        border-color: g.$mainColor !important;
+                    }
+                }
             }
         }
 

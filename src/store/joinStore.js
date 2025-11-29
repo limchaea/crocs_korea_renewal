@@ -45,14 +45,16 @@ export const joinStore = create((set, get) => ({
             set({ user: userData });
             console.log('회원가입 완료:', email);
             alert('회원가입 성공! 크록스 코리아 웰컴 쿠폰이 발급되었습니다.');
-            
+
             // 4. /userinfo 페이지로 이동
             if (navigate) {
                 navigate('/userinfo');
+                return true;
             }
         } catch (err) {
             console.error('회원가입 오류:', err);
             alert(err.message);
+            return false;
         }
     },
     // 이용약관 팝업창
