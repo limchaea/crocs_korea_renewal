@@ -51,7 +51,7 @@ const JibbitzProductListPage = () => {
       discount: product.discount || "",
     });
 
-    navigate(`/jibbitz/${product.id}`);
+    navigate(`/jibbitz/detail/${product.id}`);
   };
 
   // ⭐ URL filter 파라미터가 변경되면 store의 selectFilter 업데이트
@@ -262,7 +262,7 @@ const JibbitzProductListPage = () => {
                         key={product.id}
                         onClick={() => onOpenProductDetail(product)}
                       >
-                        <div className="product-card__card_imgbox">
+                        <div className="product-card__img_wrap">
                           <img
                             src={product.imageUrl}
                             alt={product.title}
