@@ -56,7 +56,7 @@ const Nonmember = () => {
 
     try {
       // Firestore의 orders 컬렉션에서 주문 검색
-      const ordersRef = collection(db, "orders");
+      const ordersRef = collection(db, "nonmemberOrders");
       const q = query(ordersRef, where("orderId", "==", orderId));
       const querySnapshot = await getDocs(q);
 

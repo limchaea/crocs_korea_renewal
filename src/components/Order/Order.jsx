@@ -238,7 +238,7 @@ function Order() {
         console.log(" 주문 내역이 사용자 정보에 저장되었습니다.");
       } else {
         // 비회원: orders 컬렉션에 별도 저장
-        await addDoc(collection(db, "orders"), orderData);
+        await addDoc(collection(db, "nonmemberOrders"), orderData);
         console.log(" 비회원 주문 내역이 저장되었습니다.");
       }
 
