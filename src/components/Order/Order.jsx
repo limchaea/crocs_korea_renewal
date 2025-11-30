@@ -25,7 +25,7 @@ function Order() {
 
   // 로그인 사용자 정보 가져오기
   const { user } = loginAuthStore();
-  const applyCoupon = loginAuthStore((state) => state.applyCoupon);
+  // const applyCoupon = loginAuthStore((state) => state.applyCoupon);
 
   //  clearCart 함수 가져오기
   const clearCart = useCartStore((state) => state.clearCart);
