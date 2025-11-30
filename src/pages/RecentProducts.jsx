@@ -4,9 +4,10 @@ import "./scss/RecentProducts.scss";
 import { useNavigate } from "react-router-dom";
 
 const RecentProducts = () => {
-  const { recentProducts, removeProduct, clearAll } = useRecentProductsStore();
+  const { recentProducts, clearAll } = useRecentProductsStore();
   const navigate = useNavigate();
-  const formatPrice = (price, discountPrice) => {
+  const formatPrice = (price) => {
+    console.log(formatPrice(1000));
     return new Intl.NumberFormat("ko-KR").format(price);
   };
 
@@ -77,10 +78,10 @@ const RecentProducts = () => {
               <p className="product-category">{item.category}</p>
               <div className="product-price-wrap">
                 <span className="price-text">
-                  {item.discountPrice == "" ? item.price : item.discountPrice}
+                  {item.discountPrice === "" ? item.price : item.discountPrice}
                 </span>
                 <span className="price-text">
-                  {item.discountPrice == "" ? "" : item.originPrice}
+                  {item.discountPrice === "" ? "" : item.originPrice}
                 </span>
                 {/* <span className='price-text'>{formatPrice(item.price)}원</span>
                                 <span className='price-text'>{item.price}</span> */}
