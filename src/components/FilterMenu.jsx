@@ -11,10 +11,10 @@ export default function FilterMenu({
   const [isOpen, setIsOpen] = useState(true);
   const hasFilters = selectedColors.length > 0 || selectedSize !== null;
 
-  const handleToggle = (e) => {
-    e.preventDefault();
-    setIsOpen(!isOpen);
-  };
+  //   const handleToggle = (e) => {
+  //     e.preventDefault();
+  //     setIsOpen(!isOpen);
+  //   };
 
   if (!hasFilters) {
     return null; // 필터가 없으면 표시 안 함
