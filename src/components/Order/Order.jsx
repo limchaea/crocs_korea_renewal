@@ -181,9 +181,9 @@ function Order() {
         : null;
 
       // 쿠폰이 선택되어 있으면 사용 처리 (회원만)
-      if (selectedCoupon && user) {
-        await applyCoupon(selectedCoupon.id);
-      }
+      // if (selectedCoupon && user) {
+      //   await applyCoupon(selectedCoupon.id);
+      // }
 
       // 주문 데이터 생성
       const orderData = {
