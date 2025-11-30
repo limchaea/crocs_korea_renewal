@@ -19,7 +19,7 @@ const UserInfo = () => {
   const navigate = useNavigate();
 
   // props로 전달할 주문 데이터
-  const [orders, setOrders] = useState([]);
+  const [, setOrders] = useState([]);
   const { user } = loginAuthStore();
 
   // 주문 데이터 불러오기
@@ -107,12 +107,12 @@ const UserInfo = () => {
                   <div className="wish_card_price">
                     <p>
                       <span>
-                        {item.discountPrice == ""
+                        {item.discountPrice === ""
                           ? item.price
                           : item.discountPrice}
                       </span>
                       <span>
-                        {item.discountPrice == "" ? "" : item.originPrice}
+                        {item.discountPrice === "" ? "" : item.originPrice}
                       </span>
                     </p>
                     <p className="price_bottom">{item.discountPercent}</p>
