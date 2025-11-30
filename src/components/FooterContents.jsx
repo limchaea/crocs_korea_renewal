@@ -9,10 +9,10 @@ const FooterContents = () => {
                     <Link to="/store">Store</Link>
                 </li>
                 <li>
-                    <Link to="/about">About</Link>
+                    <Link to="/Brand">About</Link>
                 </li>
                 <li>
-                    <Link to="/privacypolicy">Privacy Policy</Link>
+                    <Link to="#">Privacy Policy</Link>
                 </li>
             </ul>
             <div className="footer_right">
