@@ -99,88 +99,88 @@ const normalizeColor = (c) => {
     return null;
 };
 
-const ProductColorBadges = ({ colors = [], onColorClick }) => {
-    const normalized = (Array.isArray(colors) ? colors : [colors])
-        .map(normalizeColor)
-        .filter(Boolean);
+// const ProductColorBadges = ({ colors = [], onColorClick }) => {
+//     const normalized = (Array.isArray(colors) ? colors : [colors])
+//         .map(normalizeColor)
+//         .filter(Boolean);
 
-    // 컬러가 하나도 없으면 렌더링하지 않음
-    if (normalized.length === 0) return null;
+//     // 컬러가 하나도 없으면 렌더링하지 않음
+//     if (normalized.length === 0) return null;
 
-    return (
-        <div className="product-card__color">
-            <div className="product-card__color__title--wrap">
-                <p>색상</p>
-            </div>
-            <div className="color-badge__wrap">
-                {normalized.map((color, i) => (
-                    <button
-                        key={i}
-                        className="color-badge"
-                        style={{ background: color }}
-                        onClick={() => onColorClick?.(color)}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-};
+//     return (
+//         <div className="product-card__color">
+//             <div className="product-card__color__title--wrap">
+//                 <p>색상</p>
+//             </div>
+//             <div className="color-badge__wrap">
+//                 {normalized.map((color, i) => (
+//                     <button
+//                         key={i}
+//                         className="color-badge"
+//                         style={{ background: color }}
+//                         onClick={() => onColorClick?.(color)}
+//                     />
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// };
 
 // ---------- 사이즈 ----------
-const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
-    const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
-    const [active, setActive] = useState(null);
+// const ProductSizeButtons = ({ cate, soldOutSizes = [], onSizeSelect }) => {
+//     const { crocsSizesByCategory, onFetchSize } = useCrocsSizeStore();
+//     const [active, setActive] = useState(null);
 
-    useEffect(() => {
-        if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
-            onFetchSize();
-        }
-    }, [crocsSizesByCategory, onFetchSize]);
+//     useEffect(() => {
+//         if (!crocsSizesByCategory || Object.keys(crocsSizesByCategory).length === 0) {
+//             onFetchSize();
+//         }
+//     }, [crocsSizesByCategory, onFetchSize]);
 
-    // cate 안에 특정 단어가 포함되어 있는지 체크
-    let categoryId = null;
-    if (cate?.includes('여성')) categoryId = 'women';
-    else if (cate?.includes('남성')) categoryId = 'men';
-    else if (cate?.includes('키즈')) categoryId = 'kids';
+//     // cate 안에 특정 단어가 포함되어 있는지 체크
+//     let categoryId = null;
+//     if (cate?.includes('여성')) categoryId = 'women';
+//     else if (cate?.includes('남성')) categoryId = 'men';
+//     else if (cate?.includes('키즈')) categoryId = 'kids';
 
-    console.log('cate:', cate);
-    console.log('categoryId:', categoryId);
+//     console.log('cate:', cate);
+//     console.log('categoryId:', categoryId);
 
-    const sizes = crocsSizesByCategory[categoryId] || [];
+//     const sizes = crocsSizesByCategory[categoryId] || [];
 
-    return (
-        <div className="product-card__size">
-            <div className="product-card__size__title--wrap">
-                <p>사이즈</p>
-            </div>
-            <ul className="product-card__size--btns__wrap">
-                {sizes.map((size) => {
-                    const soldOut = soldOutSizes.includes(size);
-                    const isActive = active === size;
+//     return (
+//         <div className="product-card__size">
+//             <div className="product-card__size__title--wrap">
+//                 <p>사이즈</p>
+//             </div>
+//             <ul className="product-card__size--btns__wrap">
+//                 {sizes.map((size) => {
+//                     const soldOut = soldOutSizes.includes(size);
+//                     const isActive = active === size;
 
-                    return (
-                        <li key={size} className="size--btns__item">
-                            <button
-                                className={`size--btns__button ${isActive ? 'active' : ''} ${
-                                    soldOut ? 'sold-out' : ''
-                                }`}
-                                onClick={() => {
-                                    if (!soldOut) {
-                                        setActive(size);
-                                        onSizeSelect?.(size);
-                                    }
-                                }}
-                                disabled={soldOut}
-                            >
-                                {size}
-                            </button>
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
-    );
-};
+//                     return (
+//                         <li key={size} className="size--btns__item">
+//                             <button
+//                                 className={`size--btns__button ${isActive ? 'active' : ''} ${
+//                                     soldOut ? 'sold-out' : ''
+//                                 }`}
+//                                 onClick={() => {
+//                                     if (!soldOut) {
+//                                         setActive(size);
+//                                         onSizeSelect?.(size);
+//                                     }
+//                                 }}
+//                                 disabled={soldOut}
+//                             >
+//                                 {size}
+//                             </button>
+//                         </li>
+//                     );
+//                 })}
+//             </ul>
+//         </div>
+//     );
+// };
 
 // ---------- 상품 카드 ----------
 const ProductCard = ({ product, onClick, onSizeSelect }) => (

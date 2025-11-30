@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { create } from 'zustand';
-import { auth, db, googleProvider } from '../firebase/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 export const joinStore = create((set, get) => ({
     onJoin: async ({ name, phone, email, password, birthday, gender, navigate }) => {

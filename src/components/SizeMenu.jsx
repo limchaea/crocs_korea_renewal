@@ -3,7 +3,7 @@ import './scss/WomenComponents.scss';
 
 export default function SizeMenu({ sizes = [], selectedSize, onSizeSelect }) {
     const [isOpen, setIsOpen] = useState(true);
-     const [activeSize, setActiveSize] = useState(selectedSize || null);
+    const [, setActiveSize] = useState(selectedSize || null);
 
     const handleClick = (size, e) => {
         e.preventDefault();
