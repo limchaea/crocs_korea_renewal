@@ -116,6 +116,7 @@ export const menuList = [
         key: 'jibbitz',
         label: 'JIBBITZ',
         submenu_list: [
+            { key: 'all', label: 'ALL', imgUrl: '/images/14_인디_실버_리본_펜던트_1.jpg' },
             { key: 'pack', label: 'PACK', imgUrl: '/images/1_화이트_펄_5개_세트.jpg' },
             { key: 'single', label: 'SINGLE', imgUrl: '/images/9_허기츠_블랙_벨벳_캣_0.jpg' },
         ],
