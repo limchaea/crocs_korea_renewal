@@ -11,7 +11,7 @@ const MainSlider = () => {
         { id: 1, src: './video/main_slide_01.mp4', tag: 'video', title: "Rei's Bay Clog" },
         {
             id: 2,
-            src: '/images/main_slide_02.jpg',
+            src: '/images/main_slide-02.jpg',
             alt: 'slide2',
             tag: 'img',
             title: 'Crocs x Vogue',
