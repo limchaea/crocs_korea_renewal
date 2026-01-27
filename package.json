@@ -45,5 +45,6 @@
     "@craco/craco": "^7.1.0",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint-plugin-react-hooks": "^7.0.1"
-  }
+  },
+  "homepage": "."
 }
